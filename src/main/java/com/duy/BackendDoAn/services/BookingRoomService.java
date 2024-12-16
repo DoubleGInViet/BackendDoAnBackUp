@@ -117,7 +117,7 @@ public class BookingRoomService {
         return bookingRoomRepository.save(bookingRoom);
     }
 
-    public String generateUniqueBookingRoomId() {
+    private String generateUniqueBookingRoomId() {
         String uniqueId;
         boolean isUnique;
 
@@ -134,5 +134,11 @@ public class BookingRoomService {
         // Sử dụng UUID để tạo ID ngẫu nhiên
         String randomId = UUID.randomUUID().toString().replace("-", "").substring(0, 20);
         return randomId;
+    }
+
+    public Page<BookingRoomResponse> getBookingByUser(Long id, PageRequest pageRequest) throws Exception {
+        User user = userRepository.findById(id).orElseThrow(()-> new Exception("User not exist"));
+        Page<BookingRoom> bookingRoomPage = bookingRoomRepository.findByUser(user, pageRequest);
+        return bookingRoomPage.map(BookingRoomResponse::fromBooking);
     }
 }

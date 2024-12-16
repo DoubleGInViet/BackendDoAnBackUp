@@ -63,6 +63,22 @@ public class BookingRoomController {
         return ResponseEntity.ok(BookingRoomResponse.fromBooking(bookingRoom));
     }
 
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<BookingRoomListResponse> getBookingByUser(@PathVariable("userId") Long id) throws Exception {
+        PageRequest pageRequest = PageRequest.of(
+                0, 1000,
+                Sort.by("id").ascending()
+        );
+
+        Page<BookingRoomResponse> bookingRoomResponses = bookingRoomService.getBookingByUser(id, pageRequest);
+        List<BookingRoomResponse> responses = bookingRoomResponses.getContent();
+        int totalPages = bookingRoomResponses.getTotalPages();
+        return ResponseEntity.ok(BookingRoomListResponse.builder()
+                .bookingRoom(responses)
+                .totalPages(totalPages)
+                .build());
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteBooking(@PathVariable String id) throws Exception {
         bookingRoomService.deleteBookingRoom(id);

@@ -17,6 +17,9 @@ public class BookingRoomResponse {
     private Long adults;
     private Long children;
 
+    @JsonProperty("user_id")
+    private Long user;
+
     @JsonProperty("checkin_date")
     private String checkInDate;
 
@@ -36,6 +39,7 @@ public class BookingRoomResponse {
     public static BookingRoomResponse fromBooking(BookingRoom bookingRoom) {
         BookingRoomResponse response = new BookingRoomResponse();
         response.id = bookingRoom.getId();
+        response.user = bookingRoom.getUser().getId();
         response.adults = bookingRoom.getAdults();
         response.children = bookingRoom.getChildren();
         response.hotel = HotelBookingResponse.fromBooking(bookingRoom);
