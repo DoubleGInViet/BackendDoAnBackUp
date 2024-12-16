@@ -248,7 +248,149 @@ INSERT INTO attraction (name, address, type, image, latitude, longitude, city_id
     'Ga Hải Phòng',
     'Hải Phòng', 'traffic', NULL,
     20.856035848707947, 106.68722214965443, 15
+),
+(
+    'Bãi biển Nha Trang',
+    'Nha Trang, Khánh Hòa', 'beach', NULL,
+    12.238791, 109.196749, 79
+),
+(
+    'Bãi Dài',
+    'Cam Lâm, Khánh Hòa', 'beach', NULL,
+    12.053741, 109.197007, 79
+),
+(
+    'Bãi biển Mỹ Khê',
+    'Sơn Trà, Đà Nẵng', 'beach', NULL,
+    16.066885, 108.249937, 43
+),
+(
+    'Bãi biển Non Nước',
+    'Ngũ Hành Sơn, Đà Nẵng', 'beach', NULL,
+    15.998387, 108.273544, 43
+),
+(
+    'Bãi biển An Bàng',
+    'Hội An, Quảng Nam', 'beach', NULL,
+    15.903062, 108.342382, 92
+),
+(
+    'Bãi biển Cửa Đại',
+    'Hội An, Quảng Nam', 'beach', NULL,
+    15.876368, 108.364575, 92
+),
+(
+    'Bãi biển Phú Quốc',
+    'Phú Quốc, Kiên Giang', 'beach', NULL,
+    10.227039, 103.960739, 68
+),
+(
+    'Bãi biển Nhật Lệ',
+    'Đồng Hới, Quảng Bình', 'beach', NULL,
+    17.478971, 106.620835, 73
+),
+(
+    'Bãi biển Côn Đảo',
+    'Côn Đảo, Bà Rịa-Vũng Tàu', 'beach', NULL,
+    8.682553, 106.616159, 72
+),
+(
+    'Bãi biển Trà Cổ',
+    'Móng Cái, Quảng Ninh', 'beach', NULL,
+    21.521052, 108.045566, 14
+),
+(
+    'Công viên Tao Đàn',
+    'Quận 1, TP.HCM', 'park', NULL,
+    10.771869, 106.695237, 41
+),
+(
+    'Công viên 30/4',
+    'Quận 1, TP.HCM', 'park', NULL,
+    10.776211, 106.698524, 41
+),
+(
+    'Công viên Thống Nhất',
+    'Hai Bà Trưng, Hà Nội', 'park', NULL,
+    21.016913, 105.841138, 29
+),
+(
+    'Công viên Cầu Giấy',
+    'Cầu Giấy, Hà Nội', 'park', NULL,
+    21.033633, 105.794182, 29
+),
+(
+    'Công viên Bách Thảo',
+    'Ba Đình, Hà Nội', 'park', NULL,
+    21.043531, 105.832612, 29
+),
+(
+    'Công viên Văn hóa Đầm Sen',
+    'Quận 11, TP.HCM', 'park', NULL,
+    10.762345, 106.635867, 41
+),
+(
+    'Công viên Biển Đông',
+    'Sơn Trà, Đà Nẵng', 'park', NULL,
+    16.082414, 108.246243, 43
+),
+(
+    'Công viên APEC',
+    'Hải Châu, Đà Nẵng', 'park', NULL,
+    16.040649, 108.219942, 43
+),
+(
+    'Công viên Suối Mơ',
+    'Long Khánh, Đồng Nai', 'park', NULL,
+    11.325803, 107.295418, 60
+),
+(
+    'Công viên VinWonders',
+    'Phú Quốc, Kiên Giang', 'park', NULL,
+    10.377183, 103.919659, 68
+),
+(
+    'Bảo tàng Hồ Chí Minh',
+    'Ba Đình, Hà Nội', 'museum', NULL,
+    21.036431, 105.834208, 29
+),
+(
+    'Bảo tàng Lịch sử Quốc gia',
+    'Hoàn Kiếm, Hà Nội', 'museum', NULL,
+    21.028511, 105.854444, 29
+),
+(
+    'Bảo tàng Dân tộc học Việt Nam',
+    'Cầu Giấy, Hà Nội', 'museum', NULL,
+    21.037182, 105.782830, 29
+),
+(
+    'Bảo tàng Chứng tích Chiến tranh',
+    'Quận 3, TP.HCM', 'museum', NULL,
+    10.779524, 106.694416, 41
+),
+(
+    'Bảo tàng Lịch sử Quân sự Việt Nam',
+    'Nam Tu Liem, Hà Nội', 'museum', NULL,
+    21.033261, 105.835199, 29
+),
+(
+    'Bảo tàng Mỹ thuật Việt Nam',
+    'Ba Đình, Hà Nội', 'museum', NULL,
+    21.033831, 105.835492, 29
+),
+(
+    'Bảo tàng Quang Trung',
+    'Tây Sơn, Bình Định', 'museum', NULL,
+    13.889265, 109.006375, 52
+),
+(
+    'Bảo tàng Điêu khắc Chăm',
+    'Hải Châu, Đà Nẵng', 'museum', NULL,
+    16.061341, 108.223273, 43
+),
+(
+    'Bảo tàng Công an Nhân dân',
+    'Cầu Giấy, Hà Nội', 'museum', NULL,
+    21.035313, 105.791657, 2
 );
-
-
-
