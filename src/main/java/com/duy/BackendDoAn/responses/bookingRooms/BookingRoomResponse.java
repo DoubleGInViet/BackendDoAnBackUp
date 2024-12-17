@@ -13,8 +13,9 @@ import java.time.format.DateTimeFormatter;
 @Builder
 public class BookingRoomResponse {
     private String id;
-
+    @JsonProperty("no_adult")
     private Long adults;
+    @JsonProperty("no_children")
     private Long children;
 
     @JsonProperty("user_id")
@@ -35,6 +36,8 @@ public class BookingRoomResponse {
     private Float totalPrice;
 
     private HotelBookingResponse hotel;
+    private String status;
+
 
     public static BookingRoomResponse fromBooking(BookingRoom bookingRoom) {
         BookingRoomResponse response = new BookingRoomResponse();
@@ -52,6 +55,7 @@ public class BookingRoomResponse {
                 ? CustomerResponse.fromBookingCustomer(bookingRoom)
                 : new CustomerResponse();
         response.totalPrice = bookingRoom.getTotal_price();
+        response.status = bookingRoom.getStatus();
         return response;
     }
 }

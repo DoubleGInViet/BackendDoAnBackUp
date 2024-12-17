@@ -18,8 +18,7 @@ import java.util.List;
 @Builder
 public class BookingVehicle {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     @Column(name = "booking_date")
     private LocalDate booking_date;
@@ -42,6 +41,21 @@ public class BookingVehicle {
     @Column(name = "return_address")
     private String return_address;
 
+    @Column(name = "customer_full_name")
+    private String customerFullName;
+
+    @Column(name = "customer_email")
+    private String customerEmail;
+
+    @Column(name = "customer_phone_number")
+    private String customerPhoneNumber;
+
+    @Column(name = "customer_country")
+    private String customerCountry;
+
+    @Column(name = "total_service_price")
+    private Float totalService;
+
     @Column(name = "total_price")
     private Float total_price;
 
@@ -57,4 +71,8 @@ public class BookingVehicle {
     @OneToMany(mappedBy = "bookingVehicle", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<AccessoryBooking> accessoryBookings;
+
+    @OneToMany(mappedBy = "bookingVehicle", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<AdditionDriver> additionDrivers;
 }

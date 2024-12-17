@@ -87,7 +87,7 @@ create table amenity_for_room (
 
 
 CREATE TABLE booking_room (
-    id NVARCHAR(20) PRIMARY KEY,
+    id NVARCHAR(8) PRIMARY KEY,
     booking_date DATE,
     adults INT,
     children INT,
@@ -187,7 +187,7 @@ CREATE TABLE rental_vehicle (
 );
 
 CREATE TABLE booking_vehicle (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id NVARCHAR(8) PRIMARY KEY,
     booking_date DATE,
     start_date DATE,
     start_time TIME,
@@ -195,11 +195,25 @@ CREATE TABLE booking_vehicle (
     return_date DATE,
     return_time TIME,
     return_address NVARCHAR(255),
+    customer_full_name NVARCHAR(255),
+    customer_email NVARCHAR(255),
+    customer_phone_number NVARCHAR(255),
+    customer_country NVARCHAR(255),
+    total_service_price FLOAT,
     total_price FLOAT,
     user_id INT,
     rental_vehicle_id INT,
     CONSTRAINT fk_booking_motor_users foreign key (user_id) references users(id),
     CONSTRAINT fk_booking_motor_rental_vehicle foreign key (rental_vehicle_id) references rental_vehicle(id)
+);
+
+CREATE TABLE addition_driver (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title INT,
+    full_name NVARCHAR(255),
+    phone NVARCHAR(20),
+    booking_vehicle_id NVARCHAR(8),
+    CONSTRAINT fk_driver_booking foreign key (booking_vehicle_id) references booking_vehicle(id)
 );
 
 create table accessory (
@@ -215,7 +229,7 @@ CREATE TABLE accessory_booking (
     amount int,
     price_per FLOAT,
     accessory_id INT,
-    booking_vehicle_id INT,
+    booking_vehicle_id NVARCHAR(8),
     CONSTRAINT fk_service_booking_service foreign key (accessory_id) references accessory(id),
     CONSTRAINT fk_service_booking_booking foreign key (booking_vehicle_id) references booking_vehicle(id)
 );

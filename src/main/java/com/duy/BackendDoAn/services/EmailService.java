@@ -5,6 +5,9 @@ import com.duy.BackendDoAn.models.Hotel;
 import com.duy.BackendDoAn.repositories.HotelRepository;
 import com.duy.BackendDoAn.responses.bookingRooms.BookingRoomResponse;
 import com.duy.BackendDoAn.responses.bookingRooms.SeperatedRoomResponse;
+import com.duy.BackendDoAn.responses.bookingVehicles.BookingVehicleResponse;
+import com.duy.BackendDoAn.responses.bookingVehicles.DriverResponse;
+import com.duy.BackendDoAn.responses.bookingVehicles.ServiceResponse;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.AllArgsConstructor;
@@ -33,6 +36,25 @@ public class EmailService {
             helper.setTo(bookingRoomResponse.getCustomerResponse().getEmail());
             helper.setSubject("Booking Successfully");
             String emailContent = buildEmailBody(bookingRoomResponse);
+
+            helper.setText(emailContent, true);  // true để xác định đây là HTML content
+
+            mailSender.send(message);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Error sending password reset email: " + e.getMessage());
+        }
+    }
+
+    public void sendBookingVehicleMessage(BookingVehicleResponse response) {
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+
+            helper.setFrom("no-reply@hotelbooking.com", "Hotel Booking");
+            helper.setTo(response.getCustomerResponse().getEmail());
+            helper.setSubject("Booking Vehicle Successfully");
+            String emailContent = buildEmailBookingVehicleBody(response);
 
             helper.setText(emailContent, true);  // true để xác định đây là HTML content
 
@@ -118,6 +140,73 @@ public class EmailService {
                     .append("</tr>");
         }
 
+        body.append("</table>");
+
+        return body.toString();
+    }
+
+    private String buildEmailBookingVehicleBody(BookingVehicleResponse bookingResponse) {
+        StringBuilder body = new StringBuilder();
+
+        // Tiêu đề
+        body.append("<h1>Thông tin đặt xe của bạn</h1>");
+
+        // Thông tin xe
+        body.append("<p><strong>Tên xe:</strong> ").append(bookingResponse.getVehicle().getName()).append("</p>");
+        body.append("<p><strong>Hãng xe:</strong> ").append(bookingResponse.getVehicle().getBrand()).append("</p>");
+
+        // Thông tin điểm đón và trả
+        body.append("<h2>Điểm đón và trả xe</h2>");
+        body.append("<p><strong>Điểm đón:</strong> ").append(bookingResponse.getPickUpResponse().getName()).append("</p>");
+        body.append("<p><strong>Ngày đón:</strong> ").append(bookingResponse.getPickUpResponse().getDate()).append("</p>");
+        body.append("<p><strong>Điểm trả:</strong> ").append(bookingResponse.getPickUpResponse().getName()).append("</p>");
+        body.append("<p><strong>Ngày trả:</strong> ").append(bookingResponse.getPickUpResponse().getDate()).append("</p>");
+
+        // Thông tin dịch vụ bổ sung
+        body.append("<h2>Dịch vụ bổ sung</h2>");
+        body.append("<p><strong>Tổng chi phí dịch vụ:</strong> ").append(bookingResponse.getServicesResponse().getTotalServices()).append(" VND</p>");
+
+        body.append("<table border='1' cellpadding='10' cellspacing='0' style='border-collapse: collapse;'>");
+        body.append("<tr>")
+                .append("<th>Tên dịch vụ</th>")
+                .append("<th>Số lượng</th>")
+                .append("<th>Giá</th>")
+                .append("</tr>");
+
+        for (ServiceResponse service : bookingResponse.getServicesResponse().getServices()) {
+            body.append("<tr>")
+                    .append("<td>").append(service.getName()).append("</td>")
+                    .append("<td>").append(service.getCount()).append("</td>")
+                    .append("<td>").append(service.getPrice()).append(" VND</td>")
+                    .append("</tr>");
+        }
+        body.append("</table>");
+
+        // Thông tin khách hàng
+        body.append("<h2>Thông tin khách hàng</h2>");
+        body.append("<p><strong>Họ tên:</strong> ").append(bookingResponse.getCustomerResponse().getFullName()).append("</p>");
+        body.append("<p><strong>Email:</strong> ").append(bookingResponse.getCustomerResponse().getEmail()).append("</p>");
+        body.append("<p><strong>Số điện thoại:</strong> ").append(bookingResponse.getCustomerResponse().getPhone()).append("</p>");
+        body.append("<p><strong>Quốc gia:</strong> ").append(bookingResponse.getCustomerResponse().getCountry()).append("</p>");
+
+        // Thông tin tài xế
+        body.append("<h2>Thông tin tài xế phụ</h2>");
+        body.append("<p><strong>Tổng số tài xế:</strong> ").append(bookingResponse.getDriverListResponse().getTotalDriver()).append("</p>");
+
+        body.append("<table border='1' cellpadding='10' cellspacing='0' style='border-collapse: collapse;'>");
+        body.append("<tr>")
+                .append("<th>Danh xưng</th>")
+                .append("<th>Họ tên</th>")
+                .append("<th>Số điện thoại</th>")
+                .append("</tr>");
+
+        for (DriverResponse driver : bookingResponse.getDriverListResponse().getListDrivers()) {
+            body.append("<tr>")
+                    .append("<td>").append(driver.getTitle()).append("</td>")
+                    .append("<td>").append(driver.getFullName()).append("</td>")
+                    .append("<td>").append(driver.getPhone()).append("</td>")
+                    .append("</tr>");
+        }
         body.append("</table>");
 
         return body.toString();

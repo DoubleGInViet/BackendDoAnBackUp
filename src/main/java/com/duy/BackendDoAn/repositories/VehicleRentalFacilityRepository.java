@@ -9,4 +9,5 @@ import java.util.Optional;
 
 public interface VehicleRentalFacilityRepository extends JpaRepository<VehicleRentalFacility, Long> {
     Optional<VehicleRentalFacility> findByVehicleAndRentalFacility(Vehicle vehicle, RentalFacility rentalFacility);
+    Optional<VehicleRentalFacility> findByVehicle_IdAndRentalFacility_Id(Long vehicleId, Long rentalFacilityId);
 }

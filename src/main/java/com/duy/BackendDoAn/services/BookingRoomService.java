@@ -132,7 +132,7 @@ public class BookingRoomService {
     // Hàm tạo ID ngẫu nhiên 20 ký tự
     private String generateRandomId() {
         // Sử dụng UUID để tạo ID ngẫu nhiên
-        String randomId = UUID.randomUUID().toString().replace("-", "").substring(0, 20);
+        String randomId = UUID.randomUUID().toString().replace("-", "").substring(0, 8);
         return randomId;
     }
 
