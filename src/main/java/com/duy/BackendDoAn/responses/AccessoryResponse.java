@@ -10,6 +10,9 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class AccessoryResponse {
+    @JsonProperty("id")
+    private Long id;
+
     @JsonProperty("name")
     private String name;
 
@@ -24,6 +27,7 @@ public class AccessoryResponse {
 
     public static AccessoryResponse fromService(Accessory accessory) {
         AccessoryResponse serviceResponse = AccessoryResponse.builder()
+                .id(accessory.getId())
                 .name(accessory.getName())
                 .price(accessory.getPrice())
                 .type(accessory.getType())
