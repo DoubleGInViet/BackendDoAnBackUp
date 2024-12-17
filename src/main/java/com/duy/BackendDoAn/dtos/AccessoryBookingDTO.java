@@ -19,7 +19,4 @@ public class AccessoryBookingDTO {
 
     @JsonProperty("accessory_id")
     private Long accessory;
-
-    @JsonProperty("booking_vehicle_id")
-    private Long bookingVehicle;
 }
