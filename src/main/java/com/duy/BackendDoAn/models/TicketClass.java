@@ -22,10 +22,10 @@ public class TicketClass {
     private Long available_ticket;
 
     @Column(name = "adult_price")
-    private Float adult_price;
+    private Long adult_price;
 
     @Column(name = "children_price")
-    private Float children_price;
+    private Long children_price;
 
     @Column(name = "description")
     private String description;

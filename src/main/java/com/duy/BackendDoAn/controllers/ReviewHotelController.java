@@ -32,10 +32,10 @@ public class ReviewHotelController {
 
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ReviewResponse> updateReview(@PathVariable long id, @RequestBody ReviewDTO reviewDTO) throws Exception {
-        ReviewHotel newReview = reviewHotelService.updateReview(id, reviewDTO);
-        return ResponseEntity.ok(ReviewResponse.fromReview(newReview));
-    }
+//    @PutMapping("/{id}")
+//    public ResponseEntity<ReviewResponse> updateReview(@PathVariable long id, @RequestBody ReviewDTO reviewDTO) throws Exception {
+//        ReviewHotel newReview = reviewHotelService.updateReview(id, reviewDTO);
+//        return ResponseEntity.ok(ReviewResponse.fromReview(newReview));
+//    }
     
 }

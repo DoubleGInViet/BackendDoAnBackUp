@@ -33,7 +33,7 @@ public class BookingRoomResponse {
     @JsonProperty("room_selection")
     private RoomSelectionResponse roomSelectionResponse;
 
-    private Float totalPrice;
+    private Long totalPrice;
 
     private HotelBookingResponse hotel;
     private String status;

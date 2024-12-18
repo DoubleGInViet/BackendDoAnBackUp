@@ -10,7 +10,7 @@ public class SeperatedRoomResponse {
     private String name;
     private String type;
     private Long count;
-    private Float price;
+    private Long price;
 
     public static SeperatedRoomResponse fromBookedRoom(BookedRoom bookedRoom) {
         SeperatedRoomResponse response = new SeperatedRoomResponse();

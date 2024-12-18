@@ -20,9 +20,9 @@ public class UpdateVehicleDTO {
     private String type;
 
     @JsonProperty("price")
-    private Float price;
+    private Long price;
 
-    private Float stake;
+    private Long stake;
 
     @JsonProperty("transmission_type")
     private String transmissionType;

@@ -14,7 +14,7 @@ public class AccessoryDTO {
     private String name;
 
     @JsonProperty("price")
-    private Float price;
+    private Long price;
 
     @JsonProperty("type")
     private String type;

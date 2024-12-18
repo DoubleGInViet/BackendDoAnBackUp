@@ -22,7 +22,7 @@ public class BookingVehicleResponse {
     private PlaceAndTimeResponse returnResponse;
 
     @JsonProperty("total_price")
-    private Float totalPrice;
+    private Long totalPrice;
 
     @JsonProperty("services")
     private ServicesListResponse servicesResponse;

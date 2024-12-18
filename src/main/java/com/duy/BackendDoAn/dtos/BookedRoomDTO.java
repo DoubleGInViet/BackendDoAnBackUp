@@ -14,7 +14,7 @@ public class BookedRoomDTO {
     private Long amount;
 
     @JsonProperty("price_per")
-    private Float pricePer;
+    private Long pricePer;
 
     @JsonProperty("room_id")
     private Long room;

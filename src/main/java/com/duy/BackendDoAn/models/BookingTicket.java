@@ -32,7 +32,7 @@ public class BookingTicket {
     private Long number_children_ticket;
 
     @Column(name = "total_price")
-    private Float total_price;
+    private Long total_price;
 
     @ManyToOne
     @JoinColumn(name = "ticket_class_id")

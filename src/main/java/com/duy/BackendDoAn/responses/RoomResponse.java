@@ -45,7 +45,7 @@ public class RoomResponse {
     private Long noBed2;
 
     @JsonProperty("price")
-    private Float price;
+    private Long price;
 
     @JsonProperty("available_rooms")
     private Long availableRooms;

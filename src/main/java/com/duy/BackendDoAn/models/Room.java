@@ -44,7 +44,7 @@ public class Room {
     private Long noBed2;
 
     @Column(name = "price")
-    private Float price;
+    private Long price;
 
 
     @Column(name = "available_rooms")
