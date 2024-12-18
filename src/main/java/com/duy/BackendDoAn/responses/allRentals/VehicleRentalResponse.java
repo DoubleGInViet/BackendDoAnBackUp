@@ -16,6 +16,7 @@ import lombok.*;
 public class VehicleRentalResponse {
     private Long id;
     private String name;
+    private Long price;
     private String brand;
     private String type;
     private DetailResponse details;
@@ -24,6 +25,7 @@ public class VehicleRentalResponse {
         VehicleRentalResponse response = new VehicleRentalResponse();
         response.id = vehicleRentalFacility.getVehicle().getId();
         response.name = vehicleRentalFacility.getVehicle().getName();
+        response.price = vehicleRentalFacility.getPrice();
         response.brand = vehicleRentalFacility.getVehicle().getBrand();
         response.type = vehicleRentalFacility.getVehicle().getVehicle_type();
         if ("car".equalsIgnoreCase(vehicleRentalFacility.getVehicle().getVehicle_type())) {
