@@ -335,6 +335,17 @@ CREATE TABLE review_rental (
         CONSTRAINT fk_review_rental_user foreign key (user_id) references users(id)
 );
 
+CREATE TABLE review_tour (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    rating INT,
+        comment TEXT,
+        review_date DATETIME,
+        tour_id INT,
+        user_id INT,
+        CONSTRAINT fk_review_tour foreign key (tour_id) references tour(id),
+        CONSTRAINT fk_review_tour_user foreign key (user_id) references users(id)
+);
+
 
 -----------------------------------------------------------------------------------------
 

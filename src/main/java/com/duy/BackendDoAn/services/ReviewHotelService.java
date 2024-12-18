@@ -10,6 +10,7 @@ import com.duy.BackendDoAn.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+import org.springframework.security.access.AccessDeniedException;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -50,6 +51,19 @@ public class ReviewHotelService {
         hotelService.updateRatingOnDeleteReview(reviewHotel.getHotel().getId(), reviewHotel.getRating());
         reviewHotelRepository.delete(reviewHotel);
         return true;
+    }
+
+    public ReviewHotel updateReview(Long id, ReviewDTO reviewDTO) throws Exception {
+        ReviewHotel existingReview = reviewHotelRepository.findById(id).orElseThrow(()-> new Exception("Review hotel not exist!!"));
+        User nowUser = userRepository.findById(reviewDTO.getUser()).orElseThrow(()-> new Exception("User not found!!"));
+        if(existingReview.getUser() != nowUser){
+            throw new AccessDeniedException("You can't change other's review");
+        }
+        hotelService.updateRatingOnUpdateReview(existingReview.getHotel(), reviewDTO.getRating(), existingReview.getRating());
+
+        existingReview.setComment(reviewDTO.getComment());
+        existingReview.setRating(reviewDTO.getRating());
+        return reviewHotelRepository.save(existingReview);
     }
 
     

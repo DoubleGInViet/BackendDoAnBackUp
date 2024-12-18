@@ -164,4 +164,11 @@ public class HotelService {
         hotelRepository.save(hotel);
     }
 
+    public void updateRatingOnUpdateReview(Hotel hotel, Long newRating, Long oldRating) throws Exception {
+        hotel.setTotalRating(hotel.getTotalRating() - oldRating + newRating);
+        float average = (float) hotel.getTotalRating() / hotel.getReviewCount();
+        hotel.setRating(Math.round(average * 10.0f) / 10.0f);
+        hotelRepository.save(hotel);
+    }
+
 }
