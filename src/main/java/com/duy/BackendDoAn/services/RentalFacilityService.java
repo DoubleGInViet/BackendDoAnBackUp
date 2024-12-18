@@ -5,6 +5,8 @@ import com.duy.BackendDoAn.repositories.RentalFacilityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class RentalFacilityService {
@@ -16,5 +18,9 @@ public class RentalFacilityService {
         float average = (float) rental.getTotal_rating() / rental.getReview_count();
         rental.setRating(Math.round(average * 10.0f) / 10.0f);
         rentalFacilityRepository.save(rental);
+    }
+
+    public List<RentalFacility> getAll() {
+        return rentalFacilityRepository.findAll();
     }
 }
