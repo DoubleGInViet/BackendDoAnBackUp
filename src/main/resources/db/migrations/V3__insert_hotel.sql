@@ -51,7 +51,7 @@ INSERT INTO hotel (
     'Khu nghỉ dưỡng biển này cung cấp không gian thoải mái với các biệt thự ven biển, khu vui chơi nước cho trẻ em, nhà hàng đẳng cấp và các hoạt động thể thao mạo hiểm, rất phù hợp cho kỳ nghỉ gia đình và nhóm bạn.',
     '14:00', '12:00',
     'https://www.alma.com.vn',
-    4.7, 390, 230, 68,
+    4.7, 390, 230, 79,
     'Resort',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
     'Yes', 1, 0, 1

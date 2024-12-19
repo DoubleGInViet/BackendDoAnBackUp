@@ -122,9 +122,10 @@ INSERT INTO rental_vehicle (vehicle_id, rental_facility_id, price, stake, availa
 (20, 1, 550000, 1650000, 2),
 (20, 9, 200000, 1652100, 9);
 
-INSERT INTO accessory (name, price, type) VALUES
-('GPS', 360000, 'car'),
-('Child Seat', 480000, 'car'),
-('Baby Seat', 480000, 'car'),
-('Roof Rack', 600000, 'car'),
-('Bonus Driver', 600000, 'car');
+INSERT INTO accessory (name, price, type, max_value) VALUES
+('GPS', 300000, 'car', 1),
+('Ghế trẻ em', 250000, 'car', 2),
+('Ghế em bé', 250000, 'car', 2),
+('GPS', 200000, 'motor', 1),
+('Mũ bảo hiểm bổ sung', 50000, 'motor', 2),
+('Áo mưa', 20000, 'motor', 3);
