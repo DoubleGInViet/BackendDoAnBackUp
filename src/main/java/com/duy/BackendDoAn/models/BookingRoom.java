@@ -37,7 +37,7 @@ public class BookingRoom {
     private LocalDate check_out_date;
 
     @Column(name = "total_price")
-    private Float total_price;
+    private Long total_price;
 
     @Column(name = "total_rooms")
     private Long total_rooms;

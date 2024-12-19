@@ -20,7 +20,7 @@ public class BookedRoom {
     private Long amount;
 
     @Column(name = "price_per")
-    private Float price_per;
+    private Long price_per;
 
     @ManyToOne
     @JoinColumn(name = "room_id")

@@ -49,7 +49,7 @@ public class BookingRoomService {
                 .arrivalTime(bookingRoomDTO.getArrivalTime())
                 .user(user)
                 .build();
-        Float total = 0F;
+        Long total = 0L;
         Long totalRoom = 0L;
         long days = ChronoUnit.DAYS.between(newBookingRoom.getCheck_in_date(), newBookingRoom.getCheck_out_date());
         List<BookedRoom> instanceBookedRoom = new ArrayList<>();

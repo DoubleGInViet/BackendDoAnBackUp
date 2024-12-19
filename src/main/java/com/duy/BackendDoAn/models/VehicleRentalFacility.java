@@ -30,13 +30,13 @@ public class VehicleRentalFacility {
     private RentalFacility rentalFacility;
 
     @Column(name = "stake")
-    private Float stake;
+    private Long stake;
 
     @Column(name = "available_vehicle")
     private Long availableVehicle;
 
     @Column(name = "price")
-    private Float price;
+    private Long price;
 
     @OneToMany(mappedBy = "vehicleRentalFacility", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference

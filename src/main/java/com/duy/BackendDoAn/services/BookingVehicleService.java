@@ -53,12 +53,12 @@ public class BookingVehicleService {
                 .vehicleRentalFacility(vehicleRentalFacility)
                 .user(user)
                 .build();
-        Float total = 0F;
-        Float total_service = 0F;
+        Long total = 0L;
+        Long total_service = 0L;
 
         LocalDateTime startDateTime = LocalDateTime.of(bookingVehicle.getStart_date(), bookingVehicle.getStart_time());
         LocalDateTime returnDateTime = LocalDateTime.of(bookingVehicle.getReturn_date(), bookingVehicle.getReturn_time());
-        total += vehicleRentalFacility.getPrice() * ChronoUnit.HOURS.between(startDateTime, returnDateTime);
+        total += vehicleRentalFacility.getPrice() * (ChronoUnit.DAYS.between(bookingVehicle.getStart_date(), bookingVehicle.getReturn_date()) +1 );
 
         List<AccessoryBooking> accessoryBookingList = new ArrayList<>();
         for(AccessoryBookingDTO accessoryBookingDTO: bookingVehicleDTO.getAccessoryBookings()){

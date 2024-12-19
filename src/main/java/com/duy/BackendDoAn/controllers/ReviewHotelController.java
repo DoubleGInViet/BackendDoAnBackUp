@@ -31,5 +31,11 @@ public class ReviewHotelController {
         return ResponseEntity.badRequest().body("Delete not done!");
 
     }
+
+//    @PutMapping("/{id}")
+//    public ResponseEntity<ReviewResponse> updateReview(@PathVariable long id, @RequestBody ReviewDTO reviewDTO) throws Exception {
+//        ReviewHotel newReview = reviewHotelService.updateReview(id, reviewDTO);
+//        return ResponseEntity.ok(ReviewResponse.fromReview(newReview));
+//    }
     
 }

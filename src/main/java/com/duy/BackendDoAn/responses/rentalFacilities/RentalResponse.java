@@ -15,7 +15,7 @@ public class RentalResponse {
 
     private String name;
 
-    private Float price;
+    private Long price;
 
     private ReviewResponse reviewResponse;
 

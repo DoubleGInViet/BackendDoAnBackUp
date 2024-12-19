@@ -19,5 +19,4 @@ public class DetailResponse {
     private Long year;
     private String engine;
     private String brand;
-
 }

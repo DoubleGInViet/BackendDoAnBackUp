@@ -22,7 +22,7 @@ public class Accessory {
     private String name;
 
     @Column(name = "price")
-    private Float price;
+    private Long price;
 
     @Column(name = "type")
     private String type;

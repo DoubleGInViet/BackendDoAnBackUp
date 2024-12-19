@@ -16,7 +16,7 @@ public class ServicesListResponse {
     @JsonProperty("bonusServices")
     private List<ServiceResponse> services;
 
-    private Float totalServices;
+    private Long totalServices;
 
     public static ServicesListResponse fromBookingVehicle(BookingVehicle bookingVehicle) {
         ServicesListResponse servicesListResponse = new ServicesListResponse();

@@ -17,7 +17,7 @@ public class AccessoryBooking {
     private Long id;
 
     @Column(name = "price_per")
-    private Float price_per;
+    private Long price_per;
 
     @Column(name = "amount")
     private Long amount;

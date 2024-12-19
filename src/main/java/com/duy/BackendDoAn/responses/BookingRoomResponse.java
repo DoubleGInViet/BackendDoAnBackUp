@@ -27,7 +27,7 @@ public class BookingRoomResponse {
     private LocalDate checkOutDate;
 
     @JsonProperty("total_price")
-    private Float totalPrice;
+    private Long totalPrice;
 
     @JsonProperty("status")
     private String status;
