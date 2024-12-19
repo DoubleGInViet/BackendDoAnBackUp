@@ -38,6 +38,9 @@ public class BookingRoomResponse {
     private HotelBookingResponse hotel;
     private String status;
 
+    @JsonProperty("payed_money")
+    private Long payedMoney;
+
 
     public static BookingRoomResponse fromBooking(BookingRoom bookingRoom) {
         BookingRoomResponse response = new BookingRoomResponse();
@@ -56,6 +59,9 @@ public class BookingRoomResponse {
                 : new CustomerResponse();
         response.totalPrice = bookingRoom.getTotal_price();
         response.status = bookingRoom.getStatus();
+        response.payedMoney = response.getStatus().equals("1")
+                ? 0
+                : response.getTotalPrice();
         return response;
     }
 }

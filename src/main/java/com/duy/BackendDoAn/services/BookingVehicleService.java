@@ -28,13 +28,15 @@ public class BookingVehicleService {
     private final BookingVehicleRepository bookingVehicleRepository;
     private final VehicleRepository vehicleRepository;
     private final UserRepository userRepository;
+    private final OfficeRepository officeRepository;
     private final VehicleRentalFacilityRepository vehicleRentalFacilityRepository;
     private final AccessoryRepository accessoryRepository;
     private final AccessoryBookingRepository accessoryBookingRepository;
     private final RentalFacilityRepository rentalFacilityRepository;
     public BookingVehicle createBooking(BookingVehicleDTO bookingVehicleDTO) throws Exception {
-
-        VehicleRentalFacility vehicleRentalFacility = vehicleRentalFacilityRepository.findByVehicle_IdAndRentalFacility_Id(bookingVehicleDTO.getVehicle(), bookingVehicleDTO.getRental()).orElseThrow(()->new Exception("Rental vahicle not found!"));
+//        Office office = officeRepository.findById(bookingVehicleDTO.getOffice()).orElseThrow(()-> new Exception("No office found!!"));
+        VehicleRentalFacility vehicleRentalFacility = vehicleRentalFacilityRepository
+                .findByVehicle_IdAndRentalFacility_Id(bookingVehicleDTO.getVehicle(), bookingVehicleDTO.getRental()).orElseThrow(()->new Exception("Rental vahicle not found!"));
 
         User user = userRepository.findById(bookingVehicleDTO.getUser()).orElseThrow(()-> new Exception("User not found"));
         BookingVehicle bookingVehicle = BookingVehicle.builder()
@@ -51,6 +53,7 @@ public class BookingVehicleService {
                 .customerEmail(bookingVehicleDTO.getCustomerInfoDTO().getEmail())
                 .customerPhoneNumber(bookingVehicleDTO.getCustomerInfoDTO().getPhone())
                 .vehicleRentalFacility(vehicleRentalFacility)
+                .status(bookingVehicleDTO.getStatus())
                 .user(user)
                 .build();
         Long total = 0L;

@@ -33,7 +33,7 @@ public class ReviewHotelService {
 
         if(optionalReviewHotel.isPresent()){
             ReviewHotel existingReview = optionalReviewHotel.get();
-            hotelService.updateRatingOnUpdateReview(existingReview.getHotel(), reviewDTO.getRating(), existingReview.getRating());
+//            hotelService.updateRatingOnUpdateReview(existingReview.getHotel(), reviewDTO.getRating(), existingReview.getRating());
             existingReview.setComment(reviewDTO.getComment());
             existingReview.setRating(reviewDTO.getRating());
             return reviewHotelRepository.save(existingReview);
@@ -46,7 +46,7 @@ public class ReviewHotelService {
                     .hotel(hotel)
                     .user(user)
                     .build();
-            hotelService.updateRatingOnAddNewReview(reviewDTO.getProduct(), reviewDTO.getRating());
+//            hotelService.updateRatingOnAddNewReview(reviewDTO.getProduct(), reviewDTO.getRating());
             return reviewHotelRepository.save(reviewHotel);
         }
     }
@@ -58,7 +58,7 @@ public class ReviewHotelService {
         if(reviewHotel.getUser() != nowUser){
             return false;
         }
-        hotelService.updateRatingOnDeleteReview(reviewHotel.getHotel().getId(), reviewHotel.getRating());
+//        hotelService.updateRatingOnDeleteReview(reviewHotel.getHotel().getId(), reviewHotel.getRating());
         reviewHotelRepository.delete(reviewHotel);
         return true;
     }

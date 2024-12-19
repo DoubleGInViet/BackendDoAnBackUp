@@ -70,7 +70,6 @@ public class HotelResponse {
                 .latitude(hotel.getLatitude())
                 .phoneNumber(hotel.getPhone_number())
                 .address(hotel.getAddress())
-                .rating(hotel.getRating())
                 .city(hotel.getCity().getCity_name())
                 .typeOfHotel(hotel.getType_of_hotel())
                 .hotelImages(hotel.getHotelImages())

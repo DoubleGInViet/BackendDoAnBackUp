@@ -49,12 +49,6 @@ public class Hotel {
     @Column(name = "website")
     private String website;
 
-    @Column(name = "rating")
-    private Float rating;
-
-    @Column(name = "total_rating")
-    private Long totalRating;
-
     @Column(name = "review_count")
     private Long reviewCount;
 

@@ -1,8 +1,11 @@
 package com.duy.BackendDoAn.responses;
 
 import com.duy.BackendDoAn.models.Attraction;
+import com.duy.BackendDoAn.models.Office;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -10,6 +13,8 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class AttractionResponse {
+    private Long id;
+
     @JsonProperty("name")
     private String name;
 
@@ -22,8 +27,10 @@ public class AttractionResponse {
     @JsonProperty("city_name")
     private String city;
 
+
     public static AttractionResponse fromAttraction(Attraction attraction) {
         AttractionResponse response = AttractionResponse.builder()
+                .id(attraction.getOffices().get(0).getId())
                 .name(attraction.getName())
                 .latitude(attraction.getLatitude())
                 .longitude(attraction.getLongitude())

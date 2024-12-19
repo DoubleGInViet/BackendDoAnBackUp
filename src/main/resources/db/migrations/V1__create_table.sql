@@ -35,8 +35,6 @@ CREATE TABLE hotel (
     check_in_time TIME,
     check_out_time TIME,
     website NVARCHAR(255),
-    rating FLOAT,
-    total_rating INT,
     review_count INT,
     city_id INT,
     type_of_hotel NVARCHAR(255),
@@ -136,8 +134,6 @@ CREATE TABLE rental_facility (
     email NVARCHAR(100),
     description TEXT,
     address TEXT,
-    rating FLOAT,
-    total_rating INT,
     review_count INT
 );
 
@@ -201,6 +197,7 @@ CREATE TABLE booking_vehicle (
     customer_country NVARCHAR(255),
     total_service_price INT,
     total_price INT,
+    status NVARCHAR(255),
     user_id INT,
     rental_vehicle_id INT,
     CONSTRAINT fk_booking_motor_users foreign key (user_id) references users(id),
@@ -240,6 +237,9 @@ CREATE TABLE tour (
     address NVARCHAR(255),
     start_time TIME,
     end_time TIME,
+    rating FLOAT,
+    total_rating INT,
+    review_count INT,
     description TEXT,
     attraction_id INT,
     CONSTRAINT fk_tour_city foreign key (attraction_id) references attraction(id)

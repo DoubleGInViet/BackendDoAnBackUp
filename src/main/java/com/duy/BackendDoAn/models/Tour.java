@@ -34,6 +34,15 @@ public class Tour {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "rating")
+    private Float rating;
+
+    @Column(name = "total_rating")
+    private Long totalRating;
+
+    @Column(name = "review_count")
+    private Long reviewCount;
+
     @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;
@@ -45,4 +54,8 @@ public class Tour {
     @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<TourImage> tourImages;
+
+    @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<ReviewTour> reviewTours;
 }

@@ -1,7 +1,7 @@
-package com.duy.BackendDoAn.responses.rentalFacilities;
+package com.duy.BackendDoAn.responses.tours;
 
-import com.duy.BackendDoAn.models.RentalFacility;
-import com.duy.BackendDoAn.models.ReviewRentalFacility;
+import com.duy.BackendDoAn.models.ReviewTour;
+import com.duy.BackendDoAn.models.Tour;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ReviewResponse {
+public class ReviewTourResponse {
     @JsonProperty("total_reviews")
     private Long totalReviews;
 
@@ -25,24 +25,17 @@ public class ReviewResponse {
     @JsonProperty("review_breakdown")
     private Map<String, Long> reviewBreakdown;
 
-    @JsonProperty("comments")
-    private List<UserReviewResponse> userReviewResponses;
+    @JsonProperty("recent_reviews")
+    private List<UserReviewTourResponse> userReviewTourResponses;
 
-    public static ReviewResponse fromReviews(RentalFacility rentalFacility){
-        ReviewResponse response = new ReviewResponse();
+    public static ReviewTourResponse fromReviews(Tour tour) {
+        ReviewTourResponse response = new ReviewTourResponse();
+        response.totalReviews = tour.getReviewCount();
+        response.averageRating = tour.getRating();
 
-        List<ReviewRentalFacility> reviews = rentalFacility.getReviewRentalFacilities();
-        response.totalReviews = (long) reviews.size();
-        double averageRating = reviews.stream()
-                .mapToDouble(ReviewRentalFacility::getRating)
-                .average()
-                .orElse(0.0); // Nếu không có đánh giá, trả về 0.0
+        List<ReviewTour> reviews = tour.getReviewTours();
 
-// Làm tròn sau 1 số thập phân
-        float roundedAverageRating = (float) (Math.round(averageRating * 10) / 10.0);
-
-        response.averageRating = roundedAverageRating;
-
+        response.userReviewTourResponses = reviews.stream().map(UserReviewTourResponse::fromReview).collect(Collectors.toList());
         Map<String, Long> reviewBreakdown = new HashMap<>();
         reviewBreakdown.put("5_star", reviews.stream().filter(r -> r.getRating() == 5).count());
         reviewBreakdown.put("4_star", reviews.stream().filter(r -> r.getRating() == 4).count());
@@ -50,8 +43,6 @@ public class ReviewResponse {
         reviewBreakdown.put("2_star", reviews.stream().filter(r -> r.getRating() == 2).count());
         reviewBreakdown.put("1_star", reviews.stream().filter(r -> r.getRating() == 1).count());
         response.reviewBreakdown = reviewBreakdown;
-
-        response.userReviewResponses = reviews.stream().map(UserReviewResponse::fromUserReview).collect(Collectors.toList());
         return response;
     }
 }

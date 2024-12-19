@@ -31,6 +31,9 @@ public class BookingVehicleDTO {
     @JsonProperty("total_price")
     private Long totalPrice;
 
+    @JsonProperty("status")
+    private String status;
+
     @JsonProperty("customerInfo")
     private CustomerInfoDTO customerInfoDTO;
 

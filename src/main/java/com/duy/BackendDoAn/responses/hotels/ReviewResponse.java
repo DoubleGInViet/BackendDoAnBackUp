@@ -30,11 +30,20 @@ public class ReviewResponse {
 
     public static ReviewResponse fromReviews(Hotel hotel){
         ReviewResponse response = new ReviewResponse();
-        response.totalReviews = hotel.getTotalRating();
-        response.averageRating = hotel.getRating();
 
         List<ReviewHotel> reviews = hotel.getReviews();
+        response.totalReviews = (long) reviews.size();
         Map<String, Long> reviewBreakdown = new HashMap<>();
+        double averageRating = reviews.stream()
+                .mapToDouble(ReviewHotel::getRating)
+                .average()
+                .orElse(0.0); // Nếu không có đánh giá, trả về 0.0
+
+// Làm tròn sau 1 số thập phân
+        float roundedAverageRating = (float) (Math.round(averageRating * 10) / 10.0);
+
+        response.averageRating = roundedAverageRating;
+
         reviewBreakdown.put("5_star", reviews.stream().filter(r -> r.getRating() == 5).count());
         reviewBreakdown.put("4_star", reviews.stream().filter(r -> r.getRating() == 4).count());
         reviewBreakdown.put("3_star", reviews.stream().filter(r -> r.getRating() == 3).count());

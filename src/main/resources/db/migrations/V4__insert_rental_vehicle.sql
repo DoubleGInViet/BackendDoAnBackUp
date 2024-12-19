@@ -36,16 +36,16 @@ INSERT INTO motor (motor_id, capacity) VALUES
 (11, 150), (12, 150), (13, 150), (14, 155), (15, 150),
 (16, 250), (17, 150), (18, 650), (19, 1000), (20, 821);
 
-INSERT INTO rental_facility (name, phone_number, email, description, address, rating, total_rating, review_count) VALUES
-('Mouse Showroom Rental', '02412345678', 'info@mouserental.com.vn', NULL, NULL, 4.5, 450, 100),
-('Buffalo Showroom Rental', '02423456789', 'contact@buffalorental.com.vn', NULL, NULL, 4.6, 320, 85),
-('Tiger Showroom Rental', '02898765432', 'support@tigerrental.com.vn', NULL, NULL, 4.8, 700, 150),
-('Cat Showroom Rental', '02364567890', 'info@catrental.com.vn', NULL, NULL, 4.7, 600, 120),
-('Dragon Showroom Rental', '02925678901', 'booking@dragonrental.com.vn', NULL, NULL, 4.3, 200, 50),
-('Snake Showroom Rental', '02581234567', 'contact@snakerental.com.vn', NULL, NULL, 4.9, 1200, 300),
-('Horse Showroom Rental', '02834567890', 'info@horserental.com.vn', NULL, NULL, 4.4, 480, 110),
-('Goat Showroom Rental', '02366789012', 'support@goatrental.com.vn', NULL, NULL, 4.5, 350, 90),
-('Thai Binh Rental', '02366789012', 'support@thaibinh.com.vn', NULL, NULL, 4.5, 350, 90);
+INSERT INTO rental_facility (name, phone_number, email, description, address, review_count) VALUES
+('Mouse Showroom Rental', '02412345678', 'info@mouserental.com.vn', NULL, NULL, 100),
+('Buffalo Showroom Rental', '02423456789', 'contact@buffalorental.com.vn', NULL, NULL, 85),
+('Tiger Showroom Rental', '02898765432', 'support@tigerrental.com.vn', NULL, NULL, 150),
+('Cat Showroom Rental', '02364567890', 'info@catrental.com.vn', NULL, NULL, 120),
+('Dragon Showroom Rental', '02925678901', 'booking@dragonrental.com.vn', NULL, NULL, 50),
+('Snake Showroom Rental', '02581234567', 'contact@snakerental.com.vn', NULL, NULL, 300),
+('Horse Showroom Rental', '02834567890', 'info@horserental.com.vn', NULL, NULL, 110),
+('Goat Showroom Rental', '02366789012', 'support@goatrental.com.vn', NULL, NULL, 90),
+('Thai Binh Rental', '02366789012', 'support@thaibinh.com.vn', NULL, NULL, 90);
 
 
 INSERT INTO office (attraction_id, rental_facility_id) VALUES
