@@ -1,18 +1,15 @@
 package com.duy.BackendDoAn.responses;
 
 import com.duy.BackendDoAn.models.Attraction;
-import com.duy.BackendDoAn.models.Office;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-
-import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AttractionResponse {
+public class AttractionOfficeResponse {
     private Long id;
 
     @JsonProperty("name")
@@ -27,10 +24,9 @@ public class AttractionResponse {
     @JsonProperty("city_name")
     private String city;
 
-
-    public static AttractionResponse fromAttraction(Attraction attraction) {
-        AttractionResponse response = AttractionResponse.builder()
-                .id(attraction.getId())
+    public static AttractionOfficeResponse fromAttractionOffice(Attraction attraction) {
+        AttractionOfficeResponse response = AttractionOfficeResponse.builder()
+                .id(attraction.getOffices().get(0).getId())
                 .name(attraction.getName())
                 .latitude(attraction.getLatitude())
                 .longitude(attraction.getLongitude())
