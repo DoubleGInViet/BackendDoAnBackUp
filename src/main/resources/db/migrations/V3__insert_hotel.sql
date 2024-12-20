@@ -111,7 +111,7 @@ INSERT INTO hotel (
 (
     'Sheraton Hanoi Hotel',
     'reservations@sheratonhanoi.com', '02437199000',
-    'K5, Nghi Tàm/11 Đ. Xuân Diệu, Quảng An, Tây Hồ, Hà Nội',
+    'K5 Nghi Tàm/11 Xuân Diệu, Quảng An, Tây Hồ, Hà Nội',
     21.06004100901738, 105.83283071257965,
     'Khách sạn Sheraton Hanoi mang đến không gian nghỉ dưỡng sang trọng với các tiện nghi cao cấp, nhà hàng phong cách quốc tế, và dịch vụ thư giãn như spa và phòng tập gym, rất phù hợp cho du khách công tác và nghỉ dưỡng dài ngày.',
     '15:00', '12:00',
