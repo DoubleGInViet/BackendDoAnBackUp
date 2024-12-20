@@ -34,12 +34,6 @@ public class RentalFacility {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "rating")
-    private Float rating;
-
-    @Column(name = "total_rating")
-    private Long total_rating;
-
     @Column(name = "review_count")
     private Long review_count;
 

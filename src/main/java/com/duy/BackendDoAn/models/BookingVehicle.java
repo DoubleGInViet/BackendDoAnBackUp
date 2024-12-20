@@ -59,6 +59,9 @@ public class BookingVehicle {
     @Column(name = "total_price")
     private Long total_price;
 
+    @Column(name = "status")
+    private String status;
+
     @ManyToOne
     @JoinColumn(name = "rental_vehicle_id")
     @JsonBackReference

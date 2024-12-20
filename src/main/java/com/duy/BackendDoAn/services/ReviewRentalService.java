@@ -31,7 +31,7 @@ public class ReviewRentalService {
                 .rentalFacility(rentalFacility)
                 .user(user)
                 .build();
-        rentalFacilityService.updateRatingOnAddNewReview(reviewDTO.getProduct(), reviewRentalFacility.getRating());
+//        rentalFacilityService.updateRatingOnAddNewReview(reviewDTO.getProduct(), reviewRentalFacility.getRating());
         return reviewRentalRepository.save(reviewRentalFacility);
     }
 }

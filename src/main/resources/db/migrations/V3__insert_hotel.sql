@@ -1,6 +1,6 @@
 INSERT INTO hotel (
     hotel_name, hotel_email, phone_number, address, latitude, longitude, description,
-    check_in_time, check_out_time, website, rating, total_rating, review_count,
+    check_in_time, check_out_time, website, review_count,
     city_id, type_of_hotel, cancellation_policy, deposit_required, pets_allowed,
     smoking_policy, extra_bed_policy
 ) VALUES
@@ -12,7 +12,7 @@ INSERT INTO hotel (
     'Khu nghỉ dưỡng cao cấp nằm sát bãi biển với các tiện ích như spa, nhà hàng và hồ bơi rộng lớn, mang đến trải nghiệm nghỉ dưỡng đẳng cấp cho du khách với các dịch vụ cao cấp, lý tưởng cho kỳ nghỉ gia đình hoặc các buổi hội nghị.',
     '15:00', '12:00',
     'https://www.furamadanang.com',
-    4.6, 340, 200, 43,
+     200, 43,
     'Resort',
     'Hủy miễn phí trong vòng 72 giờ trước khi nhận phòng.',
     'Yes', 1, 0, 1
@@ -25,7 +25,7 @@ INSERT INTO hotel (
     'Khu nghỉ dưỡng cao cấp với các biệt thự sang trọng, dịch vụ spa và các hoạt động ngoài trời, tọa lạc tại bãi biển Mui Ne nổi tiếng, lý tưởng cho những ai muốn tận hưởng không gian thư giãn giữa thiên nhiên biển xanh.',
     '15:00', '12:00',
     'https://www.anantaramuine.com',
-    4.6, 280, 160, 86,
+     160, 86,
     'Resort',
     'Hủy miễn phí trong vòng 72 giờ trước khi nhận phòng.',
     'Yes', 1, 0, 1
@@ -38,7 +38,7 @@ INSERT INTO hotel (
     'Khu nghỉ dưỡng này mang đến một không gian thư giãn với các phòng nghỉ sang trọng, dịch vụ spa cao cấp, và các hoạt động ngoài trời thú vị, là điểm đến lý tưởng cho những ai muốn khám phá văn hóa và lịch sử tại thành phố Huế.',
     '14:00', '12:00',
     'https://www.azerailaresidence.com',
-    4.8, 400, 250, 75,
+    250, 75,
     'Resort',
     'Hủy miễn phí trong vòng 72 giờ trước khi nhận phòng.',
     'Yes', 1, 0, 1
@@ -51,7 +51,7 @@ INSERT INTO hotel (
     'Khu nghỉ dưỡng biển này cung cấp không gian thoải mái với các biệt thự ven biển, khu vui chơi nước cho trẻ em, nhà hàng đẳng cấp và các hoạt động thể thao mạo hiểm, rất phù hợp cho kỳ nghỉ gia đình và nhóm bạn.',
     '14:00', '12:00',
     'https://www.alma.com.vn',
-    4.7, 390, 230, 79,
+    230, 79,
     'Resort',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
     'Yes', 1, 0, 1
@@ -64,7 +64,7 @@ INSERT INTO hotel (
     'Khách sạn 5 sao này nằm ven hồ Tây, cung cấp phòng nghỉ sang trọng và dịch vụ tuyệt vời, là lựa chọn lý tưởng cho các chuyến công tác và kỳ nghỉ dài ngày tại thủ đô Hà Nội.',
     '15:00', '12:00',
     'https://www.intercontinental.com/hanoi',
-    4.5, 310, 210, 29,
+    210, 29,
     'Hotel',
     'Hủy miễn phí trong vòng 72 giờ trước khi nhận phòng.',
     'Yes', 1, 0, 1
@@ -77,7 +77,7 @@ INSERT INTO hotel (
     'Khu nghỉ dưỡng Vinpearl trên đảo Phú Quốc nổi bật với các biệt thự sang trọng, công viên nước và bãi biển riêng, là nơi lý tưởng để thư giãn và vui chơi cùng gia đình hoặc bạn bè.',
     '15:00', '12:00',
     'https://www.vinpearl.com',
-    4.6, 280, 190, 68,
+    190, 68,
     'Resort',
     'Hủy miễn phí trong vòng 72 giờ trước khi nhận phòng.',
     'Yes', 1, 0, 1
@@ -90,7 +90,7 @@ INSERT INTO hotel (
     'Khách sạn Grand Mercure nằm tại bãi biển trung tâm Đà Nẵng, cung cấp phòng nghỉ hiện đại, nhà hàng chất lượng và khu vực hồ bơi tuyệt vời, là lựa chọn hoàn hảo cho kỳ nghỉ thư giãn hoặc các hội nghị công ty.',
     '14:00', '12:00',
     'https://www.grandmercuredanang.com',
-    4.5, 270, 175, 43,
+    175, 43,
     'Hotel',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
     'Yes', 1, 0, 1
@@ -103,7 +103,7 @@ INSERT INTO hotel (
     'Khách sạn Muong Thanh Grand cung cấp các phòng nghỉ tiện nghi, gần trung tâm thủ đô Hà Nội với các dịch vụ như phòng hội nghị và nhà hàng sang trọng, là lựa chọn lý tưởng cho du khách công tác và nghỉ dưỡng.',
     '14:00', '12:00',
     'https://www.muongthanh.com',
-    4.3, 320, 210, 29,
+    210, 29,
     'Hotel',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
     'Yes', 1, 0, 1
@@ -116,7 +116,7 @@ INSERT INTO hotel (
     'Khách sạn Sheraton Hanoi mang đến không gian nghỉ dưỡng sang trọng với các tiện nghi cao cấp, nhà hàng phong cách quốc tế, và dịch vụ thư giãn như spa và phòng tập gym, rất phù hợp cho du khách công tác và nghỉ dưỡng dài ngày.',
     '15:00', '12:00',
     'https://www.sheratonhanoi.com',
-    4.6, 360, 220, 29,
+    220, 29,
     'Hotel',
     'Hủy miễn phí trong vòng 72 giờ trước khi nhận phòng.',
     'Yes', 1, 0, 1
@@ -129,7 +129,7 @@ INSERT INTO hotel (
     'Khách sạn Saigon Prince tọa lạc tại vị trí đắc địa trong khu trung tâm thành phố Hồ Chí Minh, cung cấp các phòng nghỉ tiện nghi và dịch vụ chuyên nghiệp, là lựa chọn tuyệt vời cho các chuyến công tác và du lịch.',
     '14:00', '12:00',
     'https://www.saigonprince.com',
-    4.4, 300, 180, 41,
+    180, 41,
     'Hotel',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
     'Yes', 1, 0, 0
@@ -142,7 +142,7 @@ INSERT INTO hotel (
     'Mui Ne Paradise là khu nghỉ dưỡng ven biển với các biệt thự sang trọng, hồ bơi lớn và nhà hàng phục vụ ẩm thực quốc tế. Khách sạn mang đến một không gian thư giãn tuyệt vời, thích hợp cho du khách yêu thích biển cả và những buổi tối lãng mạn.',
     '15:00', '12:00',
     'https://www.muineparadise.com',
-    4.7, 320, 200, 86,
+    200, 86,
     'Resort',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
     'Yes', 1, 0, 1
@@ -155,7 +155,7 @@ INSERT INTO hotel (
     'Nằm bên bãi biển Mỹ Khê, resort này cung cấp dịch vụ sang trọng với hồ bơi, spa và nhiều hoạt động thể thao.',
     '15:00', '12:00',
     'https://www.marriott.com/hotels/travel/dngsi-sheraton-grand-danang-resort/',
-    4.7, 300, 150, 43,
+    150, 43,
     'Resort',
     'Hủy miễn phí trong vòng 72 giờ trước khi nhận phòng.',
     'Yes', 1, 0, 0
@@ -168,7 +168,7 @@ INSERT INTO hotel (
     'Khách sạn 5 sao sang trọng tại trung tâm thành phố với thiết kế tinh tế và dịch vụ hoàn hảo.',
     '14:00', '12:00',
     'https://www.thereveriesaigon.com',
-    4.9, 500, 200, 41,
+    200, 41,
     'Hotel',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
     'No', 1, 0, 0
@@ -181,7 +181,7 @@ INSERT INTO hotel (
     'Một homestay yên tĩnh với không gian xanh mát, gần phố cổ và các bãi biển.',
     '14:00', '12:00',
     'https://www.anvillahoi.com',
-    4.8, 100, 60, 92,
+    60, 92,
     'Homestay',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
     'Yes', 1, 0, 0

@@ -34,6 +34,11 @@ public class BookingVehicleResponse {
     @JsonProperty("driverInfo")
     private DriverListResponse driverListResponse;
 
+    private String status;
+
+    @JsonProperty("payed_money")
+    private Long payedMoney;
+
     public static BookingVehicleResponse fromBooking(BookingVehicle bookingVehicle) {
         if (bookingVehicle != null) {
             return BookingVehicleResponse.builder()
@@ -64,7 +69,13 @@ public class BookingVehicleResponse {
                                     ? DriverListResponse.fromBooking(bookingVehicle)
                                     : new DriverListResponse()
                     )
+                    .status(bookingVehicle.getStatus())
                     .build();
+
+            response.payedMoney = response.getStatus().equals("1")
+                    ? 0
+                    : response.getTotalPrice();
+            return response;
         }
         return null;
     }
