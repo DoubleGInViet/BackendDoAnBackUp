@@ -41,8 +41,7 @@ public class BookingVehicleResponse {
 
     public static BookingVehicleResponse fromBooking(BookingVehicle bookingVehicle) {
         if (bookingVehicle != null) {
-            return BookingVehicleResponse.builder()
-                    .id(bookingVehicle.getId())
+            BookingVehicleResponse response = BookingVehicleResponse.builder()
                     .user(bookingVehicle.getUser().getId())
                     .customerResponse(CustomerResponse.fromBooking(bookingVehicle))
                     .vehicle(
