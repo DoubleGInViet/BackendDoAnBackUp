@@ -235,14 +235,18 @@ CREATE TABLE tour (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name NVARCHAR(255),
     address NVARCHAR(255),
-    start_time TIME,
-    end_time TIME,
-    rating FLOAT,
-    total_rating INT,
-    review_count INT,
     description TEXT,
     attraction_id INT,
     CONSTRAINT fk_tour_city foreign key (attraction_id) references attraction(id)
+);
+
+CREATE TABLE tour_schedule (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    happen_date DATE,
+    start_time TIME,
+    end_time TIME,
+    tour_id INT,
+    CONSTRAINT fk_tour_tour_schedule foreign key (tour_id) references tour(id)
 );
 
 CREATE TABLE tour_image (

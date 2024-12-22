@@ -1,5 +1,6 @@
 package com.duy.BackendDoAn.controllers;
 
+import com.duy.BackendDoAn.responses.AttractionOfficeResponse;
 import com.duy.BackendDoAn.responses.AttractionResponse;
 import com.duy.BackendDoAn.services.AttractionService;
 import lombok.RequiredArgsConstructor;
@@ -19,11 +20,11 @@ public class AttractionController {
     private final AttractionService attractionService;
 
     @GetMapping("/office")
-    public ResponseEntity<List<AttractionResponse>> getOfficeByRentalAndCity(
+    public ResponseEntity<List<AttractionOfficeResponse>> getOfficeByRentalAndCity(
             @RequestParam Long rental,
             @RequestParam Long city
     ){
-        List<AttractionResponse> responses = attractionService.searchOffice(city, rental);
+        List<AttractionOfficeResponse> responses = attractionService.searchOffice(city, rental);
         return ResponseEntity.ok(responses);
     }
 
