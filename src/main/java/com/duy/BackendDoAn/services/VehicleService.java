@@ -34,6 +34,7 @@ public class VehicleService {
                 .name(carDTO.getName())
                 .brand(carDTO.getBrand())
                 .year(carDTO.getYear())
+                .imageUrl(carDTO.getImageUrl())
                 .vehicle_type(carDTO.getType())
                 .transmission_type(carDTO.getTransmissionType())
                 .baggage_capacity(carDTO.getBaggageCapacity())
@@ -67,6 +68,7 @@ public class VehicleService {
                 .name(motorDTO.getName())
                 .brand(motorDTO.getBrand())
                 .year(motorDTO.getYear())
+                .imageUrl(motorDTO.getImageUrl())
                 .vehicle_type(motorDTO.getType())
                 .capacity(motorDTO.getCapacity())
                 .fuel(motorDTO.getFuel())
@@ -167,6 +169,17 @@ public class VehicleService {
             return savedCar;
         } else {
             throw new Exception("Car not found or invalid vehicle type");
+        }
+    }
+
+    public Vehicle uploadImage(long id, String imageUrl) {
+        try {
+            Vehicle vehicle = vehicleRepository.findById(id).orElseThrow(()-> new Exception("Vehicle not found!!"));
+            vehicle.setImageUrl(imageUrl);
+            return vehicleRepository.save(vehicle);
+        }
+        catch (Exception e){
+            return null;
         }
     }
 

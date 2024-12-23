@@ -30,8 +30,8 @@ public class TourResponse {
     @JsonProperty("description")
     private String description;
 
-    @JsonProperty("city_id")
-    private Long city;
+    @JsonProperty("city_name")
+    private String city;
 
     @JsonProperty("ticket_classes")
     private List<TicketClass> ticketClasses;
@@ -43,10 +43,8 @@ public class TourResponse {
         TourResponse tourResponse = TourResponse.builder()
                 .name(tour.getName())
                 .address(tour.getAddress())
-                .startTime(tour.getStart_time())
-                .endTime(tour.getEnd_time())
                 .description(tour.getDescription())
-                .city(tour.getCity().getId())
+                .city(tour.getAttraction().getCity().getCity_name())
                 .ticketClasses(tour.getTicketClasses())
                 .tourImages(tour.getTourImages())
                 .build();

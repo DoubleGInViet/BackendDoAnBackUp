@@ -40,6 +40,9 @@ public class Vehicle {
     @Column(name="vehicle_type", insertable = false, updatable = false)
     protected String vehicle_type;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<VehicleRentalFacility> vehicleRentalFacilities;

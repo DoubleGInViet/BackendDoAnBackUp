@@ -1,5 +1,6 @@
 package com.duy.BackendDoAn.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,6 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class TourImage {
+    public static final int MAX_IMAGES_PER_TOUR = 5;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,5 +22,6 @@ public class TourImage {
 
     @ManyToOne
     @JoinColumn(name = "tour_id")
+    @JsonBackReference
     private Tour tour;
 }

@@ -43,4 +43,7 @@ public class VehicleDTO {
 
     @JsonProperty("available_vehicle")
     private Long availableVehicle;
+
+    @JsonProperty("image_url")
+    private String imageUrl;
 }

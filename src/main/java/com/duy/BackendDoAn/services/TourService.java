@@ -1,9 +1,14 @@
 package com.duy.BackendDoAn.services;
 
 import com.duy.BackendDoAn.dtos.TourDTO;
+import com.duy.BackendDoAn.dtos.TourImageDTO;
+import com.duy.BackendDoAn.models.Attraction;
 import com.duy.BackendDoAn.models.City;
 import com.duy.BackendDoAn.models.Tour;
+import com.duy.BackendDoAn.models.TourImage;
+import com.duy.BackendDoAn.repositories.AttractionRepository;
 import com.duy.BackendDoAn.repositories.CityRepository;
+import com.duy.BackendDoAn.repositories.TourImageRepository;
 import com.duy.BackendDoAn.repositories.TourRepository;
 import com.duy.BackendDoAn.responses.TourResponse;
 import lombok.RequiredArgsConstructor;
@@ -19,15 +24,15 @@ import java.util.Optional;
 public class TourService {
     private final TourRepository tourRepository;
     private final CityRepository cityRepository;
+    private final TourImageRepository tourImageRepository;
+    private final AttractionRepository attractionRepository;
     public Tour addTour(TourDTO tourDTO) throws Exception {
-        City city = cityRepository.findById(tourDTO.getCity()).orElseThrow(() -> new Exception("Not support this city"));
+        Attraction attraction = attractionRepository.findById(tourDTO.getAttraction()).orElseThrow(() -> new Exception("This attraction not found!!"));
         Tour tour = Tour.builder()
                 .name(tourDTO.getName())
                 .address(tourDTO.getAddress())
-                .start_time(tourDTO.getStartTime())
-                .end_time(tourDTO.getEndTime())
                 .description(tourDTO.getDescription())
-                .city(city)
+                .attraction(attraction)
                 .build();
         return tourRepository.save(tour);
     }
@@ -36,12 +41,24 @@ public class TourService {
         return tourRepository.findById(id).orElseThrow(()-> new Exception("Tour not found"));
     }
 
+    public TourImage createTourImage(Tour tour, TourImageDTO tourImageDTO) throws Exception {
+        TourImage tourImage = TourImage.builder()
+                .tour(tour)
+                .image_url(tourImageDTO.getImageUrl())
+                .build();
+        int size = tourImageRepository.countByTourId(tour.getId());
+        if(size >= TourImage.MAX_IMAGES_PER_TOUR) {
+            throw new Exception("Number of images more than " +TourImage.MAX_IMAGES_PER_TOUR );
+        }
+        return tourImageRepository.save(tourImage);
+    }
+
 
 
     public Tour updateTour(long tourId, TourDTO tourDTO) throws Exception {
         Tour tour = getTourById(tourId);
         if(tour != null){
-            City existingCity = cityRepository.findById(tourDTO.getCity()).orElseThrow(() -> new Exception("Not support this city"));
+            Attraction attraction = attractionRepository.findById(tourDTO.getAttraction()).orElseThrow(() -> new Exception("This attraction not found!!"));
             if(tourDTO.getName() != null && !tourDTO.getName().isEmpty()){
                 tour.setName(tourDTO.getName());
             }
@@ -51,13 +68,7 @@ public class TourService {
             if(tourDTO.getDescription() != null && !tourDTO.getDescription().isEmpty()){
                 tour.setDescription(tourDTO.getDescription());
             }
-            if(tourDTO.getStartTime() != null){
-                tour.setStart_time(tourDTO.getStartTime());
-            }
-            if(tourDTO.getEndTime() != null) {
-                tour.setEnd_time(tourDTO.getEndTime());
-            }
-            tour.setCity(existingCity);
+            tour.setAttraction(attraction);
             return tourRepository.save(tour);
         }
         return null;

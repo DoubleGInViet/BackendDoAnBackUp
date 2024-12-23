@@ -1,5 +1,6 @@
 package com.duy.BackendDoAn.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -25,27 +26,13 @@ public class Tour {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "start_time")
-    private LocalTime start_time;
-
-    @Column(name = "end_time")
-    private LocalTime end_time;
-
     @Column(name = "description")
     private String description;
 
-    @Column(name = "rating")
-    private Float rating;
-
-    @Column(name = "total_rating")
-    private Long totalRating;
-
-    @Column(name = "review_count")
-    private Long reviewCount;
-
     @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
+    @JsonBackReference
+    @JoinColumn(name = "attraction_id")
+    private Attraction attraction;
 
     @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference

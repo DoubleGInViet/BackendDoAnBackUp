@@ -152,7 +152,8 @@ CREATE TABLE vehicle (
     vehicle_type NVARCHAR(255),
     fuel NVARCHAR(255),
     engine NVARCHAR(255),
-    year INT
+    year INT,
+    image_url NVARCHAR(255)
 );
 
 
@@ -248,6 +249,8 @@ CREATE TABLE tour_schedule (
     tour_id INT,
     CONSTRAINT fk_tour_tour_schedule foreign key (tour_id) references tour(id)
 );
+
+
 
 CREATE TABLE tour_image (
     id INT AUTO_INCREMENT PRIMARY KEY,
