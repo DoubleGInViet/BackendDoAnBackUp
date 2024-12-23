@@ -1,26 +1,34 @@
 package com.duy.BackendDoAn.controllers;
 
 import com.duy.BackendDoAn.dtos.TourDTO;
+import com.duy.BackendDoAn.dtos.TourImageDTO;
 import com.duy.BackendDoAn.models.Tour;
+import com.duy.BackendDoAn.models.TourImage;
 import com.duy.BackendDoAn.responses.TourListResponse;
 import com.duy.BackendDoAn.responses.TourResponse;
 import com.duy.BackendDoAn.services.TourService;
+import com.duy.BackendDoAn.utils.FileUtils;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RequestMapping("/tours")
 @RestController
 public class TourController {
-    private TourService tourService;
+    private final TourService tourService;
     @PostMapping
     public ResponseEntity<TourResponse> createTour(@Valid @RequestBody TourDTO tourDTO) throws Exception {
         Tour tour = tourService.addTour(tourDTO);
@@ -60,4 +68,33 @@ public class TourController {
 //        tourService.deleteTour(tourId);
 //        return ResponseEntity.ok("Tour delete successfully");
 //    }
+
+    @PostMapping(value = "/uploads/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> uploadImages(@PathVariable("id") long tourId, @RequestParam("files") List<MultipartFile> files){
+        try {
+            Tour existingTour = tourService.getTourById(tourId);
+            if (files.size() > 5) {
+                return ResponseEntity.badRequest().body("More than 5 images for a hotel");
+            }
+
+            List<TourImage> tourImages = new ArrayList<>();
+            for (MultipartFile file : files){
+                if (file.getSize() == 0) {
+                    continue;
+                }
+
+                if (file.getSize() > 10 * 1024 *1024) {
+                    return ResponseEntity.status(HttpStatus.PAYLOAD_TOO_LARGE).body("File size bigger than 10MB");
+                }
+
+                String imageUrl = FileUtils.uploadToFirebase(file);
+                TourImage tourImage = tourService.createTourImage(existingTour,
+                        TourImageDTO.builder().tour(existingTour.getId()).imageUrl(imageUrl).build());
+                tourImages.add(tourImage);
+            }
+            return ResponseEntity.ok().body(tourImages);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 }

@@ -46,4 +46,8 @@ public class Attraction {
     @OneToMany(mappedBy = "attraction", cascade = CascadeType.ALL, fetch = FetchType.LAZY )
     @JsonManagedReference
     private List<Office> offices;
+
+    @OneToMany(mappedBy = "attraction", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Tour> tours;
 }

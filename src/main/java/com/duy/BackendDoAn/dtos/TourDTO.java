@@ -27,6 +27,6 @@ public class TourDTO {
     @JsonProperty("description")
     private String description;
 
-    @JsonProperty("city_id")
-    private Long city;
+    @JsonProperty("attraction_id")
+    private Long attraction;
 }

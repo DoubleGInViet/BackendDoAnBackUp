@@ -30,10 +30,16 @@ public class ReviewTourResponse {
 
     public static ReviewTourResponse fromReviews(Tour tour) {
         ReviewTourResponse response = new ReviewTourResponse();
-        response.totalReviews = tour.getReviewCount();
-        response.averageRating = tour.getRating();
+
 
         List<ReviewTour> reviews = tour.getReviewTours();
+        response.totalReviews = (long) reviews.size();
+        double averageRating = reviews.stream()
+                .mapToDouble(ReviewTour::getRating)
+                .average()
+                .orElse(0.0);
+        float roundedAverageRating = (float) (Math.round(averageRating * 10) / 10.0);
+        response.averageRating = roundedAverageRating;
 
         response.userReviewTourResponses = reviews.stream().map(UserReviewTourResponse::fromReview).collect(Collectors.toList());
         Map<String, Long> reviewBreakdown = new HashMap<>();

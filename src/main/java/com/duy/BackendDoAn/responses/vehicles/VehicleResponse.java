@@ -28,11 +28,15 @@ public class VehicleResponse {
 
     private DetailResponse details;
 
+    @JsonProperty("image_url")
+    private String imageUrl;
+
 
     public static VehicleResponse fromVehicle(Vehicle vehicle) {
         VehicleResponse response = new VehicleResponse();
         response.id = vehicle.getId();
         response.model = vehicle.getName();
+        response.imageUrl = vehicle.getImageUrl();
         if (vehicle.getVehicleRentalFacilities() != null) {
             // Chuyển đổi danh sách vehicleRentalFacilities thành danh sách ID hoặc tên
             response.setRentalResponses(
@@ -59,6 +63,7 @@ public class VehicleResponse {
         response.id = vehicle.getId();
         response.model = vehicle.getName();
         response.type = vehicle.getVehicle_type();
+        response.imageUrl = vehicle.getImageUrl();
 
         if(vehicle.getVehicleRentalFacilities() != null){
             List<VehicleRentalFacility> relevantFacilities = vehicle.getVehicleRentalFacilities().stream()

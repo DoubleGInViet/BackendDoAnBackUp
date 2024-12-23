@@ -8,13 +8,17 @@ import com.duy.BackendDoAn.models.Vehicle;
 import com.duy.BackendDoAn.responses.vehicles.*;
 import com.duy.BackendDoAn.services.CityService;
 import com.duy.BackendDoAn.services.VehicleService;
+import com.duy.BackendDoAn.utils.FileUtils;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -26,7 +30,6 @@ import java.util.stream.Collectors;
 @RestController
 public class VehicleController {
     private final VehicleService vehicleService;
-    private final CityService cityService;
 
     @GetMapping("")
     public ResponseEntity<VehicleListResponse> searchCar(
@@ -111,5 +114,20 @@ public class VehicleController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
 
+    }
+
+    @PostMapping(value = "/uploads/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> uploadImages(@PathVariable("id") long vehicleId, @RequestParam("file") MultipartFile file) {
+        try {
+            if (file.getSize() > 10 * 1024 *1024) {
+                return ResponseEntity.status(HttpStatus.PAYLOAD_TOO_LARGE).body("File size bigger than 10MB");
+            }
+            String imageUrl = FileUtils.uploadToFirebase(file);
+            Vehicle vehicle = vehicleService.uploadImage(vehicleId, imageUrl);
+            return ResponseEntity.ok(vehicle);
+        }
+        catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }
