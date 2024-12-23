@@ -10,11 +10,20 @@ import org.springframework.data.repository.query.Param;
 import java.time.LocalDate;
 
 public interface TourRepository extends JpaRepository<Tour, Long> {
-//    @Query()
-//    Page<Tour> searchTours(
-//            @Param("location") String location,
-//            @Param("startFrom") LocalDate startFrom,
-//            @Param("endAt") LocalDate endAt,
-//            Pageable pageable
-//            );
+    @Query("""
+    SELECT DISTINCT t 
+    FROM Tour t
+    JOIN t.attraction a
+    JOIN a.city c
+    JOIN t.tourSchedules ts
+    JOIN ts.dailyTicketAvailabilities dta
+    WHERE (:location IS NULL OR c.city_name = :location)
+      AND dta.availableTicket > 0
+      AND (:date IS NULL OR ts.happenDate = :date)
+""")
+    Page<Tour> searchTours(
+            @Param("location") String location,
+            @Param("date") LocalDate date,
+            Pageable pageable
+            );
 }

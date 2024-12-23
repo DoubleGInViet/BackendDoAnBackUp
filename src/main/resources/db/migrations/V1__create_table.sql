@@ -251,7 +251,6 @@ CREATE TABLE tour_schedule (
 );
 
 
-
 CREATE TABLE tour_image (
     id INT AUTO_INCREMENT PRIMARY KEY,
     image_url NVARCHAR(255),
@@ -263,12 +262,20 @@ CREATE TABLE tour_image (
 CREATE TABLE ticket_class (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name NVARCHAR(255),
-    adult_price INT,
-    children_price INT,
-    available_ticket INT,
+    price INT,
+    max_amount INT,
     description TEXT,
     tour_id INT,
     CONSTRAINT fk_ticket_class_tour foreign key (tour_id) references tour(id)
+);
+
+CREATE TABLE daily_ticket_availability (
+    id INT AUTO_INCREMENT PRIMARY key,
+    tour_schedule_id INT,
+    ticket_class_id INT,
+    available_ticket INT,
+    CONSTRAINT fk_daily_ticket_class foreign key (ticket_class_id) references ticket_class(id),
+    CONSTRAINT fk_daily_tour_schedule foreign key (tour_schedule_id) references tour_schedule(id)
 );
 
 CREATE TABLE profit (
@@ -287,14 +294,22 @@ CREATE TABLE ticket_profit (
 CREATE TABLE booking_ticket (
     id INT AUTO_INCREMENT PRIMARY KEY,
     booking_date DATE,
-    tour_date DATE,
-    number_adult_ticket INT,
-    number_children_ticket INT,
+    status NVARCHAR(255),
     total_price INT,
-    ticket_class_id INT,
+    tour_schedule_id INT,
     user_id INT,
-    CONSTRAINT fk_booking_ticket_ticket foreign key (ticket_class_id) references ticket_class(id),
+    CONSTRAINT fk_booking_ticket_tour_schedule foreign key (tour_schedule_id) references tour_schedule(id),
     CONSTRAINT fk_booking_ticket_user foreign key (user_id) references users(id)
+);
+
+CREATE TABLE booked_ticket (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    quantity INT,
+    price_with_quantity INT,
+    ticket_class_id INT,
+    booking_ticket_id INT,
+    CONSTRAINT fk_booked_ticket_class foreign key (ticket_class_id) references ticket_class(id),
+    CONSTRAINT fk_booked_ticket_booking foreign key (booking_ticket_id) references booking_ticket(id)
 );
 
 CREATE TABLE review (

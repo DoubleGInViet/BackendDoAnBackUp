@@ -45,4 +45,8 @@ public class Tour {
     @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<ReviewTour> reviewTours;
+
+    @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<TourSchedule> tourSchedules;
 }
