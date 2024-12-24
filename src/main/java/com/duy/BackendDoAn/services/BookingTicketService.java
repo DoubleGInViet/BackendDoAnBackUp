@@ -5,7 +5,11 @@ import com.duy.BackendDoAn.dtos.BookedTicketDTO;
 import com.duy.BackendDoAn.dtos.BookingTicketDTO;
 import com.duy.BackendDoAn.models.*;
 import com.duy.BackendDoAn.repositories.*;
+import com.duy.BackendDoAn.responses.bookingTickets.BookingTicketListResponse;
+import com.duy.BackendDoAn.responses.bookingTickets.BookingTicketResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -64,6 +68,12 @@ public class BookingTicketService {
         bookingTicket.setTotal_price(total_price);
         bookingTicket.setBookedTickets(instance);
         return bookingTicketRepository.save(bookingTicket);
+    }
+
+    public Page<BookingTicketResponse> getBookingByUser(Long id, PageRequest pageRequest) throws Exception {
+        User user = userRepository.findById(id).orElseThrow(() -> new Exception("User not found!!"));
+        Page<BookingTicket> bookingTicketPage = bookingTicketRepository.findByUser(user, pageRequest);
+        return bookingTicketPage.map(BookingTicketResponse::fromBooking);
     }
 
     private String generateUniqueBookingTicketId() {
