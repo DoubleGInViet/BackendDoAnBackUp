@@ -116,31 +116,33 @@ public class EmailService {
 
         body.append("<h1>Thông tin đặt phòng của bạn</h1>");
         body.append("<p><strong>Khách sạn:</strong> ").append(bookingResponse.getHotel().getName()).append("</p>");
-        body.append("<p><strong>Ngày check-in:</strong> ").append(bookingResponse.getCheckInDate()).append("</p>");
-        body.append("<p><strong>Ngày check-out:</strong> ").append(bookingResponse.getCheckOutDate()).append("</p>");
-        body.append("<p><strong>Người lớn:</strong> ").append(bookingResponse.getAdults()).append("</p>");
-        body.append("<p><strong>Trẻ em:</strong> ").append(bookingResponse.getChildren()).append("</p>");
-        body.append("<p><strong>Tổng tiền:</strong> ").append(bookingResponse.getTotalPrice()).append(" VND</p>");
+        body.append("<p><strong>Checkin:</strong> ").append(bookingResponse.getCheckInDate()).append("</p>");
+        body.append("<p><strong>Checkout:</strong> ").append(bookingResponse.getCheckOutDate()).append("</p>");
+        body.append("<p><strong>Số khách:</strong> ")
+            .append(bookingResponse.getAdults()).append(" người lớn, ")
+            .append(bookingResponse.getChildren()).append(" trẻ em</p>");
 
         // Thêm bảng hiển thị thông tin phòng
         body.append("<h2>Chi tiết các phòng đã đặt:</h2>");
         body.append("<table border='1' cellpadding='10' cellspacing='0' style='border-collapse: collapse;'>");
         body.append("<tr>")
-                .append("<th>Loại phòng</th>")
-                .append("<th>Số lượng</th>")
-                .append("<th>Giá thuê mỗi phòng</th>")
-                .append("</tr>");
+            .append("<th>Loại phòng</th>")
+            .append("<th>Số lượng</th>")
+            .append("<th>Giá thuê mỗi phòng</th>")
+            .append("</tr>");
 
         // Duyệt qua danh sách các phòng đã đặt
         for (SeperatedRoomResponse room : bookingResponse.getRoomSelectionResponse().getSelectedRooms()) {
             body.append("<tr>")
-                    .append("<td>").append(room.getType()).append("</td>")
-                    .append("<td>").append(room.getCount()).append("</td>")
-                    .append("<td>").append(room.getPrice()).append(" VND</td>")
-                    .append("</tr>");
+                .append("<td>").append(room.getName()).append("</td>")
+                .append("<td>").append(room.getCount()).append("</td>")
+                .append("<td>").append(room.getPrice()).append(" VND</td>")
+                .append("</tr>");
         }
-
         body.append("</table>");
+
+        // Giá tiền
+        body.append("<p><strong>Tổng tiền:</strong> ").append(bookingResponse.getTotalPrice()).append(" VND</p>");
 
         return body.toString();
     }
@@ -148,8 +150,13 @@ public class EmailService {
     private String buildEmailBookingVehicleBody(BookingVehicleResponse bookingResponse) {
         StringBuilder body = new StringBuilder();
 
-        // Tiêu đề
         body.append("<h1>Thông tin đặt xe của bạn</h1>");
+        // Thông tin khách hàng
+        body.append("<h2>Thông tin khách hàng</h2>");
+        body.append("<p><strong>Họ tên:</strong> ").append(bookingResponse.getCustomerResponse().getFullName()).append("</p>");
+        body.append("<p><strong>Email:</strong> ").append(bookingResponse.getCustomerResponse().getEmail()).append("</p>");
+        body.append("<p><strong>Điện thoại:</strong> ").append(bookingResponse.getCustomerResponse().getPhone()).append("</p>");
+        body.append("<p><strong>Quốc gia:</strong> ").append(bookingResponse.getCustomerResponse().getCountry()).append("</p>");
 
         // Thông tin xe
         body.append("<p><strong>Tên xe:</strong> ").append(bookingResponse.getVehicle().getName()).append("</p>");
@@ -162,10 +169,22 @@ public class EmailService {
         body.append("<p><strong>Điểm trả:</strong> ").append(bookingResponse.getPickUpResponse().getName()).append("</p>");
         body.append("<p><strong>Ngày trả:</strong> ").append(bookingResponse.getPickUpResponse().getDate()).append("</p>");
 
+        // Thông tin tài xế
+        body.append("<h2>Thông tin tài xế</h2>");
+        body.append("<p><strong>Tổng số tài xế:</strong> ").append(bookingResponse.getDriverListResponse().getTotalDriver()).append("</p>");
+        body.append("<ol style='padding-left: 20px;'>");
+
+        for (DriverResponse driver : bookingResponse.getDriverListResponse().getListDrivers()) {
+            body.append("<li>")
+                    .append(driver.getTitle()).append(" ").append(driver.getFullName())
+                    .append(" (").append(driver.getPhone()).append(")")
+                    .append("</li>");
+        }
+
+        body.append("</ol>");
+
         // Thông tin dịch vụ bổ sung
         body.append("<h2>Dịch vụ bổ sung</h2>");
-        body.append("<p><strong>Tổng chi phí dịch vụ:</strong> ").append(bookingResponse.getServicesResponse().getTotalServices()).append(" VND</p>");
-
         body.append("<table border='1' cellpadding='10' cellspacing='0' style='border-collapse: collapse;'>");
         body.append("<tr>")
                 .append("<th>Tên dịch vụ</th>")
@@ -175,39 +194,14 @@ public class EmailService {
 
         for (ServiceResponse service : bookingResponse.getServicesResponse().getServices()) {
             body.append("<tr>")
-                    .append("<td>").append(service.getName()).append("</td>")
-                    .append("<td>").append(service.getCount()).append("</td>")
-                    .append("<td>").append(service.getPrice()).append(" VND</td>")
-                    .append("</tr>");
-        }
-        body.append("</table>");
-
-        // Thông tin khách hàng
-        body.append("<h2>Thông tin khách hàng</h2>");
-        body.append("<p><strong>Họ tên:</strong> ").append(bookingResponse.getCustomerResponse().getFullName()).append("</p>");
-        body.append("<p><strong>Email:</strong> ").append(bookingResponse.getCustomerResponse().getEmail()).append("</p>");
-        body.append("<p><strong>Số điện thoại:</strong> ").append(bookingResponse.getCustomerResponse().getPhone()).append("</p>");
-        body.append("<p><strong>Quốc gia:</strong> ").append(bookingResponse.getCustomerResponse().getCountry()).append("</p>");
-
-        // Thông tin tài xế
-        body.append("<h2>Thông tin tài xế phụ</h2>");
-        body.append("<p><strong>Tổng số tài xế:</strong> ").append(bookingResponse.getDriverListResponse().getTotalDriver()).append("</p>");
-
-        body.append("<table border='1' cellpadding='10' cellspacing='0' style='border-collapse: collapse;'>");
-        body.append("<tr>")
-                .append("<th>Danh xưng</th>")
-                .append("<th>Họ tên</th>")
-                .append("<th>Số điện thoại</th>")
+                .append("<td>").append(service.getName()).append("</td>")
+                .append("<td>").append(service.getCount()).append("</td>")
+                .append("<td>").append(service.getPrice()).append(" VND</td>")
                 .append("</tr>");
-
-        for (DriverResponse driver : bookingResponse.getDriverListResponse().getListDrivers()) {
-            body.append("<tr>")
-                    .append("<td>").append(driver.getTitle()).append("</td>")
-                    .append("<td>").append(driver.getFullName()).append("</td>")
-                    .append("<td>").append(driver.getPhone()).append("</td>")
-                    .append("</tr>");
         }
         body.append("</table>");
+        body.append("<p><strong>Tổng chi phí dịch vụ:</strong> ")
+                .append(bookingResponse.getServicesResponse().getTotalServices()).append(" VND</p>");
 
         return body.toString();
     }

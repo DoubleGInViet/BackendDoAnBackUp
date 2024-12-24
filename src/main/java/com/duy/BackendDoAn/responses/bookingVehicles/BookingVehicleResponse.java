@@ -11,6 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class BookingVehicleResponse {
+    private String id;
     private Long user;
     private VehicleResponse vehicle;
     private FacilityResponse facility;
