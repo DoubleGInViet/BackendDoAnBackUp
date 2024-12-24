@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @Builder
 public class BookingTicketResponse {
-    private Long id;
+    private String id;
 
     @JsonProperty("booking_date")
     private String bookingDate;
@@ -47,6 +47,9 @@ public class BookingTicketResponse {
                         bookingTicket.getBookedTickets().stream()
                                 .map(BookedTicketResponse::fromBookedTicket)
                                 .collect(Collectors.toList())
+                )
+                .customerResponse(
+                        CustomerResponse.fromCustomer(bookingTicket)
                 )
                 .build();
 

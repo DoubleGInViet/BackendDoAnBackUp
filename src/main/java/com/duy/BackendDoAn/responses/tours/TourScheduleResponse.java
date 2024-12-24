@@ -16,13 +16,14 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @Builder
 public class TourScheduleResponse {
+    private Long id;
     private String date;
     private Long count;
     private List<DailyTicketAvailabilityResponse> dailyTicketAvailabilities;
 
     public static TourScheduleResponse fromTourSchedule(TourSchedule tourSchedule) {
         TourScheduleResponse response = new TourScheduleResponse();
-
+        response.id = tourSchedule.getId();
         response.date = tourSchedule.getHappenDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
         response.dailyTicketAvailabilities = tourSchedule.getDailyTicketAvailabilities().stream()

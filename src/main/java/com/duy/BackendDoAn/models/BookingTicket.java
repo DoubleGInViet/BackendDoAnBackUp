@@ -18,20 +18,22 @@ import java.util.Locale;
 @Builder
 public class BookingTicket {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     @Column(name = "booking_date")
     private LocalDate booking_date;
 
-    @Column(name = "tour_date")
-    private LocalDate tour_date;
+    @Column(name = "customer_full_name")
+    private String customerFullName;
 
-    @Column(name = "number_adult_ticket")
-    private Long number_adult_ticket;
+    @Column(name = "customer_email")
+    private String customerEmail;
 
-    @Column(name = "number_children_ticket")
-    private Long number_children_ticket;
+    @Column(name = "customer_phone_number")
+    private String customerPhoneNumber;
+
+    @Column(name = "customer_country")
+    private String customerCountry;
 
     @Column(name = "total_price")
     private Long total_price;

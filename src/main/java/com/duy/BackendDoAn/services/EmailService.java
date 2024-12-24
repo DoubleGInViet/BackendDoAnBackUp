@@ -5,6 +5,8 @@ import com.duy.BackendDoAn.models.Hotel;
 import com.duy.BackendDoAn.repositories.HotelRepository;
 import com.duy.BackendDoAn.responses.bookingRooms.BookingRoomResponse;
 import com.duy.BackendDoAn.responses.bookingRooms.SeperatedRoomResponse;
+import com.duy.BackendDoAn.responses.bookingTickets.BookedTicketResponse;
+import com.duy.BackendDoAn.responses.bookingTickets.BookingTicketResponse;
 import com.duy.BackendDoAn.responses.bookingVehicles.BookingVehicleResponse;
 import com.duy.BackendDoAn.responses.bookingVehicles.DriverResponse;
 import com.duy.BackendDoAn.responses.bookingVehicles.ServiceResponse;
@@ -60,6 +62,25 @@ public class EmailService {
 
             mailSender.send(message);
         } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Error sending password reset email: " + e.getMessage());
+        }
+    }
+
+    public void sendBookingTicketMessage(BookingTicketResponse bookingTicketResponse) {
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+
+            helper.setFrom("no-reply@hotelbooking.com", "Hotel Booking");
+            helper.setTo(bookingTicketResponse.getCustomerResponse().getEmail());
+            helper.setSubject("Booking Vehicle Successfully");
+            String emailContent = buildEmailBookingTicketBody(bookingTicketResponse);
+            helper.setText(emailContent, true);  // true để xác định đây là HTML content
+
+            mailSender.send(message);
+        }
+        catch (Exception e) {
             e.printStackTrace();
             System.err.println("Error sending password reset email: " + e.getMessage());
         }
@@ -210,6 +231,51 @@ public class EmailService {
         body.append("</table>");
 
         return body.toString();
+    }
+
+    public static String buildEmailBookingTicketBody(BookingTicketResponse bookingResponse) {
+        StringBuilder emailBody = new StringBuilder();
+
+        // Tiêu đề email
+        emailBody.append("<h1>Chúc mừng! Đơn đặt của bạn đã được xác nhận!</h1>");
+
+        // Thông tin khách hàng
+        emailBody.append("<h2>Thông tin khách hàng:</h2>");
+        emailBody.append("<p><strong>Họ và tên:</strong> ").append(bookingResponse.getCustomerResponse().getName()).append("</p>");
+        emailBody.append("<p><strong>Email:</strong> ").append(bookingResponse.getCustomerResponse().getEmail()).append("</p>");
+        emailBody.append("<p><strong>Số điện thoại:</strong> ").append(bookingResponse.getCustomerResponse().getPhone()).append("</p>");
+        emailBody.append("<p><strong>Quốc gia:</strong> ").append(bookingResponse.getCustomerResponse().getCountry()).append("</p>");
+
+        // Thông tin tour
+        emailBody.append("<h2>Chi tiết tour:</h2>");
+        emailBody.append("<p><strong>Tên tour:</strong> ").append(bookingResponse.getTourResponse().getTourName()).append("</p>");
+        emailBody.append("<p><strong>Địa điểm:</strong> ").append(bookingResponse.getTourResponse().getCityName()).append("</p>");
+
+        // Thông tin đơn đặt
+        emailBody.append("<h2>Thông tin đơn đặt:</h2>");
+        emailBody.append("<p><strong>Mã đơn đặt:</strong> ").append(bookingResponse.getId()).append("</p>");
+        emailBody.append("<p><strong>Ngày đặt:</strong> ").append(bookingResponse.getBookingDate()).append("</p>");
+        emailBody.append("<p><strong>Tổng tiền:</strong> ").append(bookingResponse.getTotalPrice()).append(" VND</p>");
+        emailBody.append("<p><strong>Trạng thái:</strong> ").append(bookingResponse.getStatus()).append("</p>");
+
+        // Thông tin vé đã mua
+        emailBody.append("<h2>Chi tiết vé đã mua:</h2>");
+        emailBody.append("<ul>");
+        for (BookedTicketResponse ticket : bookingResponse.getBookedTicketResponses()) {
+            emailBody.append("<li>");
+            emailBody.append("<p><strong>Hạng vé:</strong> ").append(ticket.getTicketClass()).append("</p>");
+            emailBody.append("<p><strong>Số lượng:</strong> ").append(ticket.getQuantity()).append("</p>");
+            emailBody.append("<p><strong>Đơn giá:</strong> ").append(ticket.getUnitPrice()).append(" VND</p>");
+            emailBody.append("<p><strong>Thành tiền:</strong> ").append(ticket.getPriceMulAmount()).append(" VND</p>");
+            emailBody.append("</li>");
+        }
+        emailBody.append("</ul>");
+
+        // Lời cảm ơn
+        emailBody.append("<h2>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi!</h2>");
+        emailBody.append("<p>Nếu có bất kỳ câu hỏi nào, vui lòng liên hệ qua email hoặc số điện thoại của chúng tôi.</p>");
+
+        return emailBody.toString();
     }
 
 

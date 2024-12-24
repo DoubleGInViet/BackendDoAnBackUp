@@ -292,8 +292,12 @@ CREATE TABLE ticket_profit (
 );
 
 CREATE TABLE booking_ticket (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id NVARCHAR(8) PRIMARY KEY,
     booking_date DATE,
+    customer_email NVARCHAR(255),
+    customer_full_name NVARCHAR(255),
+    customer_phone_number NVARCHAR(255),
+    customer_country NVARCHAR(255),
     status NVARCHAR(255),
     total_price INT,
     tour_schedule_id INT,
@@ -307,7 +311,7 @@ CREATE TABLE booked_ticket (
     quantity INT,
     price_with_quantity INT,
     ticket_class_id INT,
-    booking_ticket_id INT,
+    booking_ticket_id NVARCHAR(8),
     CONSTRAINT fk_booked_ticket_class foreign key (ticket_class_id) references ticket_class(id),
     CONSTRAINT fk_booked_ticket_booking foreign key (booking_ticket_id) references booking_ticket(id)
 );
