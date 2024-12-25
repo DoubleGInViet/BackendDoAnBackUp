@@ -62,8 +62,12 @@ public class TourController {
                 Sort.by("id").ascending()
         );
 
-        DateTimeFormatter dateTimeFormatter = (DateTimeFormatter.ISO_LOCAL_DATE);
-        LocalDate formatDate = LocalDate.parse(date, dateTimeFormatter);
+        LocalDate formatDate = null;
+        if(date != null && !date.equals("")){
+            DateTimeFormatter dateTimeFormatter = (DateTimeFormatter.ISO_LOCAL_DATE);
+            formatDate = LocalDate.parse(date, dateTimeFormatter);
+        }
+
         Page<TourResponse> tourPages = tourService.getAllTours(location, formatDate, pageRequest);
         List<TourResponse> responses = tourPages.getContent();
         int totalPages = tourPages.getTotalPages();

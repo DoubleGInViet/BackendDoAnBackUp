@@ -47,4 +47,7 @@ public class BookingTicketController {
                 .build()
         );
     }
+
+//    @PutMapping("/{id}")
+//    public ResponseEntity<BookingTicketResponse>
 }

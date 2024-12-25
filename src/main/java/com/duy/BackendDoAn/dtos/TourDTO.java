@@ -18,12 +18,6 @@ public class TourDTO {
     @JsonProperty("address")
     private String address;
 
-    @JsonProperty("start_time")
-    private LocalTime startTime;
-
-    @JsonProperty("end_time")
-    private LocalTime endTime;
-
     @JsonProperty("description")
     private String description;
 

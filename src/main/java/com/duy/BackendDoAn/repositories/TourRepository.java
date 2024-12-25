@@ -17,7 +17,7 @@ public interface TourRepository extends JpaRepository<Tour, Long> {
     JOIN a.city c
     JOIN t.tourSchedules ts
     JOIN ts.dailyTicketAvailabilities dta
-    WHERE (:location IS NULL OR c.city_name = :location)
+    WHERE (:location IS NULL OR REPLACE(c.city_name, ' ', '') LIKE %:location)
       AND dta.availableTicket > 0
       AND (:date IS NULL OR ts.happenDate = :date)
 """)
