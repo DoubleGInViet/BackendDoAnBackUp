@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public interface TourRepository extends JpaRepository<Tour, Long> {
     @Query("""
@@ -18,6 +19,7 @@ public interface TourRepository extends JpaRepository<Tour, Long> {
     JOIN t.tourSchedules ts
     JOIN ts.dailyTicketAvailabilities dta
     WHERE (:location IS NULL OR REPLACE(c.city_name, ' ', '') LIKE %:location)
+      AND t.active = true
       AND dta.availableTicket > 0
       AND (:date IS NULL OR dta.happenDate = :date)
 """)
@@ -27,5 +29,7 @@ public interface TourRepository extends JpaRepository<Tour, Long> {
             Pageable pageable
             );
 
+    @Query("SELECT t FROM Tour t WHERE t.active = true")
+    List<Tour> findAllActiveHotels();
 
 }
