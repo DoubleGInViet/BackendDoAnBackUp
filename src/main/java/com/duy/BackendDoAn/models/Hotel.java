@@ -67,6 +67,9 @@ public class Hotel {
     @Column(name = "extra_bed_policy")
     private boolean extra_bed_policy;
 
+    @Column(name = "active")
+    private boolean active;
+
     @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;

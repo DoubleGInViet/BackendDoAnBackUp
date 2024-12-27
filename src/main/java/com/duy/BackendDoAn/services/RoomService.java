@@ -28,6 +28,7 @@ public class RoomService {
                 .noBed2(roomDTO.getNoBed2())
                 .price(roomDTO.getPrice())
                 .available_room(roomDTO.getAvailableRooms())
+                .active(true)
                 .hotel(hotel)
                 .build();
         return roomRepository.save(newRoom);

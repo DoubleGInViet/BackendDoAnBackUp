@@ -2,7 +2,7 @@ INSERT INTO hotel (
     hotel_name, hotel_email, phone_number, address, latitude, longitude, description,
     check_in_time, check_out_time, website, review_count,
     city_id, type_of_hotel, cancellation_policy, deposit_required, pets_allowed,
-    smoking_policy, extra_bed_policy
+    smoking_policy, extra_bed_policy, active
 ) VALUES
 (
     'Furama Resort Danang',
@@ -15,7 +15,7 @@ INSERT INTO hotel (
      200, 43,
     'Resort',
     'Hủy miễn phí trong vòng 72 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 1
+    'Yes', 1, 0, 1, 1
 ),
 (
     'Anantara Mui Ne Resort',
@@ -28,7 +28,7 @@ INSERT INTO hotel (
      160, 86,
     'Resort',
     'Hủy miễn phí trong vòng 72 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 1
+    'Yes', 1, 0, 1, 1
 ),
 (
     'Azerai La Residence',
@@ -41,7 +41,7 @@ INSERT INTO hotel (
     250, 75,
     'Resort',
     'Hủy miễn phí trong vòng 72 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 1
+    'Yes', 1, 0, 1, 1
 ),
 (
     'Alma Resort Cam Ranh',
@@ -54,7 +54,7 @@ INSERT INTO hotel (
     230, 68,
     'Resort',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 1
+    'Yes', 1, 0, 1, 1
 ),
 (
     'InterContinental Hanoi Westlake',
@@ -67,7 +67,7 @@ INSERT INTO hotel (
     210, 29,
     'Hotel',
     'Hủy miễn phí trong vòng 72 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 1
+    'Yes', 1, 0, 1, 1
 ),
 (
     'Vinpearl Resort & Spa Phú Quốc',
@@ -80,7 +80,7 @@ INSERT INTO hotel (
     190, 68,
     'Resort',
     'Hủy miễn phí trong vòng 72 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 1
+    'Yes', 1, 0, 1, 1
 ),
 (
     'Grand Mercure Danang',
@@ -93,7 +93,7 @@ INSERT INTO hotel (
     175, 43,
     'Hotel',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 1
+    'Yes', 1, 0, 1, 1
 ),
 (
     'Muong Thanh Grand Hanoi',
@@ -106,7 +106,7 @@ INSERT INTO hotel (
     210, 29,
     'Hotel',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 1
+    'Yes', 1, 0, 1, 1
 ),
 (
     'Sheraton Hanoi Hotel',
@@ -119,7 +119,7 @@ INSERT INTO hotel (
     220, 29,
     'Hotel',
     'Hủy miễn phí trong vòng 72 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 1
+    'Yes', 1, 0, 1, 1
 ),
 (
     'Saigon Prince Hotel',
@@ -132,7 +132,7 @@ INSERT INTO hotel (
     180, 41,
     'Hotel',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 0
+    'Yes', 1, 0, 0, 1
 ),
 (
     'Mui Ne Paradise Resort',
@@ -145,7 +145,7 @@ INSERT INTO hotel (
     200, 86,
     'Resort',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 1
+    'Yes', 1, 0, 1, 1
 ),
 (
     'Sheraton Grand Danang Resort & Convention Center',
@@ -158,7 +158,7 @@ INSERT INTO hotel (
     150, 43,
     'Resort',
     'Hủy miễn phí trong vòng 72 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 0
+    'Yes', 1, 0, 0, 1
 ),
 (
     'The Reverie Saigon',
@@ -171,7 +171,7 @@ INSERT INTO hotel (
     200, 41,
     'Hotel',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
-    'No', 1, 0, 0
+    'No', 1, 0, 0, 1
 ),
 (
     'An Villa Hoi An',
@@ -184,53 +184,53 @@ INSERT INTO hotel (
     60, 92,
     'Homestay',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 0
+    'Yes', 1, 0, 0, 1
 );
 
-INSERT INTO room (id, name, type, room_size, max_guests, type_bed_1, no_bed_1, type_bed_2, no_bed_2, price, available_rooms, hotel_id)
+INSERT INTO room (id, name, type, room_size, max_guests, type_bed_1, no_bed_1, type_bed_2, no_bed_2, price, available_rooms, hotel_id, active)
 VALUES
-(101, 'Ocean View Deluxe', 'Deluxe', 50, 3, 'King', 1, NULL, 0, 4800000, 10, 1),
-(102, 'Family Suite', 'Suite', 80, 5, 'Queen', 2, 'Single', 1, 8400000, 5, 1),
-(103, 'Standard Room', 'Standard', 30, 2, 'Double', 1, NULL, 0, 2880000, 15, 1),
-(201, 'Sea View Room', 'Deluxe', 45, 3, 'King', 1, NULL, 0, 4320000, 8, 2),
-(202, 'Pool Villa', 'Villa', 120, 6, 'Queen', 2, 'Single', 2, 9600000, 4, 2),
-(203, 'Budget Room', 'Standard', 25, 2, 'Single', 2, NULL, 0, 2400000, 12, 2),
-(301, 'City View Executive', 'Executive', 60, 4, 'King', 1, 'Single', 1, 5760000, 6, 3),
-(302, 'Business Suite', 'Suite', 70, 5, 'Queen', 2, 'Single', 1, 6720000, 4, 3),
-(303, 'Compact Studio', 'Studio', 25, 2, 'Double', 1, NULL, 0, 2160000, 20, 3),
-(401, 'Beachfront Villa', 'Villa', 100, 4, 'King', 1, NULL, 0, 9600000, 6, 4),
-(402, 'Garden View Suite', 'Suite', 60, 3, 'Queen', 1, NULL, 0, 5280000, 8, 4),
-(403, 'Standard Room', 'Standard', 30, 2, 'Double', 1, NULL, 0, 2880000, 12, 4),
-(501, 'Deluxe River View', 'Deluxe', 45, 3, 'Queen', 1, NULL, 0, 5520000, 8, 5),
-(502, 'Junior Suite', 'Suite', 70, 4, 'King', 1, 'Single', 1, 7920000, 5, 5),
-(503, 'Classic Room', 'Standard', 25, 2, 'Double', 1, NULL, 0, 2160000, 14, 5),
-(601, 'Ocean Front Villa', 'Villa', 120, 6, 'Queen', 2, 'Single', 2, 11520000, 4, 6),
-(602, 'Garden Suite', 'Suite', 60, 4, 'King', 1, 'Single', 1, 6240000, 6, 6),
-(603, 'Economy Room', 'Standard', 25, 2, 'Single', 2, NULL, 0, 2160000, 10, 6),
-(701, 'Lake View Room', 'Deluxe', 50, 3, 'King', 1, NULL, 0, 5280000, 7, 7),
-(702, 'Presidential Suite', 'Suite', 90, 6, 'Queen', 2, 'Single', 1, 14400000, 3, 7),
-(703, 'Standard Room', 'Standard', 30, 2, 'Double', 1, NULL, 0, 2880000, 15, 7),
-(801, 'Beachfront Villa', 'Villa', 120, 6, 'King', 2, 'Single', 2, 12000000, 4, 8),
-(802, 'Ocean View Suite', 'Suite', 70, 4, 'Queen', 1, 'Single', 1, 7200000, 6, 8),
-(803, 'Cozy Room', 'Standard', 30, 2, 'Double', 1, NULL, 0, 3600000, 10, 8),
-(901, 'Executive Room', 'Executive', 50, 3, 'King', 1, NULL, 0, 4800000, 7, 9),
-(902, 'Luxury Suite', 'Suite', 75, 5, 'Queen', 2, 'Single', 1, 8400000, 4, 9),
-(903, 'Budget Room', 'Standard', 25, 2, 'Single', 2, NULL, 0, 2400000, 10, 9),
-(1001, 'Deluxe Room', 'Deluxe', 50, 3, 'King', 1, NULL, 0, 5520000, 6, 10),
-(1002, 'Business Suite', 'Suite', 70, 5, 'Queen', 2, 'Single', 1, 7920000, 3, 10),
-(1003, 'Compact Room', 'Standard', 25, 2, 'Single', 2, NULL, 0, 2160000, 15, 10),
-(1101, 'Executive Suite', 'Suite', 65, 4, 'King', 1, 'Single', 1, 8400000, 5, 11),
-(1102, 'Deluxe Room', 'Deluxe', 50, 3, 'Queen', 1, NULL, 0, 5520000, 8, 11),
-(1103, 'Standard Room', 'Standard', 30, 2, 'Double', 1, NULL, 0, 2880000, 12, 11),
-(1201, 'Emerald Bay Suite', 'Suite', 75, 5, 'King', 1, 'Single', 1, 10800000, 4, 12),
-(1202, 'Oceanfront Villa', 'Villa', 120, 6, 'Queen', 2, 'Single', 2, 13200000, 3, 12),
-(1203, 'Deluxe Room', 'Deluxe', 40, 3, 'Queen', 1, NULL, 0, 5280000, 10, 12),
-(1301, 'Panoramic Suite', 'Suite', 80, 5, 'King', 1, 'Single', 1, 14400000, 4, 13),
-(1302, 'City View Deluxe', 'Deluxe', 45, 3, 'Queen', 1, NULL, 0, 5760000, 7, 13),
-(1303, 'Economy Room', 'Standard', 25, 2, 'Single', 2, NULL, 0, 2400000, 15, 13),
-(1401, 'Luxury Villa', 'Villa', 130, 6, 'King', 2, 'Single', 2, 18000000, 3, 14),
-(1402, 'Beachfront Deluxe', 'Deluxe', 50, 4, 'Queen', 1, NULL, 0, 7200000, 6, 14),
-(1403, 'Cozy Room', 'Standard', 30, 2, 'Double', 1, NULL, 0, 3600000, 12, 14);
+(101, 'Ocean View Deluxe', 'Deluxe', 50, 3, 'King', 1, NULL, 0, 4800000, 10, 1, 1),
+(102, 'Family Suite', 'Suite', 80, 5, 'Queen', 2, 'Single', 1, 8400000, 5, 1, 1),
+(103, 'Standard Room', 'Standard', 30, 2, 'Double', 1, NULL, 0, 2880000, 15, 1, 1),
+(201, 'Sea View Room', 'Deluxe', 45, 3, 'King', 1, NULL, 0, 4320000, 8, 2, 1),
+(202, 'Pool Villa', 'Villa', 120, 6, 'Queen', 2, 'Single', 2, 9600000, 4, 2, 1),
+(203, 'Budget Room', 'Standard', 25, 2, 'Single', 2, NULL, 0, 2400000, 12, 2, 1),
+(301, 'City View Executive', 'Executive', 60, 4, 'King', 1, 'Single', 1, 5760000, 6, 3, 1),
+(302, 'Business Suite', 'Suite', 70, 5, 'Queen', 2, 'Single', 1, 6720000, 4, 3, 1),
+(303, 'Compact Studio', 'Studio', 25, 2, 'Double', 1, NULL, 0, 2160000, 20, 3, 1),
+(401, 'Beachfront Villa', 'Villa', 100, 4, 'King', 1, NULL, 0, 9600000, 6, 4, 1),
+(402, 'Garden View Suite', 'Suite', 60, 3, 'Queen', 1, NULL, 0, 5280000, 8, 4, 1),
+(403, 'Standard Room', 'Standard', 30, 2, 'Double', 1, NULL, 0, 2880000, 12, 4, 1),
+(501, 'Deluxe River View', 'Deluxe', 45, 3, 'Queen', 1, NULL, 0, 5520000, 8, 5, 1),
+(502, 'Junior Suite', 'Suite', 70, 4, 'King', 1, 'Single', 1, 7920000, 5, 5, 1),
+(503, 'Classic Room', 'Standard', 25, 2, 'Double', 1, NULL, 0, 2160000, 14, 5, 1),
+(601, 'Ocean Front Villa', 'Villa', 120, 6, 'Queen', 2, 'Single', 2, 11520000, 4, 6, 1),
+(602, 'Garden Suite', 'Suite', 60, 4, 'King', 1, 'Single', 1, 6240000, 6, 6, 1),
+(603, 'Economy Room', 'Standard', 25, 2, 'Single', 2, NULL, 0, 2160000, 10, 6, 1),
+(701, 'Lake View Room', 'Deluxe', 50, 3, 'King', 1, NULL, 0, 5280000, 7, 7, 1),
+(702, 'Presidential Suite', 'Suite', 90, 6, 'Queen', 2, 'Single', 1, 14400000, 3, 7, 1),
+(703, 'Standard Room', 'Standard', 30, 2, 'Double', 1, NULL, 0, 2880000, 15, 7, 1),
+(801, 'Beachfront Villa', 'Villa', 120, 6, 'King', 2, 'Single', 2, 12000000, 4, 8, 1),
+(802, 'Ocean View Suite', 'Suite', 70, 4, 'Queen', 1, 'Single', 1, 7200000, 6, 8, 1),
+(803, 'Cozy Room', 'Standard', 30, 2, 'Double', 1, NULL, 0, 3600000, 10, 8, 1),
+(901, 'Executive Room', 'Executive', 50, 3, 'King', 1, NULL, 0, 4800000, 7, 9, 1),
+(902, 'Luxury Suite', 'Suite', 75, 5, 'Queen', 2, 'Single', 1, 8400000, 4, 9, 1),
+(903, 'Budget Room', 'Standard', 25, 2, 'Single', 2, NULL, 0, 2400000, 10, 9, 1),
+(1001, 'Deluxe Room', 'Deluxe', 50, 3, 'King', 1, NULL, 0, 5520000, 6, 10, 1),
+(1002, 'Business Suite', 'Suite', 70, 5, 'Queen', 2, 'Single', 1, 7920000, 3, 10, 1),
+(1003, 'Compact Room', 'Standard', 25, 2, 'Single', 2, NULL, 0, 2160000, 15, 10, 1),
+(1101, 'Executive Suite', 'Suite', 65, 4, 'King', 1, 'Single', 1, 8400000, 5, 11, 1),
+(1102, 'Deluxe Room', 'Deluxe', 50, 3, 'Queen', 1, NULL, 0, 5520000, 8, 11, 1),
+(1103, 'Standard Room', 'Standard', 30, 2, 'Double', 1, NULL, 0, 2880000, 12, 11, 1),
+(1201, 'Emerald Bay Suite', 'Suite', 75, 5, 'King', 1, 'Single', 1, 10800000, 4, 12, 1),
+(1202, 'Oceanfront Villa', 'Villa', 120, 6, 'Queen', 2, 'Single', 2, 13200000, 3, 12, 1),
+(1203, 'Deluxe Room', 'Deluxe', 40, 3, 'Queen', 1, NULL, 0, 5280000, 10, 12, 1),
+(1301, 'Panoramic Suite', 'Suite', 80, 5, 'King', 1, 'Single', 1, 14400000, 4, 13, 1),
+(1302, 'City View Deluxe', 'Deluxe', 45, 3, 'Queen', 1, NULL, 0, 5760000, 7, 13, 1),
+(1303, 'Economy Room', 'Standard', 25, 2, 'Single', 2, NULL, 0, 2400000, 15, 13, 1),
+(1401, 'Luxury Villa', 'Villa', 130, 6, 'King', 2, 'Single', 2, 18000000, 3, 14, 1),
+(1402, 'Beachfront Deluxe', 'Deluxe', 50, 4, 'Queen', 1, NULL, 0, 7200000, 6, 14, 1),
+(1403, 'Cozy Room', 'Standard', 30, 2, 'Double', 1, NULL, 0, 3600000, 12, 14, 1);
 
 INSERT INTO amenity (name) VALUES
 ('Wi-Fi miễn phí'), ('Bể bơi'), ('Dịch vụ giặt là'), ('Trung tâm thể dục'),

@@ -41,6 +41,7 @@ public class HotelService {
                 .latitude(hotelDTO.getLatitude())
                 .description(hotelDTO.getDescription())
                 .type_of_hotel(hotelDTO.getTypeOfHotel())
+                .active(true)
                 .build();
         newHotel.setCity(city);
         return hotelRepository.save(newHotel);
@@ -141,30 +142,5 @@ public class HotelService {
         Optional<Hotel> optionalHotel = hotelRepository.findById(id);
         optionalHotel.ifPresent(hotelRepository::delete);
     }
-
-//    public void updateRatingOnDeleteReview(Long id, Long rating) throws Exception {
-//        Hotel hotel = hotelRepository.findById(id).orElseThrow(()-> new Exception("Hotel not exist"));
-//        hotel.setTotalRating(hotel.getTotalRating() - rating);
-//        hotel.setReviewCount(hotel.getReviewCount()-1);
-//        float average = (float) hotel.getTotalRating() / hotel.getReviewCount();
-//        hotel.setRating(Math.round(average * 10.0f) / 10.0f);
-//        hotelRepository.save(hotel);
-//    }
-//
-//    public void updateRatingOnAddNewReview(Long id, long newRating) throws Exception {
-//        Hotel hotel = hotelRepository.findById(id).orElseThrow(()-> new Exception("Hotel doesnt exist"));
-//        hotel.setTotalRating(hotel.getTotalRating()+newRating);
-//        hotel.setReviewCount(hotel.getReviewCount() +1);
-//        float average = (float) hotel.getTotalRating() / hotel.getReviewCount();
-//        hotel.setRating(Math.round(average * 10.0f) / 10.0f);
-//        hotelRepository.save(hotel);
-//    }
-//
-//    public void updateRatingOnUpdateReview(Hotel hotel, Long newRating, Long oldRating) throws Exception {
-//        hotel.setTotalRating(hotel.getTotalRating() - oldRating + newRating);
-//        float average = (float) hotel.getTotalRating() / hotel.getReviewCount();
-//        hotel.setRating(Math.round(average * 10.0f) / 10.0f);
-//        hotelRepository.save(hotel);
-//    }
 
 }

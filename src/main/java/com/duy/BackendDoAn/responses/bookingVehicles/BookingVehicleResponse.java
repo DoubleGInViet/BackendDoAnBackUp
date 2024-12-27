@@ -11,6 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class BookingVehicleResponse {
+    private String id;
     private Long user;
     private VehicleResponse vehicle;
     private FacilityResponse facility;
@@ -41,6 +42,7 @@ public class BookingVehicleResponse {
     public static BookingVehicleResponse fromBooking(BookingVehicle bookingVehicle) {
         if (bookingVehicle != null) {
             BookingVehicleResponse response = BookingVehicleResponse.builder()
+                    .id(bookingVehicle.getId())
                     .user(bookingVehicle.getUser().getId())
                     .customerResponse(CustomerResponse.fromBooking(bookingVehicle))
                     .vehicle(

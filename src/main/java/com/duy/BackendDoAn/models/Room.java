@@ -50,6 +50,9 @@ public class Room {
     @Column(name = "available_rooms")
     private Long available_room;
 
+    @Column(name = "active")
+    private boolean active;
+
     @ManyToOne
     @JoinColumn(name = "hotel_id")
     @JsonBackReference

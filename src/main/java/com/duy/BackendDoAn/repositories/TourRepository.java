@@ -19,11 +19,13 @@ public interface TourRepository extends JpaRepository<Tour, Long> {
     JOIN ts.dailyTicketAvailabilities dta
     WHERE (:location IS NULL OR REPLACE(c.city_name, ' ', '') LIKE %:location)
       AND dta.availableTicket > 0
-      AND (:date IS NULL OR ts.happenDate = :date)
+      AND (:date IS NULL OR dta.happenDate = :date)
 """)
     Page<Tour> searchTours(
             @Param("location") String location,
             @Param("date") LocalDate date,
             Pageable pageable
             );
+
+
 }

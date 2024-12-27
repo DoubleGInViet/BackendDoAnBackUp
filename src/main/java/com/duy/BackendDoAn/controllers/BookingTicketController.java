@@ -48,6 +48,5 @@ public class BookingTicketController {
         );
     }
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<BookingTicketResponse>
+
 }

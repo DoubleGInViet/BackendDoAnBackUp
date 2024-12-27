@@ -43,6 +43,7 @@ CREATE TABLE hotel (
     pets_allowed TINYINT(1),
     smoking_policy TINYINT(1),
     extra_bed_policy TINYINT(1),
+    active TINYINT(1),
     CONSTRAINT fk_hotel_city FOREIGN KEY (city_id) REFERENCES city(id)
 );
 
@@ -67,6 +68,7 @@ CREATE TABLE room (
     price INT,
     available_rooms INT,
     hotel_id INT,
+    active TINYINT(1),
     CONSTRAINT fk_room_hotel FOREIGN KEY (hotel_id) references hotel(id)
 );
 
@@ -153,7 +155,8 @@ CREATE TABLE vehicle (
     fuel NVARCHAR(255),
     engine NVARCHAR(255),
     year INT,
-    image_url NVARCHAR(255)
+    image_url NVARCHAR(255),
+    active TINYINT(1)
 );
 
 
@@ -238,12 +241,12 @@ CREATE TABLE tour (
     address NVARCHAR(255),
     description TEXT,
     attraction_id INT,
+    active TINYINT(1),
     CONSTRAINT fk_tour_city foreign key (attraction_id) references attraction(id)
 );
 
 CREATE TABLE tour_schedule (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    happen_date DATE,
     start_time TIME,
     end_time TIME,
     tour_id INT,
@@ -266,11 +269,13 @@ CREATE TABLE ticket_class (
     max_amount INT,
     description TEXT,
     tour_id INT,
+    active TINYINT(1),
     CONSTRAINT fk_ticket_class_tour foreign key (tour_id) references tour(id)
 );
 
 CREATE TABLE daily_ticket_availability (
     id INT AUTO_INCREMENT PRIMARY key,
+    happen_date DATE,
     tour_schedule_id INT,
     ticket_class_id INT,
     available_ticket INT,

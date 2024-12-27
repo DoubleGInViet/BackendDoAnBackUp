@@ -43,6 +43,9 @@ public class Vehicle {
     @Column(name = "image_url")
     private String imageUrl;
 
+    @Column(name = "active")
+    private boolean active;
+
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<VehicleRentalFacility> vehicleRentalFacilities;

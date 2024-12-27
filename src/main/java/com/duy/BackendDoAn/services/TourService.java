@@ -33,6 +33,7 @@ public class TourService {
                 .address(tourDTO.getAddress())
                 .description(tourDTO.getDescription())
                 .attraction(attraction)
+                .active(true)
                 .build();
         return tourRepository.save(tour);
     }

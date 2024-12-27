@@ -31,6 +31,9 @@ public class TicketClass {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "active")
+    private boolean active;
+
     @ManyToOne
     @JsonBackReference
     @JoinColumn(name = "tour_id")

@@ -21,9 +21,6 @@ public class TourSchedule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "happen_date")
-    private LocalDate happenDate;
-
     @Column(name = "start_time")
     private LocalTime startTime;
 

@@ -18,7 +18,8 @@ import java.util.stream.Collectors;
 public class TourResponse {
     private Long id;
     private String name;
-
+    private String address;
+    private String city;
     private String description;
     private List<TourImageResponse> images;
 
@@ -30,6 +31,9 @@ public class TourResponse {
         return TourResponse.builder()
                 .id(tour.getId())
                 .name(tour.getName())
+                .description(tour.getDescription())
+                .address(tour.getAddress())
+                .city(tour.getAttraction().getCity().getCity_name())
                 .images(
                         tour.getTourImages() != null
                                 ? tour.getTourImages().stream()
@@ -41,8 +45,6 @@ public class TourResponse {
                         tour.getTourSchedules() != null
 
                                 ? tour.getTourSchedules().stream()
-                                .filter(tourSchedule -> (tourSchedule.getHappenDate().isAfter(LocalDate.now())
-                                        || tourSchedule.getHappenDate().isEqual(LocalDate.now())))
                                 .map(TourScheduleResponse::fromTourSchedule)
                                 .collect(Collectors.toList())
                                 : new ArrayList<>()

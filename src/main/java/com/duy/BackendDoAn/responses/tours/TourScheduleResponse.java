@@ -1,6 +1,7 @@
 package com.duy.BackendDoAn.responses.tours;
 
 import com.duy.BackendDoAn.models.TourSchedule;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.time.DayOfWeek;
@@ -17,15 +18,21 @@ import java.util.stream.Collectors;
 @Builder
 public class TourScheduleResponse {
     private Long id;
-    private String date;
+
+    @JsonProperty("start_time")
+    private String startTime;
+
+    @JsonProperty("end_time")
+    private String endTime;
+
     private Long count;
     private List<DailyTicketAvailabilityResponse> dailyTicketAvailabilities;
 
     public static TourScheduleResponse fromTourSchedule(TourSchedule tourSchedule) {
         TourScheduleResponse response = new TourScheduleResponse();
         response.id = tourSchedule.getId();
-        response.date = tourSchedule.getHappenDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-
+        response.startTime = tourSchedule.getStartTime().format(DateTimeFormatter.ofPattern("hh:mm"));
+        response.endTime = tourSchedule.getEndTime().format(DateTimeFormatter.ofPattern("hh:mm"));
         response.dailyTicketAvailabilities = tourSchedule.getDailyTicketAvailabilities().stream()
                 .map(DailyTicketAvailabilityResponse::fromDailyTicket)
                 .collect(Collectors.toList());
