@@ -71,9 +71,14 @@ public class TourService {
         return null;
     }
 
-    public void deleteTour(long id) {
+    public Tour deleteTour(long id) {
         Optional<Tour> optionalTour = tourRepository.findById(id);
-        optionalTour.ifPresent(tourRepository::delete);
+        if(optionalTour.isPresent()){
+            Tour tour = optionalTour.get();
+            tour.setActive(false);
+            return tourRepository.save(tour);
+        }
+        return null;
     }
 
     public Page<TourResponse> getAllTours(String location, LocalDate date, PageRequest pageRequest){

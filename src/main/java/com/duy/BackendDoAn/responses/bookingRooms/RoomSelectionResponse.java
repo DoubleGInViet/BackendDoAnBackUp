@@ -23,7 +23,10 @@ public class RoomSelectionResponse {
     public static RoomSelectionResponse fromBooking(BookingRoom bookingRoom) {
         RoomSelectionResponse response = new RoomSelectionResponse();
         List<BookedRoom> rooms = bookingRoom.getBookedRooms();
-        response.selectedRooms = rooms.stream().map(SeperatedRoomResponse::fromBookedRoom).collect(Collectors.toList());
+        response.selectedRooms =
+                rooms != null
+                        ? rooms.stream().map(SeperatedRoomResponse::fromBookedRoom).collect(Collectors.toList())
+                        : new ArrayList<>();
         response.totalRooms = bookingRoom.getTotal_rooms();
         return response;
     }

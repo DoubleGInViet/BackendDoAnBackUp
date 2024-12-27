@@ -4,6 +4,7 @@ import com.duy.BackendDoAn.models.BookingVehicle;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,7 +21,10 @@ public class ServicesListResponse {
 
     public static ServicesListResponse fromBookingVehicle(BookingVehicle bookingVehicle) {
         ServicesListResponse servicesListResponse = new ServicesListResponse();
-        servicesListResponse.services = bookingVehicle.getAccessoryBookings().stream().map(ServiceResponse::fromAccessoryBooking).collect(Collectors.toList());
+        servicesListResponse.services =
+                bookingVehicle.getAccessoryBookings() != null
+                        ? bookingVehicle.getAccessoryBookings().stream().map(ServiceResponse::fromAccessoryBooking).collect(Collectors.toList())
+                        : new ArrayList<>();
         servicesListResponse.totalServices = bookingVehicle.getTotalService();
         return servicesListResponse;
     }

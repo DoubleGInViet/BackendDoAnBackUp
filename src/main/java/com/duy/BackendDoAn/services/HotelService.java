@@ -138,9 +138,14 @@ public class HotelService {
     }
 
     @Transactional
-    public void deleteHotel(long id){
+    public Hotel deleteHotel(long id){
         Optional<Hotel> optionalHotel = hotelRepository.findById(id);
-        optionalHotel.ifPresent(hotelRepository::delete);
+        if(optionalHotel.isPresent()){
+            Hotel hotel = optionalHotel.get();
+            hotel.setActive(false);
+            return hotelRepository.save(hotel);
+        }
+        return null;
     }
 
 }

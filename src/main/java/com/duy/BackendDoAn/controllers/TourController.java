@@ -79,9 +79,9 @@ public class TourController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteTour(@PathVariable("id") long tourId) throws Exception {
-        tourService.deleteTour(tourId);
-        return ResponseEntity.ok("Tour delete successfully");
+    public ResponseEntity<TourResponse> deleteTour(@PathVariable("id") long tourId) throws Exception {
+        Tour deactivedTour = tourService.deleteTour(tourId);
+        return ResponseEntity.ok(TourResponse.fromTour(deactivedTour));
     }
 
     @PostMapping(value = "/uploads/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
