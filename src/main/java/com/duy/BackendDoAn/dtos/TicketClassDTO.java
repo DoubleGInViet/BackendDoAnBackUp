@@ -3,24 +3,18 @@ package com.duy.BackendDoAn.dtos;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
-import java.time.LocalTime;
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class TourDTO {
-    @JsonProperty("name")
+public class TicketClassDTO {
     private String name;
+    private Long price;
+    @JsonProperty("max_amount")
+    private Long maxAmount;
 
-    @JsonProperty("address")
-    private String address;
-
-    @JsonProperty("description")
     private String description;
-
-    @JsonProperty("attraction_id")
-    private Long attraction;
+    private Long tour;
 }

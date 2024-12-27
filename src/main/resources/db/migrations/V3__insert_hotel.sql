@@ -2,7 +2,7 @@ INSERT INTO hotel (
     hotel_name, hotel_email, phone_number, address, latitude, longitude, description,
     check_in_time, check_out_time, website, review_count,
     city_id, type_of_hotel, cancellation_policy, deposit_required, pets_allowed,
-    smoking_policy, extra_bed_policy
+    smoking_policy, extra_bed_policy, active
 ) VALUES
 (
     'Furama Resort Danang',
@@ -13,7 +13,7 @@ INSERT INTO hotel (
     '15:00', '12:00', 'https://www.furamadanang.com', 0, 43,
     'Resort',
     'Hủy miễn phí trong vòng 72 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 1
+    'Yes', 1, 0, 1, 1
 ),
 (
     'Anantara Mui Ne Resort',
@@ -24,7 +24,7 @@ INSERT INTO hotel (
     '15:00', '12:00', 'https://www.anantaramuine.com', 0, 86,
     'Resort',
     'Hủy miễn phí trong vòng 72 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 1
+    'Yes', 1, 0, 1, 1
 ),
 (
     'Azerai La Residence',
@@ -35,7 +35,7 @@ INSERT INTO hotel (
     '14:00', '12:00', 'https://www.azerailaresidence.com', 0, 75,
     'Resort',
     'Hủy miễn phí trong vòng 72 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 1
+    'Yes', 1, 0, 1, 1
 ),
 (
     'Alma Resort Cam Ranh',
@@ -46,7 +46,7 @@ INSERT INTO hotel (
     '14:00', '12:00', 'https://www.alma.com.vn', 0, 79,
     'Resort',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 1
+    'Yes', 1, 0, 1, 1
 ),
 (
     'InterContinental Hanoi Westlake',
@@ -57,7 +57,7 @@ INSERT INTO hotel (
     '15:00', '12:00', 'https://www.intercontinental.com/hanoi', 0, 29,
     'Hotel',
     'Hủy miễn phí trong vòng 72 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 1
+    'Yes', 1, 0, 1, 1
 ),
 (
     'Vinpearl Resort & Spa Phú Quốc',
@@ -68,7 +68,7 @@ INSERT INTO hotel (
     '15:00', '12:00', 'https://www.vinpearl.com', 0, 68,
     'Resort',
     'Hủy miễn phí trong vòng 72 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 1
+    'Yes', 1, 0, 1, 1
 ),
 (
     'Grand Mercure Danang',
@@ -79,7 +79,7 @@ INSERT INTO hotel (
     '14:00', '12:00', 'https://www.grandmercuredanang.com', 0, 43,
     'Hotel',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 1
+    'Yes', 1, 0, 1, 1
 ),
 (
     'Muong Thanh Grand Hanoi',
@@ -90,7 +90,7 @@ INSERT INTO hotel (
     '14:00', '12:00', 'https://www.muongthanh.com', 0, 29,
     'Hotel',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 1
+    'Yes', 1, 0, 1, 1
 ),
 (
     'Sheraton Hanoi Hotel',
@@ -101,7 +101,7 @@ INSERT INTO hotel (
     '15:00', '12:00', 'https://www.sheratonhanoi.com', 0, 29,
     'Hotel',
     'Hủy miễn phí trong vòng 72 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 1
+    'Yes', 1, 0, 1, 1
 ),
 (
     'Saigon Prince Hotel',
@@ -112,7 +112,7 @@ INSERT INTO hotel (
     '14:00', '12:00', 'https://www.saigonprince.com', 0, 41,
     'Hotel',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 0
+    'Yes', 1, 0, 0, 1
 ),
 (
     'Mui Ne Paradise Resort',
@@ -123,7 +123,7 @@ INSERT INTO hotel (
     '15:00', '12:00', 'https://www.muineparadise.com', 0, 86,
     'Resort',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 1
+    'Yes', 1, 0, 1, 1
 ),
 (
     'Sheraton Grand Danang Resort & Convention Center',
@@ -134,7 +134,7 @@ INSERT INTO hotel (
     '15:00', '12:00', 'https://www.marriott.com/hotels/travel/dngsi-sheraton-grand-danang-resort/', 0, 43,
     'Resort',
     'Hủy miễn phí trong vòng 72 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 0
+    'Yes', 1, 0, 0, 1
 ),
 (
     'The Reverie Saigon',
@@ -145,7 +145,7 @@ INSERT INTO hotel (
     '14:00', '12:00', 'https://www.thereveriesaigon.com', 0, 41,
     'Hotel',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
-    'No', 1, 0, 0
+    'No', 1, 0, 0, 1
 ),
 (
     'Hanoi Cozy Homestay Long Biên',
@@ -156,7 +156,7 @@ INSERT INTO hotel (
     '14:00', '12:00', 'https://www.hanoicozy.com', 0, 29,
     'Homestay',
     'Hủy miễn phí trong vòng 48 giờ trước khi nhận phòng.',
-    'Yes', 1, 0, 0
+    'Yes', 1, 0, 0, 1
 );
 
 INSERT INTO hotel_image (image_url, hotel_id)
@@ -285,6 +285,51 @@ INSERT INTO amenity (name) VALUES
 ('Tủ lạnh mini'), ('Két sắt'), ('Máy pha cà phê'), ('Bàn làm việc'), ('Ban công riêng'),
 ('Bồn tắm'), ('Đồ vệ sinh cá nhân miễn phí'), ('Máy sấy tóc'), ('Dép đi trong phòng'),
 ('Điện thoại nội bộ'), ('Bộ ấm chén'), ('Dịch vụ báo thức'), ('Wifi trong phòng');
+
+INSERT INTO hotel_image (image_url, hotel_id)
+VALUES
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-01.jpg?alt=media&token=5dbb6493-370b-4040-b27d-1839319fd14b", 1),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-02.jpg?alt=media&token=100aafb6-52c3-44cd-9f3e-d6450a9ef133", 1),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-03.jpg?alt=media&token=02d05419-1248-4487-9885-c09ccc7026e3", 1),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-01.jpg?alt=media&token=5dbb6493-370b-4040-b27d-1839319fd14b", 2),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-02.jpg?alt=media&token=100aafb6-52c3-44cd-9f3e-d6450a9ef133", 2),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-03.jpg?alt=media&token=02d05419-1248-4487-9885-c09ccc7026e3", 2),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-01.jpg?alt=media&token=5dbb6493-370b-4040-b27d-1839319fd14b", 3),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-02.jpg?alt=media&token=100aafb6-52c3-44cd-9f3e-d6450a9ef133", 3),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-03.jpg?alt=media&token=02d05419-1248-4487-9885-c09ccc7026e3", 3),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-01.jpg?alt=media&token=5dbb6493-370b-4040-b27d-1839319fd14b", 4),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-02.jpg?alt=media&token=100aafb6-52c3-44cd-9f3e-d6450a9ef133", 4),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-03.jpg?alt=media&token=02d05419-1248-4487-9885-c09ccc7026e3", 4),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-01.jpg?alt=media&token=5dbb6493-370b-4040-b27d-1839319fd14b", 5),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-02.jpg?alt=media&token=100aafb6-52c3-44cd-9f3e-d6450a9ef133", 5),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-03.jpg?alt=media&token=02d05419-1248-4487-9885-c09ccc7026e3", 5),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-01.jpg?alt=media&token=5dbb6493-370b-4040-b27d-1839319fd14b", 6),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-02.jpg?alt=media&token=100aafb6-52c3-44cd-9f3e-d6450a9ef133", 6),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-03.jpg?alt=media&token=02d05419-1248-4487-9885-c09ccc7026e3", 6),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-01.jpg?alt=media&token=5dbb6493-370b-4040-b27d-1839319fd14b", 7),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-02.jpg?alt=media&token=100aafb6-52c3-44cd-9f3e-d6450a9ef133", 7),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-03.jpg?alt=media&token=02d05419-1248-4487-9885-c09ccc7026e3", 7),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-01.jpg?alt=media&token=5dbb6493-370b-4040-b27d-1839319fd14b", 8),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-02.jpg?alt=media&token=100aafb6-52c3-44cd-9f3e-d6450a9ef133", 8),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-03.jpg?alt=media&token=02d05419-1248-4487-9885-c09ccc7026e3", 8),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-01.jpg?alt=media&token=5dbb6493-370b-4040-b27d-1839319fd14b", 9),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-02.jpg?alt=media&token=100aafb6-52c3-44cd-9f3e-d6450a9ef133", 9),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-03.jpg?alt=media&token=02d05419-1248-4487-9885-c09ccc7026e3", 9),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-01.jpg?alt=media&token=5dbb6493-370b-4040-b27d-1839319fd14b", 10),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-02.jpg?alt=media&token=100aafb6-52c3-44cd-9f3e-d6450a9ef133", 10),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-03.jpg?alt=media&token=02d05419-1248-4487-9885-c09ccc7026e3", 10),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-01.jpg?alt=media&token=5dbb6493-370b-4040-b27d-1839319fd14b", 11),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-02.jpg?alt=media&token=100aafb6-52c3-44cd-9f3e-d6450a9ef133", 11),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-03.jpg?alt=media&token=02d05419-1248-4487-9885-c09ccc7026e3", 11),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-01.jpg?alt=media&token=5dbb6493-370b-4040-b27d-1839319fd14b", 12),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-02.jpg?alt=media&token=100aafb6-52c3-44cd-9f3e-d6450a9ef133", 12),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-03.jpg?alt=media&token=02d05419-1248-4487-9885-c09ccc7026e3", 12),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-01.jpg?alt=media&token=5dbb6493-370b-4040-b27d-1839319fd14b", 13),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-02.jpg?alt=media&token=100aafb6-52c3-44cd-9f3e-d6450a9ef133", 13),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-03.jpg?alt=media&token=02d05419-1248-4487-9885-c09ccc7026e3", 13),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-01.jpg?alt=media&token=5dbb6493-370b-4040-b27d-1839319fd14b", 14),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-02.jpg?alt=media&token=100aafb6-52c3-44cd-9f3e-d6450a9ef133", 14),
+("https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/hotel%2Fimage-03.jpg?alt=media&token=02d05419-1248-4487-9885-c09ccc7026e3", 14);
 
 INSERT INTO amenity_for_hotel (amenity_id, hotel_id) VALUES
 (1, 1), (2, 1), (3, 1), (4, 1), (5, 1), (6, 1), (7, 1), (8, 1),

@@ -29,6 +29,9 @@ public class Tour {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "active")
+    private boolean active;
+
     @ManyToOne
     @JsonBackReference
     @JoinColumn(name = "attraction_id")
@@ -45,4 +48,8 @@ public class Tour {
     @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<ReviewTour> reviewTours;
+
+    @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<TourSchedule> tourSchedules;
 }

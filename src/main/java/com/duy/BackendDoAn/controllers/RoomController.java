@@ -23,8 +23,6 @@ public class RoomController {
         return ResponseEntity.ok(roomResponse);
     }
 
-//    @PostMapping("/{roomId}/amenities")
-//    public ResponseEntity<>
 
     @PutMapping("/{id}")
     public ResponseEntity<RoomResponse> updateRoom(@PathVariable long id, @Valid @RequestBody RoomDTO roomDTO) throws  Exception{

@@ -10,7 +10,7 @@ import com.duy.BackendDoAn.repositories.AttractionRepository;
 import com.duy.BackendDoAn.repositories.CityRepository;
 import com.duy.BackendDoAn.repositories.TourImageRepository;
 import com.duy.BackendDoAn.repositories.TourRepository;
-import com.duy.BackendDoAn.responses.TourResponse;
+import com.duy.BackendDoAn.responses.tours.TourResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -33,6 +33,7 @@ public class TourService {
                 .address(tourDTO.getAddress())
                 .description(tourDTO.getDescription())
                 .attraction(attraction)
+                .active(true)
                 .build();
         return tourRepository.save(tour);
     }
@@ -46,10 +47,6 @@ public class TourService {
                 .tour(tour)
                 .image_url(tourImageDTO.getImageUrl())
                 .build();
-        int size = tourImageRepository.countByTourId(tour.getId());
-        if(size >= TourImage.MAX_IMAGES_PER_TOUR) {
-            throw new Exception("Number of images more than " +TourImage.MAX_IMAGES_PER_TOUR );
-        }
         return tourImageRepository.save(tourImage);
     }
 
@@ -79,9 +76,9 @@ public class TourService {
         optionalTour.ifPresent(tourRepository::delete);
     }
 
-//    public Page<TourResponse> getAllTours(String location, LocalDate startFrom, LocalDate endAt, PageRequest pageRequest){
-//        Page<Tour> tourPage;
-//        tourPage = tourRepository.searchTours(location, startFrom, endAt, pageRequest);
-//        return tourPage.map(TourResponse::fromTour);
-//    }
+    public Page<TourResponse> getAllTours(String location, LocalDate date, PageRequest pageRequest){
+        Page<Tour> tourPage;
+        tourPage = tourRepository.searchTours(location, date, pageRequest);
+        return tourPage.map(TourResponse::fromTour);
+    }
 }

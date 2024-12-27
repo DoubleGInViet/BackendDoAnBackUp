@@ -4,8 +4,8 @@ import com.duy.BackendDoAn.dtos.TourDTO;
 import com.duy.BackendDoAn.dtos.TourImageDTO;
 import com.duy.BackendDoAn.models.Tour;
 import com.duy.BackendDoAn.models.TourImage;
-import com.duy.BackendDoAn.responses.TourListResponse;
-import com.duy.BackendDoAn.responses.TourResponse;
+import com.duy.BackendDoAn.responses.tours.TourListResponse;
+import com.duy.BackendDoAn.responses.tours.TourResponse;
 import com.duy.BackendDoAn.services.TourService;
 import com.duy.BackendDoAn.utils.FileUtils;
 import jakarta.validation.Valid;
@@ -29,6 +29,7 @@ import java.util.List;
 @RestController
 public class TourController {
     private final TourService tourService;
+
     @PostMapping
     public ResponseEntity<TourResponse> createTour(@Valid @RequestBody TourDTO tourDTO) throws Exception {
         Tour tour = tourService.addTour(tourDTO);
@@ -43,34 +44,48 @@ public class TourController {
         return ResponseEntity.ok(tourResponse);
     }
 
-//    @GetMapping
-//    public ResponseEntity<TourListResponse> searchTour(
-//            @RequestParam(defaultValue = "") String location,
-//            @RequestParam String startFrom,
-//            @RequestParam String endAt,
-//            @RequestParam(defaultValue = "0") int page,
-//            @RequestParam(defaultValue = "10") int limit
-//    ) {
-//        PageRequest pageRequest =PageRequest.of(
-//                page, limit,
-//                Sort.by("id").ascending()
-//        );
-//
-//        DateTimeFormatter dateTimeFormatter = (DateTimeFormatter.ISO_LOCAL_DATE);
-//        LocalDate start = LocalDate.parse(startFrom, dateTimeFormatter);
-//        LocalDate end = LocalDate.parse(endAt, dateTimeFormatter);
-//        Page<TourResponse> tourPages = tourService.getAllTours(location, start, end, pageRequest);
-//        return null;
-//    }
+    @GetMapping("/{id}")
+    public ResponseEntity<TourResponse> getTourById(@PathVariable("id") long tourId) throws Exception {
+        Tour tour = tourService.getTourById(tourId);
+        return ResponseEntity.ok(TourResponse.fromTour(tour));
+    }
 
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<String> deleteTour(@PathVariable("id") long tourId) throws Exception {
-//        tourService.deleteTour(tourId);
-//        return ResponseEntity.ok("Tour delete successfully");
-//    }
+    @GetMapping
+    public ResponseEntity<TourListResponse> searchTour(
+            @RequestParam(defaultValue = "") String location,
+            @RequestParam String date,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10000") int limit
+    ) {
+        PageRequest pageRequest = PageRequest.of(
+                page, limit,
+                Sort.by("id").ascending()
+        );
+
+        LocalDate formatDate = null;
+        if(date != null && !date.equals("")){
+            DateTimeFormatter dateTimeFormatter = (DateTimeFormatter.ISO_LOCAL_DATE);
+            formatDate = LocalDate.parse(date, dateTimeFormatter);
+        }
+
+        Page<TourResponse> tourPages = tourService.getAllTours(location, formatDate, pageRequest);
+        List<TourResponse> responses = tourPages.getContent();
+        int totalPages = tourPages.getTotalPages();
+        return ResponseEntity.ok(TourListResponse.builder()
+                .responses(responses)
+                .totalPages(totalPages)
+                .build());
+
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteTour(@PathVariable("id") long tourId) throws Exception {
+        tourService.deleteTour(tourId);
+        return ResponseEntity.ok("Tour delete successfully");
+    }
 
     @PostMapping(value = "/uploads/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<?> uploadImages(@PathVariable("id") long tourId, @RequestParam("files") List<MultipartFile> files){
+    public ResponseEntity<?> uploadImages(@PathVariable("id") long tourId, @RequestParam("files") List<MultipartFile> files) {
         try {
             Tour existingTour = tourService.getTourById(tourId);
             if (files.size() > 5) {
@@ -78,12 +93,12 @@ public class TourController {
             }
 
             List<TourImage> tourImages = new ArrayList<>();
-            for (MultipartFile file : files){
+            for (MultipartFile file : files) {
                 if (file.getSize() == 0) {
                     continue;
                 }
 
-                if (file.getSize() > 10 * 1024 *1024) {
+                if (file.getSize() > 10 * 1024 * 1024) {
                     return ResponseEntity.status(HttpStatus.PAYLOAD_TOO_LARGE).body("File size bigger than 10MB");
                 }
 

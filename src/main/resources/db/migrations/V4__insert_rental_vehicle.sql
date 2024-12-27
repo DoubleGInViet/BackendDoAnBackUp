@@ -1,75 +1,75 @@
-INSERT INTO vehicle (id, name, brand, image_url, vehicle_type, fuel, engine, year) VALUES
+INSERT INTO vehicle (id, name, brand, image_url, vehicle_type, fuel, engine, year, active) VALUES
 (
     1, 'Kia Morning', 'Kia', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
-    'car', 'Xăng', 1.0, 2018
+    'car', 'Xăng', 1.0, 2018, 1
 ),
 (
     2, 'Hyundai Grand i10', 'Hyundai', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
-    'car', 'Xăng', 1.2, 2019
+    'car', 'Xăng', 1.2, 2019, 1
 ),
 (
     3, 'Toyota Yaris', 'Toyota', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
-    'car', 'Xăng', 1.5, 2021
+    'car', 'Xăng', 1.5, 2021, 1
 ),
 (
     4, 'Mazda 3', 'Mazda', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
-    'car', 'Xăng', 2.0, 2023
+    'car', 'Xăng', 2.0, 2023, 1
 ),
 (
     5, 'Honda City', 'Honda', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
-    'car', 'Xăng', 1.5, 2021
+    'car', 'Xăng', 1.5, 2021, 1
 ),
 (
     6, 'Nissan Sunny', 'Nissan', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
-    'car', 'Xăng', 1.6, 2020
+    'car', 'Xăng', 1.6, 2020, 1
 ),
 (
     7, 'Ford Focus', 'Ford', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
-    'car', 'Xăng', 1.5, 2023
+    'car', 'Xăng', 1.5, 2023, 1
 ),
 (
     8, 'Mitsubishi Outlander', 'Mitsubishi', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
-    'car', 'Xăng', 2.4, 2021
+    'car', 'Xăng', 2.4, 2021, 1
 ),
 (
     9, 'Chevrolet Spark', 'Chevrolet', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
-    'car', 'Xăng', 1.0, 2019
+    'car', 'Xăng', 1.0, 2019, 1
 ),
 (
     10, 'Toyota Camry', 'Toyota', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
-    'car', 'Xăng', 2.5, 2022
+    'car', 'Xăng', 2.5, 2022, 1
 ),
 (
     11, 'Yamaha Exciter 150', 'Yamaha', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
-    'motor', 'Xăng', 150, 2020
+    'motor', 'Xăng', 150, 2020, 1
 ),
 (
     12, 'Honda Winner X', 'Honda', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
-    'motor', 'Xăng', 150, 2021
+    'motor', 'Xăng', 150, 2021, 1
 ),
 (
     13, 'Suzuki Raider 150', 'Suzuki', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
-    'motor', 'Xăng', 150, 2019
+    'motor', 'Xăng', 150, 2019, 1
 ),
 (
     14, 'Yamaha MT-15', 'Yamaha', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
-    'motor', 'Xăng', 155, 2021
+    'motor', 'Xăng', 155, 2021, 1
 ),
 (
     15, 'Honda CBR150R', 'Honda', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
-    'motor', 'Petrol', 150, 2020
+    'motor', 'Petrol', 150, 2020, 1
 ),
 (
     16, 'Kawasaki Ninja 250', 'Kawasaki', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
-    'motor', 'Xăng', 250, 2018
+    'motor', 'Xăng', 250, 2018, 1
 ),
 (
     17, 'Honda SH150i', 'Honda', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
-    'motor', 'Xăng', 150, 2020
+    'motor', 'Xăng', 150, 2020, 1
 ),
 (
     18, 'Suzuki V-Strom 650', 'Suzuki', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
-    'motor', 'Xăng', 650, 2021
+    'motor', 'Xăng', 650, 2021, 1
 );
 
 INSERT INTO car (car_id, transmission, baggage_capacity, seats) VALUES
@@ -111,7 +111,6 @@ INSERT INTO office (attraction_id, rental_facility_id) VALUES
 (22, 8), (23, 8), (24, 8),
 (25, 9);
 
-SET FOREIGN_KEY_CHECKS = 0;
 INSERT INTO rental_vehicle (vehicle_id, rental_facility_id, price, stake, available_vehicle) VALUES
 (1, 1, 500000, 1500000, 5),
 (1, 3, 520000, 1560000, 4),
@@ -166,15 +165,7 @@ INSERT INTO rental_vehicle (vehicle_id, rental_facility_id, price, stake, availa
 (17, 5, 450000, 1350000, 4),
 (18, 3, 350000, 1050000, 6),
 (18, 1, 360000, 1080000, 5),
-(18, 6, 380000, 1140000, 7),
-(19, 2, 150000, 450000, 12),
-(19, 4, 170000, 510000, 10),
-(19, 8, 180000, 540000, 11),
-(20, 5, 500000, 1500000, 4),
-(20, 7, 520000, 1560000, 3),
-(20, 1, 550000, 1650000, 2),
-(20, 9, 200000, 1652100, 9);
-SET FOREIGN_KEY_CHECKS = 1;
+(18, 6, 380000, 1140000, 7);
 
 INSERT INTO accessory (name, price, type, max_value) VALUES
 ('GPS', 300000, 'car', 1),

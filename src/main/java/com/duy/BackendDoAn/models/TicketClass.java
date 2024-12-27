@@ -1,7 +1,11 @@
 package com.duy.BackendDoAn.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "ticket_class")
@@ -18,19 +22,28 @@ public class TicketClass {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "available_ticket")
-    private Long available_ticket;
+    @Column(name = "price")
+    private Long price;
 
-    @Column(name = "adult_price")
-    private Long adult_price;
-
-    @Column(name = "children_price")
-    private Long children_price;
+    @Column(name = "max_amount")
+    private Long maxAmount;
 
     @Column(name = "description")
     private String description;
 
+    @Column(name = "active")
+    private boolean active;
+
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "tour_id")
     private Tour tour;
+
+    @OneToMany(mappedBy = "ticketClass", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<DailyTicketAvailability> dailyTicketAvailabilities;
+
+    @OneToMany(mappedBy = "ticketClass", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<BookedTicket> bookedTickets;
 }
