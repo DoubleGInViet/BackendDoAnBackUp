@@ -1,14 +1,14 @@
 INSERT INTO users (id, name, first_name, last_name, phone_number, avatar, email, country, address, date_of_birth, active, password, role)
 VALUES
 (
-    1, 'admin01', NULL, NULL, NULL,
+    1, 'admin', NULL, NULL, NULL,
     'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/UNKNOWN_USER.PNG?alt=media&token=5a0b3bba-f852-491c-8f50-c532be5ca4b0',
-    'admin01@hanoitravel.com.vn', NULL, NULL, '2002-10-08', 1,
+    'hanoitravel292@gmail.com', 'VN', NULL, '2002-10-10', 1,
     '$2a$10$xtiuHyOW7CRExUx0dt9wquac2hDwiXzsZkPyYsp0HlQh5oB7DChqi', 'ADMIN'
 ),
 (
     2, 'ddthumonky0810', 'Do', 'Duc Thu', NULL,
-    'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/UNKNOWN_USER.PNG?alt=media&token=5a0b3bba-f852-491c-8f50-c532be5ca4b0',
+    'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/user%2FMU%20logo%202.jpg?alt=media&token=03e14c67-c815-46fb-a864-06e2b919dffd',
     'ddthumonky0810@gmail.com', 'VN', NULL, '2002-10-08', 1,
     '$2a$10$xtiuHyOW7CRExUx0dt9wquac2hDwiXzsZkPyYsp0HlQh5oB7DChqi', 'USER'
 ),
@@ -22,6 +22,18 @@ VALUES
     4, 'vuxuanhoai28', 'Vu', 'Xuan Hoai', NULL,
     'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/UNKNOWN_USER.PNG?alt=media&token=5a0b3bba-f852-491c-8f50-c532be5ca4b0',
     'vuxuanhoai28@gmail.com', 'VN', NULL, NULL, 1,
+    '$2a$10$xtiuHyOW7CRExUx0dt9wquac2hDwiXzsZkPyYsp0HlQh5oB7DChqi', 'USER'
+),
+(
+     5, 'ddthupapio88', 'Do', 'Duc Thu', NULL,
+     'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/user%2FMU%20logo%202.jpg?alt=media&token=03e14c67-c815-46fb-a864-06e2b919dffd',
+     'dothutsk2k2@gmail.com', 'VN', NULL, NULL, 1,
+     '$2a$10$xtiuHyOW7CRExUx0dt9wquac2hDwiXzsZkPyYsp0HlQh5oB7DChqi', 'USER'
+),
+(
+    6, 'hanghonghach2910', 'Nguyen', 'Thi Minh Hang', NULL,
+    'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/UNKNOWN_USER.PNG?alt=media&token=5a0b3bba-f852-491c-8f50-c532be5ca4b0',
+    'hanghonghach2910@gmail.com', 'VN', NULL, NULL, 1,
     '$2a$10$xtiuHyOW7CRExUx0dt9wquac2hDwiXzsZkPyYsp0HlQh5oB7DChqi', 'USER'
 );
 
@@ -248,7 +260,104 @@ INSERT INTO attraction (name, address, type, image, latitude, longitude, city_id
     'Ga Hải Phòng',
     'Hải Phòng', 'traffic', NULL,
     20.856035848707947, 106.68722214965443, 15
+),
+(
+    'Bãi biển Nha Trang',
+    'Nha Trang, Khánh Hòa', 'beach', NULL,
+    12.238791, 109.196749, 79
+),
+(
+    'Bãi Dài',
+    'Cam Lâm, Khánh Hòa', 'beach', NULL,
+    12.053741, 109.197007, 79
+),
+(
+    'Bãi biển Mỹ Khê',
+    'Sơn Trà, Đà Nẵng', 'beach', NULL,
+    16.066885, 108.249937, 43
+),
+(
+    'Bãi biển Non Nước',
+    'Ngũ Hành Sơn, Đà Nẵng', 'beach', NULL,
+    15.998387, 108.273544, 43
+),
+(
+    'Bãi biển An Bàng',
+    'Hội An, Quảng Nam', 'beach', NULL,
+    15.903062, 108.342382, 92
+),
+(
+    'Bãi biển Cửa Đại',
+    'Hội An, Quảng Nam', 'beach', NULL,
+    15.876368, 108.364575, 92
+),
+(
+    'Bãi biển Phú Quốc',
+    'Phú Quốc, Kiên Giang', 'beach', NULL,
+    10.227039, 103.960739, 68
+),
+(
+    'Bãi biển Nhật Lệ',
+    'Đồng Hới, Quảng Bình', 'beach', NULL,
+    17.478971, 106.620835, 73
+),
+(
+    'Bãi biển Côn Đảo',
+    'Côn Đảo, Bà Rịa-Vũng Tàu', 'beach', NULL,
+    8.682553, 106.616159, 72
+),
+(
+    'Bãi biển Trà Cổ',
+    'Móng Cái, Quảng Ninh', 'beach', NULL,
+    21.521052, 108.045566, 14
+),
+(
+  'Công viên Tao Đàn',
+  'Quận 1, TP.HCM', 'park', NULL,
+  10.771869, 106.695237, 41
+),
+(
+  'Công viên 30/4',
+  'Quận 1, TP.HCM', 'park', NULL,
+  10.776211, 106.698524, 41
+),
+(
+  'Công viên Thống Nhất',
+  'Hai Bà Trưng, Hà Nội', 'park', NULL,
+  21.016913, 105.841138, 29
+),
+(
+  'Công viên Cầu Giấy',
+  'Cầu Giấy, Hà Nội', 'park', NULL,
+  21.033633, 105.794182, 29
+),
+(
+  'Công viên Bách Thảo',
+  'Ba Đình, Hà Nội', 'park', NULL,
+  21.043531, 105.832612, 29
+),
+(
+  'Công viên Văn hóa Đầm Sen',
+  'Quận 11, TP.HCM', 'park', NULL,
+  10.762345, 106.635867, 41
+),
+(
+  'Công viên Biển Đông',
+  'Sơn Trà, Đà Nẵng', 'park', NULL,
+  16.082414, 108.246243, 43
+),
+(
+  'Công viên APEC',
+  'Hải Châu, Đà Nẵng', 'park', NULL,
+  16.040649, 108.219942, 43
+),
+(
+  'Công viên Suối Mơ',
+  'Long Khánh, Đồng Nai', 'park', NULL,
+  11.325803, 107.295418, 60
+),
+(
+  'Công viên VinWonders',
+  'Phú Quốc, Kiên Giang', 'park', NULL,
+  10.377183, 103.919659, 68
 );
-
-
-
