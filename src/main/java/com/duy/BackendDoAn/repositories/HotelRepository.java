@@ -15,7 +15,7 @@ public interface HotelRepository extends JpaRepository<Hotel, Long> {
         "SELECT DISTINCT h FROM Hotel h " +
         "JOIN h.rooms r " +
         "JOIN h.city c " +
-        "WHERE (:keyword IS NULL OR REPLACE(c.city_name, ' ', '') LIKE %:keyword%) " +
+        "WHERE h.active = true AND (:keyword IS NULL OR REPLACE(c.city_name, ' ', '') LIKE %:keyword%) " +
         "GROUP BY h " +
         "HAVING COALESCE(SUM(r.available_room), 0) >= :noRooms"
     )

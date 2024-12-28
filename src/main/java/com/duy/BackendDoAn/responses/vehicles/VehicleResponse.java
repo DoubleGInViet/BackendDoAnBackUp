@@ -93,6 +93,4 @@ public class VehicleResponse {
                 .anyMatch(office -> office.getAttraction() != null &&
                         city.equals(office.getAttraction().getCity()));
     }
-
-
 }

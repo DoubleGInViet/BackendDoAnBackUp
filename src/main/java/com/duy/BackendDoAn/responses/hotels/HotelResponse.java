@@ -2,6 +2,7 @@ package com.duy.BackendDoAn.responses.hotels;
 
 import com.duy.BackendDoAn.models.Hotel;
 import com.duy.BackendDoAn.models.HotelImage;
+import com.duy.BackendDoAn.models.Room;
 import com.duy.BackendDoAn.responses.RoomResponse;
 import com.duy.BackendDoAn.responses.cities.CityResponse;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -111,6 +112,7 @@ public class HotelResponse {
         // Check if rooms list is null
         response.rooms = (hotel.getRooms() != null)
                 ? hotel.getRooms().stream()
+                .filter(Room::isActive)
                 .map(RoomResponse::fromRoom)
                 .collect(Collectors.toList())
                 : new ArrayList<>(); // default empty list

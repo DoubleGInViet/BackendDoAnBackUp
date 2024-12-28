@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.swing.text.html.Option;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.Random;
 import java.util.regex.Matcher;
@@ -55,6 +56,7 @@ public class UserService {
                 .avatar(unknownUserAvatar)
                 .email(userRegisterDTO.getEmail())
                 .active(true)
+                .date_of_birth(LocalDate.of(1990, 1, 1))
                 .password(userRegisterDTO.getPassword())
                 .role(Optional.ofNullable(userRegisterDTO.getRole()).orElse("USER"))
                 .build();

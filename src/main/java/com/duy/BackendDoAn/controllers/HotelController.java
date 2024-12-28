@@ -133,13 +133,13 @@ public class HotelController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteHotel(@PathVariable("id") long id){
+    public ResponseEntity<HotelResponse> deleteHotel(@PathVariable("id") long id){
         try {
-            hotelService.deleteHotel(id);
-            return ResponseEntity.ok(String.format("Hotel with id = %d deleted successfully", id));
+            Hotel deactivedHotel = hotelService.deleteHotel(id);
+            return ResponseEntity.ok(HotelResponse.fromHotel(deactivedHotel));
         }
         catch (Exception e){
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().body(null);
         }
     }
 

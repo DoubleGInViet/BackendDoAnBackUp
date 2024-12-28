@@ -26,9 +26,9 @@ public class TourScheduleService {
     @Scheduled(cron = "0 * * * * *")
     public void generateTourSchedules() {
         LocalDate today = LocalDate.now();
-        LocalDate endDate = today.plusDays(11);
+        LocalDate endDate = today.plusDays(2);
 
-        List<Tour> allTours = tourRepository.findAll();
+        List<Tour> allTours = tourRepository.findAllActiveHotels();
         for(Tour tour : allTours) {
             for(TourSchedule tourSchedule: tour.getTourSchedules()) {
                 for (LocalDate date = today; !date.isAfter(endDate); date = date.plusDays(1)) {
