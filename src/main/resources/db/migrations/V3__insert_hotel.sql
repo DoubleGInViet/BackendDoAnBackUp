@@ -2,7 +2,7 @@ INSERT INTO hotel (
     hotel_name, hotel_email, phone_number, address, latitude, longitude, description,
     check_in_time, check_out_time, website, review_count,
     city_id, type_of_hotel, cancellation_policy, deposit_required, pets_allowed,
-    smoking_policy, extra_bed_policy, active
+    smoking_policy, party_allowed, active
 ) VALUES
 (
     'Furama Resort Danang',

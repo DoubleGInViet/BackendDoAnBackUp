@@ -40,35 +40,35 @@ INSERT INTO vehicle (id, name, brand, image_url, vehicle_type, fuel, engine, yea
     'car', 'Xăng', 2.5, 2022, 1
 ),
 (
-    11, 'Yamaha Exciter 150', 'Yamaha', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
+    11, 'Yamaha Exciter 150', 'Yamaha', 'https://firebasestorage.googleapis.com/v0/b/backenddoan-4e905.firebasestorage.app/o/Default_motor.PNG?alt=media&token=ba8a8a55-1e84-4834-812f-6421be9fa38e',
     'motor', 'Xăng', 150, 2020, 1
 ),
 (
-    12, 'Honda Winner X', 'Honda', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
+    12, 'Honda Winner X', 'Honda', 'https://firebasestorage.googleapis.com/v0/b/backenddoan-4e905.firebasestorage.app/o/Default_motor.PNG?alt=media&token=ba8a8a55-1e84-4834-812f-6421be9fa38e',
     'motor', 'Xăng', 150, 2021, 1
 ),
 (
-    13, 'Suzuki Raider 150', 'Suzuki', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
+    13, 'Suzuki Raider 150', 'Suzuki', 'https://firebasestorage.googleapis.com/v0/b/backenddoan-4e905.firebasestorage.app/o/Default_motor.PNG?alt=media&token=ba8a8a55-1e84-4834-812f-6421be9fa38e',
     'motor', 'Xăng', 150, 2019, 1
 ),
 (
-    14, 'Yamaha MT-15', 'Yamaha', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
+    14, 'Yamaha MT-15', 'Yamaha', 'https://firebasestorage.googleapis.com/v0/b/backenddoan-4e905.firebasestorage.app/o/Default_motor.PNG?alt=media&token=ba8a8a55-1e84-4834-812f-6421be9fa38e',
     'motor', 'Xăng', 155, 2021, 1
 ),
 (
-    15, 'Honda CBR150R', 'Honda', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
+    15, 'Honda CBR150R', 'Honda', 'https://firebasestorage.googleapis.com/v0/b/backenddoan-4e905.firebasestorage.app/o/Default_motor.PNG?alt=media&token=ba8a8a55-1e84-4834-812f-6421be9fa38e',
     'motor', 'Petrol', 150, 2020, 1
 ),
 (
-    16, 'Kawasaki Ninja 250', 'Kawasaki', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
+    16, 'Kawasaki Ninja 250', 'Kawasaki', 'https://firebasestorage.googleapis.com/v0/b/backenddoan-4e905.firebasestorage.app/o/Default_motor.PNG?alt=media&token=ba8a8a55-1e84-4834-812f-6421be9fa38e',
     'motor', 'Xăng', 250, 2018, 1
 ),
 (
-    17, 'Honda SH150i', 'Honda', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
+    17, 'Honda SH150i', 'Honda', 'https://firebasestorage.googleapis.com/v0/b/backenddoan-4e905.firebasestorage.app/o/Default_motor.PNG?alt=media&token=ba8a8a55-1e84-4834-812f-6421be9fa38e',
     'motor', 'Xăng', 150, 2020, 1
 ),
 (
-    18, 'Suzuki V-Strom 650', 'Suzuki', 'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/car%2Fdefault_lrg.jpg?alt=media&token=bc8c6c9b-a920-436c-8bf6-38e35f62d331',
+    18, 'Suzuki V-Strom 650', 'Suzuki', 'https://firebasestorage.googleapis.com/v0/b/backenddoan-4e905.firebasestorage.app/o/Default_motor.PNG?alt=media&token=ba8a8a55-1e84-4834-812f-6421be9fa38e',
     'motor', 'Xăng', 650, 2021, 1
 );
 

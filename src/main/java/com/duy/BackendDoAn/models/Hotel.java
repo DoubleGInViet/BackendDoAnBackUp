@@ -64,8 +64,8 @@ public class Hotel {
     @Column(name = "smoking_policy")
     private boolean smoking_policy;
 
-    @Column(name = "extra_bed_policy")
-    private boolean extra_bed_policy;
+    @Column(name = "party_allowed")
+    private boolean party_allowed;
 
     @Column(name = "active")
     private boolean active;

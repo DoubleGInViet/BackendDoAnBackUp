@@ -42,7 +42,7 @@ CREATE TABLE hotel (
     deposit_required NVARCHAR(255),
     pets_allowed TINYINT(1),
     smoking_policy TINYINT(1),
-    extra_bed_policy TINYINT(1),
+    party_allowed TINYINT(1),
     active TINYINT(1),
     CONSTRAINT fk_hotel_city FOREIGN KEY (city_id) REFERENCES city(id)
 );

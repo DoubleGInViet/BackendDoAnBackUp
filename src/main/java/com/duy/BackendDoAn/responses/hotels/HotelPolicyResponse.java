@@ -22,8 +22,8 @@ public class HotelPolicyResponse {
     @JsonProperty("smoking_policy")
     private boolean smokingPolicy;
 
-    @JsonProperty("extra_bed_policy")
-    private boolean extraBedPolicy;
+    @JsonProperty("party_allowed")
+    private boolean partyAllowed;
 
     public static HotelPolicyResponse fromHotelPolicy(Hotel hotel){
         HotelPolicyResponse hotelPolicyResponse = HotelPolicyResponse.builder()
@@ -31,7 +31,7 @@ public class HotelPolicyResponse {
                 .depositRequired(hotel.getDeposit_required())
                 .petsAllowed(hotel.isPets_allowed())
                 .smokingPolicy(hotel.isSmoking_policy())
-                .extraBedPolicy(hotel.isExtra_bed_policy())
+                .partyAllowed(hotel.isParty_allowed())
                 .build();
         return hotelPolicyResponse;
     }
