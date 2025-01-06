@@ -31,8 +31,6 @@ public class BookingTicketService {
     public BookingTicket createBookingTicket(BookingTicketDTO bookingTicketDTO) throws Exception {
         User user = userRepository.findById(bookingTicketDTO.getUserId())
                 .orElseThrow(()-> new Exception("User not found!!"));
-        TourSchedule tourSchedule = tourScheduleRepository.findById(bookingTicketDTO.getTourScheduleId())
-                .orElseThrow(()-> new Exception("Tour schedule not found!!"));
         String id = generateUniqueBookingTicketId();
         BookingTicket bookingTicket = BookingTicket.builder()
                 .id(id)
@@ -40,7 +38,6 @@ public class BookingTicketService {
                 .customerEmail(bookingTicketDTO.getCustomerEmail())
                 .customerPhoneNumber(bookingTicketDTO.getCustomerPhoneNumber())
                 .customerCountry(bookingTicketDTO.getCustomerCountry())
-                .tourSchedule(tourSchedule)
                 .booking_date(LocalDate.now())
                 .user(user)
                 .status("0")
@@ -48,20 +45,22 @@ public class BookingTicketService {
 
         Long total_price = 0L;
         List<BookedTicket> instance = new ArrayList<>();
+        TourSchedule tourSchedule = new TourSchedule();
         for(BookedTicketDTO bookedTicketDTO : bookingTicketDTO.getBookedTickets()){
-            TicketClass ticketClass = ticketClassRepository.findById(bookedTicketDTO.getTicketClassId())
+            DailyTicketAvailability availability = dailyTicketAvailabilityRepository.findById(bookedTicketDTO.getTicketClassId())
+                    .orElseThrow(()-> new Exception("Daily ticket availability not exist!!"));
+
+            TicketClass ticketClass = ticketClassRepository.findById(availability.getTicketClass().getId())
                     .orElseThrow(()-> new Exception("Ticket class not found!!"));
             BookedTicket bookedTicket = BookedTicket.builder()
                     .quantity(bookedTicketDTO.getQuantity())
                     .priceWithQuantity(bookedTicketDTO.getQuantity() * ticketClass.getPrice())
-                    .ticketClass(ticketClass)
+                    .availability(availability)
                     .bookingTicket(bookingTicket)
                     .build();
             instance.add(bookedTicket);
             total_price += bookedTicket.getPriceWithQuantity();
-            DailyTicketAvailability availability = dailyTicketAvailabilityRepository
-                    .findByTourScheduleAndTicketClass(tourSchedule, ticketClass)
-                    .orElseThrow(()-> new Exception("Daily ticket not found!!"));
+
             availability.setAvailableTicket(availability.getAvailableTicket() - bookedTicket.getQuantity());
             dailyTicketAvailabilityRepository.save(availability);
         }

@@ -16,9 +16,6 @@ public class BookingTicketDTO {
     @JsonProperty("user")
     private Long userId;
 
-    @JsonProperty("tour_schedule")
-    private Long tourScheduleId;
-
     @JsonProperty("full_name")
     private String customerFullName;
 

@@ -1,10 +1,12 @@
 package com.duy.BackendDoAn.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "daily_ticket_availability")
@@ -33,4 +35,8 @@ public class DailyTicketAvailability {
 
     @Column(name = "available_ticket")
     private Long availableTicket;
+
+    @OneToMany(mappedBy = "availability", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<BookedTicket> bookedTickets;
 }

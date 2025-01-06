@@ -15,25 +15,25 @@ VALUES
 (
     3, 'daoquangduy441', 'Dao', 'Quang Duy', NULL,
     'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/UNKNOWN_USER.PNG?alt=media&token=5a0b3bba-f852-491c-8f50-c532be5ca4b0',
-    'daoquangduy441@gmail.com', 'VN', NULL, NULL, 1,
+    'daoquangduy441@gmail.com', 'VN', NULL, '2002-10-22', 1,
     '$2a$10$xtiuHyOW7CRExUx0dt9wquac2hDwiXzsZkPyYsp0HlQh5oB7DChqi', 'USER'
 ),
 (
     4, 'vuxuanhoai28', 'Vu', 'Xuan Hoai', NULL,
     'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/UNKNOWN_USER.PNG?alt=media&token=5a0b3bba-f852-491c-8f50-c532be5ca4b0',
-    'vuxuanhoai28@gmail.com', 'VN', NULL, NULL, 1,
+    'vuxuanhoai28@gmail.com', 'VN', NULL, '2002-10-28', 1,
     '$2a$10$xtiuHyOW7CRExUx0dt9wquac2hDwiXzsZkPyYsp0HlQh5oB7DChqi', 'USER'
 ),
 (
      5, 'ddthupapio88', 'Do', 'Duc Thu', NULL,
      'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/user%2FMU%20logo%202.jpg?alt=media&token=03e14c67-c815-46fb-a864-06e2b919dffd',
-     'dothutsk2k2@gmail.com', 'VN', NULL, NULL, 1,
+     'dothutsk2k2@gmail.com', 'VN', NULL, '2002-10-08', 1,
      '$2a$10$xtiuHyOW7CRExUx0dt9wquac2hDwiXzsZkPyYsp0HlQh5oB7DChqi', 'USER'
 ),
 (
     6, 'hanghonghach2910', 'Nguyen', 'Thi Minh Hang', NULL,
     'https://firebasestorage.googleapis.com/v0/b/travel-web-7b510.appspot.com/o/UNKNOWN_USER.PNG?alt=media&token=5a0b3bba-f852-491c-8f50-c532be5ca4b0',
-    'hanghonghach2910@gmail.com', 'VN', NULL, NULL, 1,
+    'hanghonghach2910@gmail.com', 'VN', NULL, '2002-10-29', 1,
     '$2a$10$xtiuHyOW7CRExUx0dt9wquac2hDwiXzsZkPyYsp0HlQh5oB7DChqi', 'USER'
 );
 

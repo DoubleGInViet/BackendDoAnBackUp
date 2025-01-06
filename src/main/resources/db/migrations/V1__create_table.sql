@@ -305,9 +305,7 @@ CREATE TABLE booking_ticket (
     customer_country NVARCHAR(255),
     status NVARCHAR(255),
     total_price INT,
-    tour_schedule_id INT,
     user_id INT,
-    CONSTRAINT fk_booking_ticket_tour_schedule foreign key (tour_schedule_id) references tour_schedule(id),
     CONSTRAINT fk_booking_ticket_user foreign key (user_id) references users(id)
 );
 
@@ -315,9 +313,9 @@ CREATE TABLE booked_ticket (
     id INT AUTO_INCREMENT PRIMARY KEY,
     quantity INT,
     price_with_quantity INT,
-    ticket_class_id INT,
+    daily_ticket_availability_id INT,
     booking_ticket_id NVARCHAR(8),
-    CONSTRAINT fk_booked_ticket_class foreign key (ticket_class_id) references ticket_class(id),
+    CONSTRAINT fk_booked_daily_ticket_availability foreign key (daily_ticket_availability_id) references daily_ticket_availability(id),
     CONSTRAINT fk_booked_ticket_booking foreign key (booking_ticket_id) references booking_ticket(id)
 );
 

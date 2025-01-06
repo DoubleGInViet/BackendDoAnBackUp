@@ -24,9 +24,9 @@ public class BookedTicket {
     private Long priceWithQuantity;
 
     @ManyToOne
-    @JoinColumn(name = "ticket_class_id")
+    @JoinColumn(name = "daily_ticket_availability_id")
     @JsonBackReference
-    private TicketClass ticketClass;
+    private DailyTicketAvailability availability;
 
     @ManyToOne
     @JoinColumn(name = "booking_ticket_id")

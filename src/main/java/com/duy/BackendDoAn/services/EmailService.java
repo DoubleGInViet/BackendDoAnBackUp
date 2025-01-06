@@ -74,7 +74,7 @@ public class EmailService {
 
             helper.setFrom("no-reply@hotelbooking.com", "Hotel Booking");
             helper.setTo(bookingTicketResponse.getCustomerResponse().getEmail());
-            helper.setSubject("Booking Vehicle Successfully");
+            helper.setSubject("Booking Ticket Successfully");
             String emailContent = buildEmailBookingTicketBody(bookingTicketResponse);
             helper.setText(emailContent, true);  // true để xác định đây là HTML content
 

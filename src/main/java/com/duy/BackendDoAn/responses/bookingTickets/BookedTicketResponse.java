@@ -25,9 +25,9 @@ public class BookedTicketResponse {
 
     public static BookedTicketResponse fromBookedTicket(BookedTicket bookedTicket) {
         return BookedTicketResponse.builder()
-                .ticketClass(bookedTicket.getTicketClass().getName())
+                .ticketClass(bookedTicket.getAvailability().getTicketClass().getName())
                 .quantity(bookedTicket.getQuantity())
-                .unitPrice(bookedTicket.getTicketClass().getPrice())
+                .unitPrice(bookedTicket.getAvailability().getTicketClass().getPrice())
                 .priceMulAmount(bookedTicket.getPriceWithQuantity())
                 .build();
     }

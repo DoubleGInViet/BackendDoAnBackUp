@@ -1,8 +1,11 @@
 package com.duy.BackendDoAn.responses.bookingTickets;
 
 import com.duy.BackendDoAn.models.Tour;
+import com.duy.BackendDoAn.models.TourSchedule;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+
+import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
@@ -18,11 +21,15 @@ public class TourResponse {
     @JsonProperty("city")
     private String cityName;
 
-    public static TourResponse fromTour(Tour tour){
+    @JsonProperty("happen_time")
+    private String happenTime;
+
+    public static TourResponse fromTour(TourSchedule tourSchedule){
         return TourResponse.builder()
-                .id(tour.getId())
-                .tourName(tour.getName())
-                .cityName(tour.getAttraction().getCity().getCity_name())
+                .id(tourSchedule.getTour().getId())
+                .tourName(tourSchedule.getTour().getName())
+                .cityName(tourSchedule.getTour().getAttraction().getCity().getCity_name())
+                .happenTime(tourSchedule.getStartTime().format(DateTimeFormatter.ofPattern("hh:mm")))
                 .build();
     }
 }

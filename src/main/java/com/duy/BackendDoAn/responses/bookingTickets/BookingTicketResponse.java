@@ -25,6 +25,9 @@ public class BookingTicketResponse {
     @JsonProperty("total_price")
     private Long totalPrice;
 
+    @JsonProperty("happen_date")
+    private String happenDate;
+
     @JsonProperty("tour")
     private TourResponse tourResponse;
 
@@ -40,8 +43,11 @@ public class BookingTicketResponse {
                 .bookingDate(bookingTicket.getBooking_date().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .status(bookingTicket.getStatus())
                 .totalPrice(bookingTicket.getTotal_price())
+                .happenDate(bookingTicket.getBookedTickets().get(0).getAvailability()
+                        .getHappenDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .tourResponse(
-                        TourResponse.fromTour(bookingTicket.getTourSchedule().getTour())
+                        TourResponse.fromTour(bookingTicket.getBookedTickets().get(0)
+                                .getAvailability().getTourSchedule())
                 )
                 .bookedTicketResponses(
                         bookingTicket.getBookedTickets().stream()

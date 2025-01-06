@@ -34,9 +34,5 @@ public class TourSchedule {
 
     @OneToMany(mappedBy = "tourSchedule", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
-    private List<BookingTicket> bookingTickets;
-
-    @OneToMany(mappedBy = "tourSchedule", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonManagedReference
     private List<DailyTicketAvailability> dailyTicketAvailabilities;
 }

@@ -42,10 +42,6 @@ public class BookingTicket {
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "tour_schedule_id")
-    private TourSchedule tourSchedule;
-
-    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
