@@ -56,12 +56,12 @@ public class BookingVehicleService {
                 .status(bookingVehicleDTO.getStatus())
                 .user(user)
                 .build();
-        Long total = 0L;
+        Long total_price = 0L;
         Long total_service = 0L;
 
         LocalDateTime startDateTime = LocalDateTime.of(bookingVehicle.getStart_date(), bookingVehicle.getStart_time());
         LocalDateTime returnDateTime = LocalDateTime.of(bookingVehicle.getReturn_date(), bookingVehicle.getReturn_time());
-        total += vehicleRentalFacility.getPrice() * (ChronoUnit.DAYS.between(bookingVehicle.getStart_date(), bookingVehicle.getReturn_date()) +1 );
+        total_price += vehicleRentalFacility.getPrice() * (ChronoUnit.DAYS.between(bookingVehicle.getStart_date(), bookingVehicle.getReturn_date()));
 
         List<AccessoryBooking> accessoryBookingList = new ArrayList<>();
         for(AccessoryBookingDTO accessoryBookingDTO: bookingVehicleDTO.getAccessoryBookings()){
@@ -72,11 +72,10 @@ public class BookingVehicleService {
                     .accessory(accessory)
                     .bookingVehicle(bookingVehicle)
                     .build();
-            total += accessoryBooking.getPrice_per();
             total_service += accessoryBooking.getPrice_per();
             accessoryBookingList.add(accessoryBooking);
         }
-        bookingVehicle.setTotal_price(total);
+        bookingVehicle.setTotal_price(total_price);
         bookingVehicle.setTotalService(total_service);
 
         List<AdditionDriver> additionDriverList = new ArrayList<>();
