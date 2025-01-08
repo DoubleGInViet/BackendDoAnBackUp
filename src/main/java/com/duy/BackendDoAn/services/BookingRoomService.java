@@ -126,7 +126,7 @@ public class BookingRoomService {
         bookingRoomRepository.save(newBookingRoom);
         BookingRoomResponse response = BookingRoomResponse.fromBooking(newBookingRoom);
 
-        String initPaymentResponse = paymentService.createVnPayPayment(id, total, "room", request);
+        String initPaymentResponse = paymentService.createVnPayPaymentBooking(id, total, "room", request);
         return BookingRoomPaymentLinkResponse.builder()
                 .bookingRoom(response)
                 .payment(initPaymentResponse)
