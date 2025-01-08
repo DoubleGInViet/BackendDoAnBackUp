@@ -80,46 +80,7 @@ public class BookingTicketService {
     }
 
 
-    public BookingTicket createBookingTicket(BookingTicketDTO bookingTicketDTO) throws Exception {
-        User user = userRepository.findById(bookingTicketDTO.getUserId())
-                .orElseThrow(()-> new Exception("User not found!!"));
-        String id = generateUniqueBookingTicketId();
-        BookingTicket bookingTicket = BookingTicket.builder()
-                .id(id)
-                .customerFullName(bookingTicketDTO.getCustomerFullName())
-                .customerEmail(bookingTicketDTO.getCustomerEmail())
-                .customerPhoneNumber(bookingTicketDTO.getCustomerPhoneNumber())
-                .customerCountry(bookingTicketDTO.getCustomerCountry())
-                .booking_date(LocalDateTime.now())
-                .user(user)
-                .status("0")
-                .build();
 
-        Long total_price = 0L;
-        List<BookedTicket> instance = new ArrayList<>();
-
-        for(BookedTicketDTO bookedTicketDTO : bookingTicketDTO.getBookedTickets()){
-            DailyTicketAvailability availability = dailyTicketAvailabilityRepository.findById(bookedTicketDTO.getTicketClassId())
-                    .orElseThrow(()-> new Exception("Daily ticket availability not exist!!"));
-
-            TicketClass ticketClass = ticketClassRepository.findById(availability.getTicketClass().getId())
-                    .orElseThrow(()-> new Exception("Ticket class not found!!"));
-            BookedTicket bookedTicket = BookedTicket.builder()
-                    .quantity(bookedTicketDTO.getQuantity())
-                    .priceWithQuantity(bookedTicketDTO.getQuantity() * ticketClass.getPrice())
-                    .availability(availability)
-                    .bookingTicket(bookingTicket)
-                    .build();
-            instance.add(bookedTicket);
-            total_price += bookedTicket.getPriceWithQuantity();
-
-            availability.setAvailableTicket(availability.getAvailableTicket() - bookedTicket.getQuantity());
-            dailyTicketAvailabilityRepository.save(availability);
-        }
-        bookingTicket.setTotal_price(total_price);
-        bookingTicket.setBookedTickets(instance);
-        return bookingTicketRepository.save(bookingTicket);
-    }
 
 
     public Page<BookingTicketResponse> getBookingByUser(Long id, PageRequest pageRequest) throws Exception {

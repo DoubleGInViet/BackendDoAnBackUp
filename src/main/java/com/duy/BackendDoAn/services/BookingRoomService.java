@@ -165,7 +165,7 @@ public class BookingRoomService {
 
     public BookingRoom updateStatusBooking(String id, BookingRoomDTO bookingRoomDTO) throws Exception {
         BookingRoom bookingRoom = bookingRoomRepository.findById(id).orElseThrow(()-> new Exception("Booking not found"));
-        Set<String> validStatuses = Set.of("0", "1", "2");
+        Set<String> validStatuses = Set.of("CONFIRMED", "WAITING", "REFUSED");
         if(!validStatuses.contains(bookingRoomDTO.getStatus().toUpperCase())){
             throw new Exception("Status not found");
         }
