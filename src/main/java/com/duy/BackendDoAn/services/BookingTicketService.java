@@ -29,7 +29,7 @@ public class BookingTicketService {
     private final DailyTicketAvailabilityRepository dailyTicketAvailabilityRepository;
 
 
-    public BookingTicketPaymentLinkResponse createBookingTicket(BookingTicketDTO bookingTicketDTO, HttpServletRequest request) throws Exception {
+    public BookingTicketPaymentLinkResponse createBookingTicketPayment(BookingTicketDTO bookingTicketDTO, HttpServletRequest request) throws Exception {
         User user = userRepository.findById(bookingTicketDTO.getUserId())
                 .orElseThrow(()-> new Exception("User not found!!"));
         String id = generateUniqueBookingTicketId();
@@ -71,13 +71,17 @@ public class BookingTicketService {
         BookingTicketResponse response = BookingTicketResponse.fromBooking(bookingTicket);
 
         //Payment
-        String initPaymentResponse = (paymentService.createVnPayPayment(id, bookingTicket.getTotal_price(), "ticket", request));
+        String initPaymentResponse = (paymentService.createVnPayPaymentBooking(id, bookingTicket.getTotal_price(), "ticket", request));
 
         return BookingTicketPaymentLinkResponse.builder()
                 .bookingTicket(response)
                 .payment(initPaymentResponse)
                 .build();
     }
+
+
+
+
 
     public Page<BookingTicketResponse> getBookingByUser(Long id, PageRequest pageRequest) throws Exception {
         User user = userRepository.findById(id).orElseThrow(() -> new Exception("User not found!!"));

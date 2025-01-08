@@ -21,11 +21,11 @@ public class PaymentController {
     private final PaymentService paymentService;
     private final BookingRoomService bookingRoomService;
     private final BookingTicketService bookingTicketService;
-//    @GetMapping("/vn-pay")
-//    public ResponseEntity<VnPayResponse> pay(HttpServletRequest request) {
-//        VnPayResponse response = paymentService.createVnPayPayment(request);
-//        return ResponseEntity.ok(response);
-//    }
+    @GetMapping("/vn-pay")
+    public ResponseEntity<VnPayResponse> pay(HttpServletRequest request) {
+        VnPayResponse response = paymentService.createVnPayPayment(request);
+        return ResponseEntity.ok(response);
+    }
 
     @GetMapping("/vn-pay-callback")
     public void payCallbackHandler(HttpServletRequest request, HttpServletResponse response) throws Exception {
