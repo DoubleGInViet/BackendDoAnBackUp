@@ -93,7 +93,7 @@ public class BookingRoomController {
         return ResponseEntity.ok("Delete booking successfully");
     }
 
-    @GetMapping
+    @GetMapping("/status")
     public ResponseEntity<String> getPaymentStatus(@RequestParam("id") String id) throws Exception {
         String status = bookingRoomService.getPaymentStatus(id);
         return ResponseEntity.ok(status);
