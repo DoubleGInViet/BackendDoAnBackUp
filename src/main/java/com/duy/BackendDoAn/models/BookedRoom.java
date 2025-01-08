@@ -23,6 +23,7 @@ public class BookedRoom {
     private Long price_per;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "room_id")
     private Room room;
 

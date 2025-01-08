@@ -2,10 +2,12 @@ package com.duy.BackendDoAn.controllers;
 
 import com.duy.BackendDoAn.dtos.BookingRoomDTO;
 import com.duy.BackendDoAn.models.BookingRoom;
+import com.duy.BackendDoAn.responses.bookingRooms.BookingRoomPaymentLinkResponse;
 import com.duy.BackendDoAn.responses.bookingRooms.BookingRoomListResponse;
 import com.duy.BackendDoAn.responses.bookingRooms.BookingRoomResponse;
 import com.duy.BackendDoAn.services.BookingRoomService;
 import com.duy.BackendDoAn.services.EmailService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -29,6 +31,12 @@ public class BookingRoomController {
         BookingRoomResponse bookingRoomResponse = BookingRoomResponse.fromBooking(bookingRoom);
         emailService.sendBookingEmail(bookingRoomResponse);
         return ResponseEntity.ok(bookingRoomResponse);
+    }
+
+    @PostMapping("/online")
+    public ResponseEntity<BookingRoomPaymentLinkResponse> createBookingPayment(@Valid @RequestBody BookingRoomDTO bookingRoomDTO, HttpServletRequest request) throws Exception {
+        BookingRoomPaymentLinkResponse booking = bookingRoomService.createBookingPayment(bookingRoomDTO, request);
+        return ResponseEntity.ok(booking);
     }
 
     @PutMapping("/{id}")

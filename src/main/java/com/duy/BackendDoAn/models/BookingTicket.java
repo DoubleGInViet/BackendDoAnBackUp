@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -21,7 +22,7 @@ public class BookingTicket {
     private String id;
 
     @Column(name = "booking_date")
-    private LocalDate booking_date;
+    private LocalDateTime booking_date;
 
     @Column(name = "customer_full_name")
     private String customerFullName;
@@ -40,6 +41,9 @@ public class BookingTicket {
 
     @Column(name = "status")
     private String status;
+    // 0 là pending
+    // 1 là done
+
 
     @ManyToOne
     @JoinColumn(name = "user_id")

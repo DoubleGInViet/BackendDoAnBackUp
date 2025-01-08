@@ -41,8 +41,6 @@ public class VNPAYConfig {
         vnpParamsMap.put("vnp_Command", this.command);
         vnpParamsMap.put("vnp_TmnCode", this.tmnCode);
         vnpParamsMap.put("vnp_CurrCode", "VND");
-        vnpParamsMap.put("vnp_TxnRef",  VNPAYUtils.getRandomNumber(8));
-        vnpParamsMap.put("vnp_OrderInfo", "Thanh toan don hang:" +  VNPAYUtils.getRandomNumber(8));
         vnpParamsMap.put("vnp_OrderType", this.orderType);
         vnpParamsMap.put("vnp_Locale", "vn");
         vnpParamsMap.put("vnp_ReturnUrl", this.returnUrl);

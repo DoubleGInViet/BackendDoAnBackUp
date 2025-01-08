@@ -1,5 +1,6 @@
 package com.duy.BackendDoAn.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,10 +29,12 @@ public class ReviewHotel {
     private LocalDateTime review_date;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "user_id")
     private User user;
 }
