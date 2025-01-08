@@ -31,12 +31,13 @@ public class BookingTicketController {
         return ResponseEntity.ok(newBookingTicket);
     }
 
-//    @PostMapping
-//    public ResponseEntity<BookingTicketResponse> createBooking(@Valid @RequestBody BookingTicketDTO bookingTicketDTO) throws Exception {
-//        BookingTicket newBookingTicket = bookingTicketService.createBookingTicket(bookingTicketDTO);
-//        BookingTicketResponse bookingTicketResponse = BookingTicketResponse.fromBooking(newBookingTicket);
-//        emailService.sendBookingTicketMessage(bookingTicketResponse);
-//        return ResponseEntity.ok(bookingTicketResponse);
+    @PostMapping
+    public ResponseEntity<BookingTicketResponse> createBooking(@Valid @RequestBody BookingTicketDTO bookingTicketDTO) throws Exception {
+        BookingTicket newBookingTicket = bookingTicketService.createBookingTicket(bookingTicketDTO);
+        BookingTicketResponse bookingTicketResponse = BookingTicketResponse.fromBooking(newBookingTicket);
+        emailService.sendBookingTicketMessage(bookingTicketResponse);
+        return ResponseEntity.ok(bookingTicketResponse);
+    }
 
     @GetMapping("/user/{id}")
     public ResponseEntity<BookingTicketListResponse> getBookingByUser(@PathVariable("id") Long userId) throws Exception {
@@ -54,6 +55,9 @@ public class BookingTicketController {
                 .build()
         );
     }
+
+//    @GetMapping("/status")
+//
 
 
 }

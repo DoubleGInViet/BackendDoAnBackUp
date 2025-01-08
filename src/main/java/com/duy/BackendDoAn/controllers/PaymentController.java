@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -18,6 +19,8 @@ import java.net.URLEncoder;
 @RequestMapping("/payment")
 @RequiredArgsConstructor
 public class PaymentController {
+
+    private final SimpMessagingTemplate messagingTemplate;
     private final PaymentService paymentService;
     private final BookingRoomService bookingRoomService;
     private final BookingTicketService bookingTicketService;
@@ -35,8 +38,10 @@ public class PaymentController {
 
         if (status.equals("00") && type.equals("room")) {
             bookingRoomService.setStatusAfterPayment(txnRef);
+            messagingTemplate.convertAndSend("/topic/payment-status", "Payment successfully");
         } else if (status.equals("00") && type.equals("ticket")) {
             bookingTicketService.setBookingTicketStatusPayment(txnRef);
+            messagingTemplate.convertAndSend("/topic/payment-status", "Payment successfully");
         }
     }
 }
