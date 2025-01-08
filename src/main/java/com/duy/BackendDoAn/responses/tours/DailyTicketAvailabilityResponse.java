@@ -22,7 +22,7 @@ public class DailyTicketAvailabilityResponse {
 
     public static DailyTicketAvailabilityResponse fromDailyTicket(DailyTicketAvailability dailyTicketAvailability) {
         return DailyTicketAvailabilityResponse.builder()
-                .id(dailyTicketAvailability.getTicketClass().getId())
+                .id(dailyTicketAvailability.getId())
                 .name(dailyTicketAvailability.getTicketClass().getName())
                 .price(dailyTicketAvailability.getTicketClass().getPrice())
                 .availableTicket(dailyTicketAvailability.getAvailableTicket())

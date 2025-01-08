@@ -41,7 +41,7 @@ public class BookingVehicleService {
         User user = userRepository.findById(bookingVehicleDTO.getUser()).orElseThrow(()-> new Exception("User not found"));
         BookingVehicle bookingVehicle = BookingVehicle.builder()
                 .id(generateUniqueBookingVehicleId())
-                .booking_date(LocalDate.now())
+                .booking_date(LocalDateTime.now())
                 .start_date(transform(bookingVehicleDTO.getPickup().getDate()))
                 .start_time(LocalTime.of(9, 0))
                 .start_address(bookingVehicleDTO.getPickup().getLocation())

@@ -4,6 +4,7 @@ import com.duy.BackendDoAn.models.BookingRoom;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Getter
@@ -17,6 +18,9 @@ public class BookingRoomResponse {
     private Long adults;
     @JsonProperty("no_children")
     private Long children;
+
+    @JsonProperty("booking_date")
+    private String bookingDate;
 
     @JsonProperty("user_id")
     private Long user;
@@ -48,6 +52,7 @@ public class BookingRoomResponse {
         response.user = bookingRoom.getUser().getId();
         response.adults = bookingRoom.getAdults();
         response.children = bookingRoom.getChildren();
+        response.bookingDate = bookingRoom.getBooking_date().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss"));
         response.hotel = HotelBookingResponse.fromBooking(bookingRoom);
         response.checkInDate = bookingRoom.getCheck_in_date().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         response.checkOutDate = bookingRoom.getCheck_out_date().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));

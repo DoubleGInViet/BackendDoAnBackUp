@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class BookingVehicle {
     private String id;
 
     @Column(name = "booking_date")
-    private LocalDate booking_date;
+    private LocalDateTime booking_date;
 
     @Column(name = "start_date")
     private LocalDate start_date;

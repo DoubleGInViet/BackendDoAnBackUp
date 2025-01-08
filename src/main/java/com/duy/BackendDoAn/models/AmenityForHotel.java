@@ -1,5 +1,6 @@
 package com.duy.BackendDoAn.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,10 +17,12 @@ public class AmenityForHotel {
     private Long id;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "amenity_id")
     private Amenity amenity;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
 }

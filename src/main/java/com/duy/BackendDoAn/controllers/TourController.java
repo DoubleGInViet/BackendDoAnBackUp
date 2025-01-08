@@ -55,7 +55,7 @@ public class TourController {
             @RequestParam(defaultValue = "") String location,
             @RequestParam String date,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10000") int limit
+            @RequestParam(defaultValue = "100000") int limit
     ) {
         PageRequest pageRequest = PageRequest.of(
                 page, limit,

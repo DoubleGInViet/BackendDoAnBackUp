@@ -1,11 +1,12 @@
 package com.duy.BackendDoAn.controllers;
 
 import com.duy.BackendDoAn.dtos.BookingTicketDTO;
-import com.duy.BackendDoAn.models.BookingTicket;
+import com.duy.BackendDoAn.responses.bookingTickets.BookingTicketPaymentLinkResponse;
 import com.duy.BackendDoAn.responses.bookingTickets.BookingTicketListResponse;
 import com.duy.BackendDoAn.responses.bookingTickets.BookingTicketResponse;
 import com.duy.BackendDoAn.services.BookingTicketService;
 import com.duy.BackendDoAn.services.EmailService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -24,12 +25,12 @@ public class BookingTicketController {
     private final EmailService emailService;
 
     @PostMapping
-    public ResponseEntity<BookingTicketResponse> createBooking(@Valid @RequestBody BookingTicketDTO bookingTicketDTO) throws Exception {
-        BookingTicket newBookingTicket = bookingTicketService.createBookingTicket(bookingTicketDTO);
-        BookingTicketResponse bookingTicketResponse = BookingTicketResponse.fromBooking(newBookingTicket);
-        emailService.sendBookingTicketMessage(bookingTicketResponse);
-        return ResponseEntity.ok(bookingTicketResponse);
+    public ResponseEntity<BookingTicketPaymentLinkResponse> createBooking(@Valid @RequestBody BookingTicketDTO bookingTicketDTO, HttpServletRequest request) throws Exception {
+        BookingTicketPaymentLinkResponse newBookingTicket = bookingTicketService.createBookingTicket(bookingTicketDTO, request);
+        return ResponseEntity.ok(newBookingTicket);
     }
+
+//    @PostMapping
 
     @GetMapping("/user/{id}")
     public ResponseEntity<BookingTicketListResponse> getBookingByUser(@PathVariable("id") Long userId) throws Exception {

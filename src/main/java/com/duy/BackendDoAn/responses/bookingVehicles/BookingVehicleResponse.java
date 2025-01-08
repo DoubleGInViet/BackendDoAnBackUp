@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.duy.BackendDoAn.responses.bookingVehicles.PlaceAndTimeResponse.*;
 import lombok.*;
 
+import java.time.format.DateTimeFormatter;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -15,6 +17,9 @@ public class BookingVehicleResponse {
     private Long user;
     private VehicleResponse vehicle;
     private FacilityResponse facility;
+
+    @JsonProperty("booking_date")
+    private String bookingDate;
 
     @JsonProperty("pickup")
     private PlaceAndTimeResponse pickUpResponse;
@@ -44,6 +49,7 @@ public class BookingVehicleResponse {
             BookingVehicleResponse response = BookingVehicleResponse.builder()
                     .id(bookingVehicle.getId())
                     .user(bookingVehicle.getUser().getId())
+                    .bookingDate(bookingVehicle.getBooking_date().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")))
                     .customerResponse(CustomerResponse.fromBooking(bookingVehicle))
                     .vehicle(
                             (bookingVehicle.getVehicleRentalFacility().getVehicle() != null)

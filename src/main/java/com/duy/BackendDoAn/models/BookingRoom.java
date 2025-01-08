@@ -1,12 +1,14 @@
 package com.duy.BackendDoAn.models;
 
 import com.duy.BackendDoAn.models.User;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class BookingRoom {
     private String id;
 
     @Column(name = "booking_date")
-    private LocalDate booking_date;
+    private LocalDateTime booking_date;
 
     @Column(name = "adults")
     private Long adults;
@@ -61,6 +63,7 @@ public class BookingRoom {
     private String arrivalTime;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "user_id")
     private User user;
 

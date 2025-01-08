@@ -40,7 +40,7 @@ public class BookingTicketResponse {
     public static BookingTicketResponse fromBooking(BookingTicket bookingTicket){
         return BookingTicketResponse.builder()
                 .id(bookingTicket.getId())
-                .bookingDate(bookingTicket.getBooking_date().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                .bookingDate(bookingTicket.getBooking_date().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")))
                 .status(bookingTicket.getStatus())
                 .totalPrice(bookingTicket.getTotal_price())
                 .happenDate(bookingTicket.getBookedTickets().get(0).getAvailability()

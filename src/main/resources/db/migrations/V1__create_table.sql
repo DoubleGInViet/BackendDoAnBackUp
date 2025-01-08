@@ -88,7 +88,7 @@ create table amenity_for_room (
 
 CREATE TABLE booking_room (
     id NVARCHAR(8) PRIMARY KEY,
-    booking_date DATE,
+    booking_date DATETIME,
     adults INT,
     children INT,
     check_in_date DATE,
@@ -188,7 +188,7 @@ CREATE TABLE rental_vehicle (
 
 CREATE TABLE booking_vehicle (
     id NVARCHAR(8) PRIMARY KEY,
-    booking_date DATE,
+    booking_date DATETIME,
     start_date DATE,
     start_time TIME,
     start_address NVARCHAR(255),
@@ -298,7 +298,7 @@ CREATE TABLE ticket_profit (
 
 CREATE TABLE booking_ticket (
     id NVARCHAR(8) PRIMARY KEY,
-    booking_date DATE,
+    booking_date DATETIME,
     customer_email NVARCHAR(255),
     customer_full_name NVARCHAR(255),
     customer_phone_number NVARCHAR(255),
