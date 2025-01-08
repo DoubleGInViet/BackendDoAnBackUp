@@ -38,9 +38,5 @@ public class PaymentController {
         } else if (status.equals("00") && type.equals("ticket")) {
             bookingTicketService.setBookingTicketStatusPayment(txnRef);
         }
-
-        String frontendRedirectUrl = "http://localhost:3000/payment-result";
-        frontendRedirectUrl += "?status=" + status + "&txnRef=" + txnRef;
-        response.sendRedirect(frontendRedirectUrl);
     }
 }

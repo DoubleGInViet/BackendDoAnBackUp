@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -39,7 +40,7 @@ public class PaymentService {
         Map<String, String> vnpParamsMap = vnpayConfig.getVNPayConfig();
         vnpParamsMap.put("vnp_Amount", String.valueOf(amount));
         vnpParamsMap.put("vnp_BankCode", bankCode);
-        vnpParamsMap.put("vnp_TxnRef", "121215151");
+        vnpParamsMap.put("vnp_TxnRef", VNPAYUtils.getRandomNumber(8));
         vnpParamsMap.put("vnp_OrderInfo", "Thanh toan don hang:" + VNPAYUtils.getRandomNumber(8));
         vnpParamsMap.put("vnp_IpAddr", VNPAYUtils.getIpAddress(request));
         String queryUrl = VNPAYUtils.getPaymentURL(vnpParamsMap, true);

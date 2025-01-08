@@ -203,4 +203,11 @@ public class BookingRoomService {
             existing.setStatus("1");
             bookingRoomRepository.save(existing);
     }
+
+    public String getPaymentStatus(String id) throws Exception {
+        BookingRoom bookingRoom = bookingRoomRepository.findById(id)
+                .orElseThrow(()-> new Exception("Booking not save yet!!"));
+        if(bookingRoom.getStatus().equals("1")) return "1";
+        return "0";
+    }
 }
