@@ -53,7 +53,7 @@ public class BookingVehicleService {
                 .customerEmail(bookingVehicleDTO.getCustomerInfoDTO().getEmail())
                 .customerPhoneNumber(bookingVehicleDTO.getCustomerInfoDTO().getPhone())
                 .vehicleRentalFacility(vehicleRentalFacility)
-                .status(bookingVehicleDTO.getStatus())
+                .status("0")
                 .user(user)
                 .build();
         Long total = 0L;
@@ -142,5 +142,11 @@ public class BookingVehicleService {
         User user = userRepository.findById(id).orElseThrow(()-> new Exception("User not exist"));
         Page<BookingVehicle> bookingVehiclePage = bookingVehicleRepository.findByUser(user, pageRequest);
         return bookingVehiclePage.map(BookingVehicleResponse::fromBooking);
+    }
+
+    public BookingVehicle updateBookingStatus(String id, String status) throws Exception {
+        BookingVehicle bookingVehicle = bookingVehicleRepository.findById(id).orElseThrow(()-> new Exception("Booking not exist!!"));
+        bookingVehicle.setStatus(status);
+        return bookingVehicleRepository.save(bookingVehicle);
     }
 }

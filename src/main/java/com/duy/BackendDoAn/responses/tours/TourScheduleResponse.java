@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.util.List;
@@ -34,6 +35,8 @@ public class TourScheduleResponse {
         response.startTime = tourSchedule.getStartTime().format(DateTimeFormatter.ofPattern("hh:mm"));
         response.endTime = tourSchedule.getEndTime().format(DateTimeFormatter.ofPattern("hh:mm"));
         response.dailyTicketAvailabilities = tourSchedule.getDailyTicketAvailabilities().stream()
+                .filter(dailyTicketAvailability -> (dailyTicketAvailability.getHappenDate().isAfter(LocalDate.now())
+                        || dailyTicketAvailability.getHappenDate().isEqual(LocalDate.now())))
                 .map(DailyTicketAvailabilityResponse::fromDailyTicket)
                 .collect(Collectors.toList());
         response.count = response.dailyTicketAvailabilities.stream()

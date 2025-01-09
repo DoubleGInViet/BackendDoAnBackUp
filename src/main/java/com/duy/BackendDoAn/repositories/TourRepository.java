@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface TourRepository extends JpaRepository<Tour, Long> {
     @Query("""
-    SELECT DISTINCT t 
+    SELECT DISTINCT t
     FROM Tour t
     JOIN t.attraction a
     JOIN a.city c

@@ -153,4 +153,11 @@ public class BookingTicketService {
         existing.setStatus("1");
         bookingTicketRepository.save(existing);
     }
+
+    public BookingTicket updateStatus(String id, String status) throws Exception {
+        BookingTicket bookingTicket = bookingTicketRepository.findById(id)
+                .orElseThrow(()-> new Exception("Booking not exist!!"));
+        bookingTicket.setStatus(status);
+        return bookingTicketRepository.save(bookingTicket);
+    }
 }

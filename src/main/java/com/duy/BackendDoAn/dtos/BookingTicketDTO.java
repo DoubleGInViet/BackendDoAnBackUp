@@ -28,6 +28,9 @@ public class BookingTicketDTO {
     @JsonProperty("country")
     private String customerCountry;
 
+    @JsonProperty("status")
+    private String status;
+
     @JsonProperty("booked_tickets")
     private List<BookedTicketDTO> bookedTickets;
 }

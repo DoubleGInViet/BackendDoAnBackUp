@@ -53,4 +53,10 @@ public class BookingVehicleController {
                 .totalPages(totalPages)
                 .build());
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<BookingVehicleResponse> updateBookingStatus(@PathVariable("id") String id, @RequestBody BookingVehicleDTO bookingVehicleDTO) throws Exception {
+        BookingVehicle existing = bookingVehicleService.updateBookingStatus(id, bookingVehicleDTO.getStatus());
+        return ResponseEntity.ok(BookingVehicleResponse.fromBooking(existing));
+    }
 }

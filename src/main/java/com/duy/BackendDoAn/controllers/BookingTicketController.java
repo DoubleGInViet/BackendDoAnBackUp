@@ -56,8 +56,12 @@ public class BookingTicketController {
         );
     }
 
-//    @GetMapping("/status")
-//
+    @PutMapping("/{id}")
+    public ResponseEntity<BookingTicketResponse> updateStatus(@PathVariable String id, String status) throws Exception {
+        BookingTicket bookingTicket = bookingTicketService.updateStatus(id, status);
+        return ResponseEntity.ok(BookingTicketResponse.fromBooking(bookingTicket));
+    }
+
 
 
 }

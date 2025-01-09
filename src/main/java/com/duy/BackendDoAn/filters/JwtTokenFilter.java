@@ -72,6 +72,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                 Pair.of("/users/createAdmin", "POST"),
                 Pair.of("/users/forgot-password", "POST"),
                 Pair.of("/payment/vn-pay-callback", "GET")
+
         );
         for(Pair<String, String> byPassToken : bypassTokens){
             if(request.getServletPath().contains(byPassToken.getFirst()) && request.getMethod().equals(byPassToken.getSecond())){

@@ -42,5 +42,4 @@ public class BookingVehicleDTO {
 
     @JsonProperty("driverInfo")
     private List<DriverInfoDTO> driverInfoDTOS;
-
 }
