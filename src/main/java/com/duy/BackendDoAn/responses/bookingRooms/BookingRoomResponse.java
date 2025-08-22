@@ -64,9 +64,9 @@ public class BookingRoomResponse {
                 : new CustomerResponse();
         response.totalPrice = bookingRoom.getTotal_price();
         response.status = bookingRoom.getStatus();
-        response.payedMoney = response.getStatus().equals("1")
-                ? 0
-                : response.getTotalPrice();
+        response.payedMoney = response.getStatus().equals("0")
+                ? response.getTotalPrice()
+                : 0;
         return response;
     }
 }
