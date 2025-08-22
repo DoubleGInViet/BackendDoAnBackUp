@@ -36,7 +36,7 @@ public class BookingVehicleService {
     public BookingVehicle createBooking(BookingVehicleDTO bookingVehicleDTO) throws Exception {
 //        Office office = officeRepository.findById(bookingVehicleDTO.getOffice()).orElseThrow(()-> new Exception("No office found!!"));
         VehicleRentalFacility vehicleRentalFacility = vehicleRentalFacilityRepository
-                .findByVehicle_IdAndRentalFacility_Id(bookingVehicleDTO.getVehicle(), bookingVehicleDTO.getRental()).orElseThrow(()->new Exception("Rental vahicle not found!"));
+                .findByVehicle_IdAndRentalFacility_Id(bookingVehicleDTO.getVehicle(), bookingVehicleDTO.getRental()).orElseThrow(()->new Exception("Rental vehicle not found!"));
 
         User user = userRepository.findById(bookingVehicleDTO.getUser()).orElseThrow(()-> new Exception("User not found"));
         BookingVehicle bookingVehicle = BookingVehicle.builder()
